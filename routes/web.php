@@ -20,9 +20,10 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home2', 'HomeController@index')->name('home2');
     Route::get('/newOrder', 'RequestItemController@create');
     Route::post('/storeNewOrder', 'RequestItemController@store');
     Route::get('/test', function (){
-        return view('layouts.cDashboardTemplate');
+        return view('dashboard.customerDashboard');
     });
 });
