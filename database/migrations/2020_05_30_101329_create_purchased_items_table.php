@@ -6,24 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePurchasedItemsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('purchased_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('quotation_id');
+            $table->integer('request_id');
+            $table->float('purchased_price');
+            $table->date('purchased_date');
+            $table->string('purchased_name');
+            $table->string('buyer');
+            $table->date('purchasing_date');
+            $table->string('co_worker');
+            $table->date('receiving_date');
+            $table->string('passenger');
+            $table->date('sending_date');
+            $table->date('arrival_date');
+            $table->date('customer_date');
+            $table->string('pic1');
+            $table->string('pic2');
+            $table->integer('status');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('purchased_items');

@@ -15,6 +15,18 @@ class CreateRequestItemsTable extends Migration
     {
         Schema::create('request_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('quotation_id');
+            $table->string('link');
+            $table->integer('quantity');
+            $table->text('description');
+            $table->float('weight');
+            $table->integer('currency_id');
+            $table->integer('currency_price');
+            $table->float('commission');
+            $table->float('shipping_price');
+            $table->float('item_price');
+            $table->integer('customer_price');
+
             $table->timestamps();
         });
     }

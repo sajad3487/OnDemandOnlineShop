@@ -15,6 +15,12 @@ class CreateCurrenciesTable extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
+            $table->integer('usd');
+            $table->integer('euro');
+            $table->integer('pound');
+            $table->integer('canada_dollar');
+            $table->integer('uae');
+            $table->integer('tl');
             $table->timestamps();
         });
     }

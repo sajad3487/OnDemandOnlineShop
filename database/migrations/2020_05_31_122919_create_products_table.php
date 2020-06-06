@@ -16,9 +16,9 @@ class CreateProductsTable extends Migration
             $table->string('link');
             $table->string('spec');
             $table->text('description');
-            $table->integer('price');
-            $table->integer('discount');
-            $table->integer('finalPrice');
+            $table->float('price');
+            $table->float('discount');
+            $table->float('finalPrice');
             $table->string('tags');
             $table->float('score');
             $table->string('size');
