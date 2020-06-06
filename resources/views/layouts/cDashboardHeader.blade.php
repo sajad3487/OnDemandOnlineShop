@@ -6,7 +6,7 @@
                     <input class="header-search-input z-depth-2 iransans col-sm-10" type="text" name="Search" placeholder="استعلام لینک جدید" data-search="template-list">
                     <ul class="search-list collection display-none"></ul>
                 </div>
-                <a class="btn-floating mb-1  mr-3 btn-small waves-effect waves-light mt-1 hide-on-med-and-down">
+                <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down">
                     <i class="material-icons">add</i>
                 </a>
 
