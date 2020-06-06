@@ -12,6 +12,7 @@ class RequestItemController extends Controller
             return view('panel.form');
     }
     public function store (ItemRequest $itemRequest){
-            return $itemRequest->all();
+        dd($itemRequest);
+        return $itemRequest->all();
     }
 }
