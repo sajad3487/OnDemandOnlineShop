@@ -18,12 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['auth','web']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/home2', 'HomeController@index')->name('home2');
     Route::get('/newOrder', 'RequestItemController@create');
     Route::post('/storeNewOrder', 'RequestItemController@store');
-    Route::get('/test', function (){
-        return view('dashboard.customerDashboard');
+
+    Route::group(['prefix'=>'request'],function (){
+       Route::get('create','RequestItemController@create');
     });
 });

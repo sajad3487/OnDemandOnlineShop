@@ -6,9 +6,48 @@
                     <input class="header-search-input z-depth-2 iransans col-sm-10" type="text" name="Search" placeholder="استعلام لینک جدید" data-search="template-list">
                     <ul class="search-list collection display-none"></ul>
                 </div>
-                <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down">
+                <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down modal-trigger" href="#modal1">
                     <i class="material-icons">add</i>
                 </a>
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>افزودن کالای جدید </h4>
+
+                                <form>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="text" id="item-link">
+                                            <label class="contact-input" for="item-link">لینک</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="number" id="item-quantity">
+                                            <label class="contact-input" for="item-quantity">تعداد</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="text" id="item-description">
+                                            <label class="contact-input" for="item-description">توضبحات کالا</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label>
+                                            <input type="checkbox" />
+                                            <span>قوانین و مقررات سایت راقبول دارم</span>
+                                        </label>
+                                    </div>
+
+                                </form>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">انصراف</a>
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">ثبت کالا</a>
+                    </div>
+                </div>
 
                 <ul class="navbar-list right">
 {{--                    <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge">5</small></i></a></li>--}}
@@ -61,6 +100,9 @@
                     </form>
                 </div>
             </nav>
+
+
+
         </nav>
     </div>
 </header>

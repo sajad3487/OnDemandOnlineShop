@@ -326,8 +326,7 @@
             <div class="input-field col s12">
                 <div class="switch">
                     پاورقی ثابت شد
-                    <label class="float-right"><input class="footer-fixed-checkbox" type="checkbox"/> <span class="lever ml-0"></span
-                        ></label>
+                    <label class="float-right"><input class="footer-fixed-checkbox" type="checkbox"/> <span class="lever ml-0"></span></label>
                 </div>
             </div>
         </div>
