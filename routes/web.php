@@ -26,5 +26,6 @@ Route::group(['middleware' => ['auth','web']], function () {
 
     Route::group(['prefix'=>'request'],function (){
        Route::get('create','RequestItemController@create');
+       Route::post('store','RequestItemController@store');
     });
 });

@@ -332,6 +332,7 @@
         </div>
     </div>
 </div>
+
 <!--/ Theme Customizer -->
 
 
@@ -365,6 +366,8 @@
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{asset('js-rtl/scripts/dashboard-modern-rtl.js')}}"></script>
 <script src="{{asset('js/scripts/intro.min.js')}}"></script>
+<script src="{{asset('js/scripts/ui-alerts.min.js')}}"></script>
+<script src="{{asset('js/scripts/advance-ui-modals.min.js')}}"></script>
 <!-- END PAGE LEVEL JS-->
 </body>
 

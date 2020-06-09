@@ -1,6 +1,7 @@
 @extends('layouts.cDashboardTemplate')
 @section('content')
 
+
 <div class="container">
     <div class="section">
         <!-- Current balance & total transactions cards-->
@@ -43,6 +44,7 @@
                             </div>
                         </div>
                             <a class="mt-2 btn waves-effect waves-light green darken-1">مرحله بعد</a>
+
                     </div>
                 </div>
 

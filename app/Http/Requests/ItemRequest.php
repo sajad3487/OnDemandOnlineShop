@@ -27,6 +27,7 @@ class ItemRequest extends FormRequest
             'link' => 'required|max:255',
             'quantity' => 'required',
             'description' => 'required|min:0|max:65535',
+            'rules' => 'required',
         ];
     }
 }

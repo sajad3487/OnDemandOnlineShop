@@ -17,6 +17,6 @@ class RequestService
     }
 
     public function scoreRequest ($itemRequest){
-        return $this->requestRepo->createRequest($itemRequest);
+        return $this->requestRepo->createRequestItem($itemRequest);
     }
 }

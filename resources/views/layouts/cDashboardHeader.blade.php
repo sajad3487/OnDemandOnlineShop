@@ -6,48 +6,48 @@
                     <input class="header-search-input z-depth-2 iransans col-sm-10" type="text" name="Search" placeholder="استعلام لینک جدید" data-search="template-list">
                     <ul class="search-list collection display-none"></ul>
                 </div>
-                <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down modal-trigger" href="#modal1">
+                <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down modal-trigger close" href="#modal1">
                     <i class="material-icons">add</i>
                 </a>
-                <div id="modal1" class="modal">
+                <div id="modal1" class="modal modal-fixed-footer">
+                    <form action="{{url('/request/store')}}" method="post">
+                        @csrf
                     <div class="modal-content">
                         <h4>افزودن کالای جدید </h4>
-
-                                <form>
+                                    @include('fragment.errors')
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input type="text" id="item-link">
-                                            <label class="contact-input" for="item-link">لینک</label>
+                                            <input type="text" id="link" name="link" value="{{old('link')}}">
+                                            <label class="contact-input" for="link">لینک</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input type="number" id="item-quantity">
-                                            <label class="contact-input" for="item-quantity">تعداد</label>
+                                            <input type="number" id="quantity" name="quantity" value="{{old('link')}}">
+                                            <label class="contact-input" for="quantity">تعداد</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input type="text" id="item-description">
-                                            <label class="contact-input" for="item-description">توضبحات کالا</label>
+                                            <input type="text" id="description" name="description" value="{{old('link')}}">
+                                            <label class="contact-input" for="description">توضبحات کالا</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <label>
-                                            <input type="checkbox" />
+                                            <input type="checkbox" name="rules" >
                                             <span>قوانین و مقررات سایت راقبول دارم</span>
                                         </label>
                                     </div>
-
-                                </form>
-
-
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer  mb-2">
                         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">انصراف</a>
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">ثبت کالا</a>
+                        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat ">ثبت کالا</button>
                     </div>
+                    </form>
                 </div>
+{{--            <!-- Modal Trigger -->--}}
+
 
                 <ul class="navbar-list right">
 {{--                    <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge">5</small></i></a></li>--}}
@@ -105,4 +105,6 @@
 
         </nav>
     </div>
+
 </header>
+

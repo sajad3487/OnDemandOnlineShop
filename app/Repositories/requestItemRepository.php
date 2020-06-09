@@ -18,7 +18,7 @@ class requestItemRepository
         $this->requestItem = new ItemRequest();
     }
 
-    public function createRequest ($data){
+    public function createRequestItem ($data){
         $this->requestItem->create($data);
         return $data;
     }
