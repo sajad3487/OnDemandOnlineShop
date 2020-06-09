@@ -19,7 +19,12 @@ class requestItemRepository
     }
 
     public function createRequestItem ($data){
-        $this->requestItem->create($data);
-        return $data;
+//        $this->requestItem = [
+//            'link' => $data['link'],
+//            'quantity' => $data['quantity'],
+//            'description' => $data['description'],
+//        ];
+
+        return RequestItem::create(($data)->all());
     }
 }
