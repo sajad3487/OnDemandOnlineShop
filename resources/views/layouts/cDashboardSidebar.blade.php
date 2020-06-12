@@ -7,7 +7,7 @@
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="active bold"><a class="waves-effect waves-cyan " href="{{url('/home')}}"><i class="material-icons">settings_input_svideo</i><span class="menu-title" data-i18n="Dashboard">داشبورد</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="{{url('request/create')}}"><i class="material-icons">add_shopping_cart</i><span class="menu-title" data-i18n="eCommerce">سفارش جدید</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="{{url('quotation/create')}}"><i class="material-icons">add_shopping_cart</i><span class="menu-title" data-i18n="eCommerce">استعلام جدید</span></a>
 
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="Invoice">پیشفاکتورهای گذشته</span></a>

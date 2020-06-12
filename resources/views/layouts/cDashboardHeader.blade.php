@@ -1,51 +1,53 @@
 <header class="page-topbar" id="header">
     <div class="navbar navbar-fixed">
         <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
-            <div class="nav-wrapper">
-                <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+            <div class="nav-wrapper ">
+
+                <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">add_shopping_cart</i>
                     <input class="header-search-input z-depth-2 iransans col-sm-10" type="text" name="Search" placeholder="استعلام لینک جدید" data-search="template-list">
                     <ul class="search-list collection display-none"></ul>
                 </div>
-                <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down modal-trigger close" href="#modal1">
-                    <i class="material-icons">add</i>
-                </a>
-                <div id="modal1" class="modal modal-fixed-footer">
-                    <form action="{{url('/request/store')}}" method="post">
-                        @csrf
-                    <div class="modal-content">
-                        <h4>افزودن کالای جدید </h4>
-                                    @include('fragment.errors')
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input type="text" id="link" name="link" value="{{old('link')}}">
-                                            <label class="contact-input" for="link">لینک</label>
-                                        </div>
+                    <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down modal-trigger" href="#modal1">
+                        <i class="material-icons">add</i>
+                    </a>
+                    <div id="modal1" class="modal modal-fixed-footer ">
+                        <form action="{{url('/request/store')}}" method="post">
+                            @csrf
+                            <div class="modal-content ">
+                                <h4>افزودن کالای جدید </h4>
+                                @include('fragment.errors')
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="text" id="link" name="link" value="{{old('link')}}">
+                                        <label class="contact-input" for="link">لینک</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input type="number" id="quantity" name="quantity" value="{{old('link')}}">
-                                            <label class="contact-input" for="quantity">تعداد</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="number" id="quantity" name="quantity" value="{{old('link')}}">
+                                        <label class="contact-input" for="quantity">تعداد</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input type="text" id="description" name="description" value="{{old('link')}}">
-                                            <label class="contact-input" for="description">توضبحات کالا</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="text" id="description" name="description" value="{{old('link')}}">
+                                        <label class="contact-input" for="description">توضبحات کالا</label>
                                     </div>
-                                    <div class="row">
-                                        <label>
-                                            <input type="checkbox" name="rules" >
-                                            <span>قوانین و مقررات سایت راقبول دارم</span>
-                                        </label>
-                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label>
+                                        <input type="checkbox" name="rules" >
+                                        <span>قوانین و مقررات سایت راقبول دارم</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer  mb-2">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">انصراف</a>
+                                <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat ">ثبت کالا</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="modal-footer  mb-2">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">انصراف</a>
-                        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat ">ثبت کالا</button>
-                    </div>
-                    </form>
-                </div>
+
 {{--            <!-- Modal Trigger -->--}}
 
 
@@ -56,30 +58,6 @@
                     <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">shopping_cart<small class="notification-badge">5</small></i></a></li>
                 </ul>
 
-
-                <!-- notifications-dropdown-->
-{{--                <ul class="dropdown-content" id="notifications-dropdown">--}}
-{{--                    <li>--}}
-{{--                        <h6>اطلاعیه<span class="new badge">5</span></h6>--}}
-{{--                    </li>--}}
-{{--                    <li class="divider"></li>--}}
-{{--                    <li><a class="black-text" href="#!"><span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span>سفارش جدیدی گذاشته شده است!</a>--}}
-{{--                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">2 ساعت گذشته</time>--}}
-{{--                    </li>--}}
-{{--                    <li><a class="black-text" href="#!"><span class="material-icons icon-bg-circle red small">stars</span> کار را تمام کرد</a>--}}
-{{--                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">3 روز گذشته</time>--}}
-{{--                    </li>--}}
-{{--                    <li><a class="black-text" href="#!"><span class="material-icons icon-bg-circle teal small">settings</span> تنظیمات به روز شد</a>--}}
-{{--                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">4 روز گذشته</time>--}}
-{{--                    </li>--}}
-{{--                    <li><a class="black-text" href="#!"><span class="material-icons icon-bg-circle deep-orange small">today</span>جلسه مدیر شروع شد</a>--}}
-{{--                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">6 روز گذشته</time>--}}
-{{--                    </li>--}}
-{{--                    <li><a class="black-text" href="#!"><span class="material-icons icon-bg-circle amber small">trending_up</span>گزارش ماهانه تهیه کنید</a>--}}
-{{--                        <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">1 هفته پیش</time>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-                <!-- profile-dropdown-->
                 <ul class="dropdown-content" id="profile-dropdown">
                     <li><a class="grey-text text-darken-1" href="user-profile-page.html"><i class="material-icons">person_outline</i> مشخصات</a></li>
                     <li><a class="grey-text text-darken-1" href="app-chat.html"><i class="material-icons">chat_bubble_outline</i> چت</a></li>
@@ -105,6 +83,7 @@
 
         </nav>
     </div>
+    @include('layouts.cart')
 
 </header>
 

@@ -16,12 +16,12 @@ class CreateQuotationsTable extends Migration
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('currency_price');
-            $table->date('payment_date');
-            $table->float('price');
-            $table->string('discount_code');
-            $table->float('discount');
-            $table->float('total_price');
+            $table->integer('currency_price')->nullable();
+            $table->date('payment_date')->nullable();
+            $table->float('price')->nullable();
+            $table->string('discount_code')->nullable();
+            $table->float('discount')->nullable();
+            $table->float('total_price')->nullable();
             $table->integer('status');
             $table->timestamps();
         });

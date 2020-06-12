@@ -6,7 +6,7 @@ namespace App\Repositories;
 use App\Http\Requests\ItemRequest;
 use App\RequestItem;
 
-class requestItemRepository
+class requestRepository
 {
     /**
      * @var ItemRequest
@@ -24,7 +24,18 @@ class requestItemRepository
 //            'quantity' => $data['quantity'],
 //            'description' => $data['description'],
 //        ];
-
+        $data['user_id'] = auth()->id();
         return RequestItem::create(($data)->all());
+    }
+
+    public function requestOfCard($user_id){
+        return RequestItem::where(['user_id'=>$user_id,'quotation_id'=>3])->get();
+    }
+    public function updateRequestById($id,$quotation_id){
+        $requests = $this->requestOfCard($id);
+        foreach ($requests as $request){
+            $request->quotation_id = $quotation_id;
+            $request->save();
+        }
     }
 }

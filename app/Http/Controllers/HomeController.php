@@ -2,18 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\QuotationService;
+use App\Service\RequestService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
+     * @var QuotationService
+     */
+    private $quotationService;
+    /**
+     * @var QuotationService
+     */
+    private $requestService;
+
+    /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param QuotationService $quotationService
+     * @param RequestService $requestService
      */
-    public function __construct()
-    {
+    public function __construct(
+        QuotationService $quotationService,
+        RequestService $requestService
+    ){
         $this->middleware('auth');
+        $this->quotationService =$quotationService;
+        $this->requestService =$requestService;
     }
 
     /**
@@ -23,6 +39,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.customerDashboard');
+        $cartRequest = $this->requestService->requestItemInCart();
+        return view('dashboard.customerDashboard',compact('cartRequest'));
     }
 }

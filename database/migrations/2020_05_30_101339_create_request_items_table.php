@@ -15,6 +15,7 @@ class CreateRequestItemsTable extends Migration
     {
         Schema::create('request_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->integer('quotation_id')->default(3);
             $table->string('link');
             $table->integer('quantity');

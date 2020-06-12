@@ -22,7 +22,10 @@ class RequestItemController extends Controller
     public function create (){
             return view('dashboard.createRequest');
     }
-    public function store (ItemRequest $itemRequest){
+    public function score (ItemRequest $itemRequest){
         return $this->requestService->scoreRequest($itemRequest);
+    }
+    public function delete (){
+        dd('this is request delete');
     }
 }

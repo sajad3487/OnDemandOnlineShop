@@ -26,20 +26,26 @@
             </div>
             <div class="slide-out-right-body row pl-3">
                 <div id="byOrder" class="col s12 pb-0">
+
+
                     <div class="collection border-none mb-0">
-                        <ul class="collection right-sidebar-chat p-0 mb-0">
-                            <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pt-6 pb-0" data-target="slide-out-chat">
-                                <span class="avatar-status avatar-online avatar-50"><img src="{{asset('images/avatar/avatar-7.png')}}" alt="avatar" />
-                                </span>
-                                <div class="user-content ml-5 mt-1">
-                                    <h6 class="line-height-0">نام کالا</h6>
-                                    <p class="medium-small blue-grey-text text-lighten-3 pt-3">توضیخ زیر هدر</p>
-                                </div>
-                            </li>
-                        </ul>
+                        @foreach($cartRequest as $cartRequests)
+                            <ul class="collection right-sidebar-chat p-0 mb-0">
+                                <a href="{{$cartRequests['link'] ?? ''}}" target="_blank">
+                                    <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pt-4 pb-0">
+                                        <div class="user-content ml-5 mt-1">
+                                            <h6 class=" ">مشاهده کالا</h6>
+                                            <p class="medium-small blue-grey-text text-lighten-3"> تعداد :  {{$cartRequests['quantity'] ?? ''}}</p>
+                                        </div>
+                                    </li>
+                                </a>
+
+                            </ul>
+                        @endforeach
                     </div>
+
                     <div class="col s12 center mb-3">
-                        <p><a class="mb-6 btn waves-effect waves-light green darken-1">ثبت استعلام</a></p>
+                        <p><a class="mb-6 btn waves-effect waves-light green darken-1" href="{{url('/quotation/create')}}">ثبت استعلام</a></p>
                     </div>
                 </div>
 
