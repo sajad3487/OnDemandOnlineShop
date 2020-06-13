@@ -17,6 +17,9 @@
     <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/animate-css/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/data-tables/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/data-tables/css/dataTables.checkboxes.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/chartist-js/chartist.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/chartist-js/chartist-plugin-tooltip.css')}}">
     <!-- END: VENDOR CSS-->
@@ -26,10 +29,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css-rtl/themes/vertical-modern-menu-template/style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css-rtl/pages/dashboard-modern.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css-rtl/pages/intro.min.css')}}">
-    <!-- END: Page Level CSS-->
-    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/pages/app-invoice.min.css')}}">
+
+
     <link rel="stylesheet" type="text/css" href="{{asset('css-rtl/custom/custom.css')}}">
-    <!-- END: Custom CSS-->
+
 </head>
 <!-- END: Head-->
 
@@ -210,6 +214,12 @@
 <script src="{{asset('js/scripts/ui-alerts.min.js')}}"></script>
 <script src="{{asset('js/scripts/advance-ui-modals.min.js')}}"></script>
 <!-- END PAGE LEVEL JS-->
+<script src="{{asset('vendors/data-tables/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('vendors/data-tables/js/datatables.checkboxes.min.js')}}"></script>
+<script src="{{asset('js/scripts/app-invoice.min.js')}}"></script>
+<script src="{{asset('js/scripts/advance-ui-modals.min.js')}}"></script>
+
 </body>
 
 </html>

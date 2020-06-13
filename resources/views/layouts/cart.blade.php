@@ -25,30 +25,41 @@
                 </div>
             </div>
             <div class="slide-out-right-body row pl-3">
-                <div id="byOrder" class="col s12 pb-0">
+                @if($itemsInCart > 0)
+                    <div id="byOrder" class="col s12 pb-0">
+                        <div class="collection border-none mb-0">
+                            @foreach($cartRequest as $cartRequests)
+                                <ul class="collection right-sidebar-chat p-0 mb-0">
+                                    <a href="{{$cartRequests['link'] ?? ''}}" target="_blank">
+                                        <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pt-4 pb-0">
+                                            <div class="user-content ml-5 mt-1">
+                                                <h6 class=" ">مشاهده کالا</h6>
+                                                <p class="medium-small blue-grey-text text-lighten-3"> تعداد :  {{$cartRequests['quantity'] ?? ''}}</p>
+                                            </div>
+                                        </li>
+                                    </a>
 
+                                </ul>
+                            @endforeach
+                        </div>
 
-                    <div class="collection border-none mb-0">
-                        @foreach($cartRequest as $cartRequests)
-                            <ul class="collection right-sidebar-chat p-0 mb-0">
-                                <a href="{{$cartRequests['link'] ?? ''}}" target="_blank">
-                                    <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pt-4 pb-0">
-                                        <div class="user-content ml-5 mt-1">
-                                            <h6 class=" ">مشاهده کالا</h6>
-                                            <p class="medium-small blue-grey-text text-lighten-3"> تعداد :  {{$cartRequests['quantity'] ?? ''}}</p>
-                                        </div>
-                                    </li>
-                                </a>
-
-                            </ul>
-                        @endforeach
+                        <div class="col s12 center mb-3">
+                            <p><a class="mb-6 btn waves-effect waves-light green darken-1" href="{{url('/quotation/create')}}">ثبت استعلام</a></p>
+                        </div>
                     </div>
+                @else
+                    <div id="byOrder" class="col s12 pb-0">
+                        <div class="collection border-none mb-0">
+                            <div id="maintenance" class="col s12 center-align white">
+                                <h5 class="error-code green-text mb-6">سبد کالای شما خالی است</h5>
+                                <h6 class="mb-6 mt-2 grey-text">لینک کالای مورد نظرت رو استعلام کن تا بصورت رایگان براتون پیشفاکتور صادر بشه</h6>
+                                {{--                                    <a class="btn waves-effect waves-light" href="dashboard-ecommerce.html">بازگشت به خانه</a>--}}
 
-                    <div class="col s12 center mb-3">
-                        <p><a class="mb-6 btn waves-effect waves-light green darken-1" href="{{url('/quotation/create')}}">ثبت استعلام</a></p>
+                                <i class="material-icons "><span>touch_app</span></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
+                    @endif
                 <div id="readyProduct"  class="col s12 pb-0">
                     <div class="collection border-none mb-0">
                         <ul class="collection right-sidebar-chat p-0 mb-0">

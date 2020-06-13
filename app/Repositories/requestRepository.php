@@ -38,4 +38,19 @@ class requestRepository
             $request->save();
         }
     }
+    public function deleteItemById ($id){
+        return RequestItem::findOrFail($id)->delete();
+    }
+    public function countItemInCart($user_id){
+        return \DB::table('request_items')
+            ->where('user_id',$user_id)
+            ->where('quotation_id',3)
+            ->count();
+    }
+    public function deleteItemByUserId($user_id){
+        return \DB::table('request_items')
+            ->where('user_id',$user_id)
+            ->where('quotation_id',3)
+            ->delete();
+    }
 }

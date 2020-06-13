@@ -10,7 +10,7 @@
         <li class="bold"><a class="waves-effect waves-cyan " href="{{url('quotation/create')}}"><i class="material-icons">add_shopping_cart</i><span class="menu-title" data-i18n="eCommerce">استعلام جدید</span></a>
 
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="Invoice">پیشفاکتورهای گذشته</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="{{url('quotation/index')}}"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="Invoice">پیشفاکتورهای گذشته</span></a>
 
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="app-chat.html"><i class="material-icons">local_shipping</i><span class="menu-title" data-i18n="Chat">پیگیری سفارشات</span></a>

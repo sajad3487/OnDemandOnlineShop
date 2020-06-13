@@ -24,7 +24,7 @@ class ItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'link' => 'required|max:255',
+            'link' => 'required|max:5000',
             'quantity' => 'required',
             'description' => 'min:0|max:65535',
             'rules' => 'required',

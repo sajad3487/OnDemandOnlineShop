@@ -44,6 +44,7 @@
             </div>
 
         </div>
+        @if($itemsInCart > 0)
         <div class="row vertical-modern-dashboard col l8 s12">
 
             <div class="col s12 animate fadeRight">
@@ -76,7 +77,7 @@
                                             <td>{{$cartRequests['quantity']}}</td>
                                             <td>{{$cartRequests['description']}}</td>
                                             <td>
-                                                <form action="{{url('request/delete')}}" method="post">
+                                                <form action="{{url("request/$cartRequests->id/delete")}}" method="post">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button class=" btn-flat p-0" type="submit"><i class="material-icons">delete</i></button>
@@ -104,7 +105,30 @@
 
             </div>
         </div>
+        @else
+            <div class="row vertical-modern-dashboard col l8 s12">
 
+                <div class="col s12 animate fadeRight">
+                    <!-- Total Transaction -->
+                    <div id="centered-table" class="card card card-default scrollspy">
+                        <div class="card-content">
+                            <div class="row">
+                                <!-- Maintenance -->
+                                <div id="maintenance" class="col s12 center-align white">
+                                    <h5 class="error-code green-text mb-6">سبد کالای شما خالی است</h5>
+                                    <h6 class="mb-6 mt-2 grey-text">لینک کالای مورد نظرت رو استعلام کن تا بصورت رایگان براتون پیشفاکتور صادر بشه</h6>
+                                    {{--                                    <a class="btn waves-effect waves-light" href="dashboard-ecommerce.html">بازگشت به خانه</a>--}}
+                                    <i class="material-icons "><span>touch_app</span></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        @endif
 
 
 

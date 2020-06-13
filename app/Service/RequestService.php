@@ -26,4 +26,13 @@ class RequestService
         $user_id = auth()->id();
         return $this->requestRepo->requestOfCard($user_id);
     }
+    public function deleteRequestById ($id){
+        return $this->requestRepo->deleteItemById($id);
+    }
+//    public function ItemsInCartById($id){
+//        return $this->requestRepo->countItemInCart($id);
+//    }
+    public function deleteRequestByUserId($user_id){
+        return $this->requestRepo->deleteItemByUserId($user_id);
+    }
 }

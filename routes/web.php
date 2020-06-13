@@ -26,11 +26,13 @@ Route::group(['middleware' => ['auth','web']], function () {
 
     Route::group(['prefix'=>'request'],function (){
        Route::post('store','RequestItemController@score');
-       Route::delete('delete','RequestItemController@delete');
+       Route::delete('/{request_id}/delete','RequestItemController@delete');
     });
     Route::group(['prefix'=>'quotation'],function (){
-        Route::get('create','quotationController@cart');
-        Route::post('score','quotationController@score');
-        Route::get('emptyCart','quotationController@emptyCart');
+        Route::get('create','QuotationController@create');
+        Route::post('score','QuotationController@score');
+        Route::get('emptyCart','QuotationController@emptyCart');
+        Route::get('index','QuotationController@index');
+        Route::get('/{quotation_id}/view','QuotationController@view');
     });
 });

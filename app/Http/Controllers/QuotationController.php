@@ -31,10 +31,12 @@ class QuotationController extends Controller
         $this->requestService =$requestService;
     }
 
-    public function cart (){
-        $user = $this->userService->getUserWithId(auth()->id());
+    public function create (){
+        $user_id = auth()->id();
+        $itemsInCart = $this->quotationService->ItemOfCart();
+        $user = $this->userService->getUserWithId($user_id);
         $cartRequest = $this ->requestService->requestItemInCart();
-        return view('dashboard.createRequest',compact("cartRequest","user"));
+    return view('dashboard.createQuotation',compact("cartRequest","user","itemsInCart"));
     }
     public function score (QuotationRequest $quotationRequest){
         $user_id =auth()->id();
@@ -45,6 +47,21 @@ class QuotationController extends Controller
         return "hi";
     }
     public function emptyCart (){
-        dd('this is empty');
+        $user_id =auth()->id();
+        $this->requestService->deleteRequestByUserId($user_id);
+        return back();
     }
+    public function index(){
+        $user_id = auth()->id();
+        $itemsInCart = $this->quotationService->ItemOfCart();
+        $quotations = $this->quotationService->unpaidQuotationByUserId($user_id);
+        return view('dashboard.quotations',compact('itemsInCart','quotations'));
+    }
+    public function view ($quotation_id){
+        $itemsInCart = $this->quotationService->ItemOfCart();
+        $quotation = $this->quotationService->getQuotationById($quotation_id);
+        return view('dashboard.viewQuotation',compact('itemsInCart','quotation'));
+    }
+
+
 }

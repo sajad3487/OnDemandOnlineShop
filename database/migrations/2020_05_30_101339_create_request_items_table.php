@@ -17,7 +17,7 @@ class CreateRequestItemsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('quotation_id')->default(3);
-            $table->string('link');
+            $table->text('link');
             $table->integer('quantity');
             $table->text('description')->nullable();
             $table->float('weight')->nullable();

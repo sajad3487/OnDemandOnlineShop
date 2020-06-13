@@ -39,7 +39,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user_id=auth()->id();
+        $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this->requestService->requestItemInCart();
-        return view('dashboard.customerDashboard',compact('cartRequest'));
+        return view('dashboard.customerDashboard',compact('cartRequest','itemsInCart'));
     }
 }

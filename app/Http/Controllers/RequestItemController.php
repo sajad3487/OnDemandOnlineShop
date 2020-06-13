@@ -20,12 +20,14 @@ class RequestItemController extends Controller
         $this->requestService = $requestService;
     }
     public function create (){
-            return view('dashboard.createRequest');
+        return view('dashboard.createRequest');
     }
     public function score (ItemRequest $itemRequest){
-        return $this->requestService->scoreRequest($itemRequest);
+        $this->requestService->scoreRequest($itemRequest);
+        return back();
     }
-    public function delete (){
-        dd('this is request delete');
+    public function delete ($request_id){
+        $this->requestService->deleteRequestById($request_id);
+        return back();
     }
 }
