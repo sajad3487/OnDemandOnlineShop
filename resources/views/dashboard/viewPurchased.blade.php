@@ -1,9 +1,18 @@
 @extends('layouts.cDashboardTemplate')
 @section('content')
+    <div class="row">
+        <div class="s8 m8 l8">
+
+        </div>
+        <div class="s4 m4 l4">
+
+        </div>
+
+    </div>
     <section class="invoice-view-wrapper section">
         <div class="row">
             <!-- invoice view page -->
-            <div class="col xl9 m8 s12">
+            <div class="col xl6 m6 s12">
                 <div class="card">
                     <div class="card-content invoice-print-area">
                         <!-- header section -->
@@ -44,7 +53,7 @@
                                     <p>تلفن : <span>{{$quotation->user->tel}}</span></p>
                                 </div>
                                 <div class="invoice-address">
-                                        <p>آدرس : <span>{{$quotation->user->address}}</span></p>
+                                    <p>آدرس : <span>{{$quotation->user->address}}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -63,34 +72,13 @@
                                 </thead>
                                 <tbody>
                                 @foreach($quotation->request as $request)
-                                <tr>
-                                    <td>{{$request->link}} </td>
-                                    <td>{{$request->description}}</td>
-                                    <td>{{$request->quantity}}</td>
-                                    <td>{{$request->customer_price}} ریال </td>
-                                    <td class="indigo-text right-align">{{$request->customer_price}} ریال </td>
-                                    <td>
-
-                                    @if($quotation->status == 4)
-                                        <!-- Modal Trigger -->
-                                        <a class="waves-effect waves-light btn modal-trigger" href="#modal۱">وضعیت</a>
-                                        <!-- Modal Structure -->
-                                        <div id="modal۱" class="modal">
-                                            <div class="modal-content">
-{{--                                                <h4>{{$request->purchased_item['id']}}</h4>--}}
-{{--                                                <p>A bunch of text</p>--}}
-                                                @include('layouts.timeline')
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                                            </div>
-                                        </div>
-                                        @endif
-
-
-
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{$request->link}} </td>
+                                        <td>{{$request->description}}</td>
+                                        <td>{{$request->quantity}}</td>
+                                        <td>{{$request->customer_price}} ریال </td>
+                                        <td class="indigo-text right-align">{{$request->customer_price}} ریال </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -134,40 +122,41 @@
                     </div>
                 </div>
             </div>
+
             <!-- invoice action  -->
-            <div class="col xl3 m4 s12">
-                <div class="card invoice-action-wrapper">
-                    <div class="card-content">
-                        <div class="invoice-action-btn">
-                            <a href="
-                                @if($quotation->status == 4)
-                                {{url('/quotation/purchased')}}
-                                @else
-                                {{url('/quotation/index')}}
-                                @endif
-                                " class="btn indigo waves-effect waves-light display-flex align-items-center justify-content-center">
-                                <span class="text-nowrap">بازگشت</span>
-                                <i class="material-icons mr-4">arrow_back</i>
-                            </a>
-                        </div>
-                        <div class="invoice-action-btn">
-                            <a href="#" class="btn-block btn btn-light-indigo waves-effect waves-light invoice-print">
-                                <span>چاپ</span>
-                            </a>
+            <div class="col xl6 m6 s12">
+                <div class="card">
+                    <div class="card-content invoice-print-area">
+                        <div class="pt-1 pb-0" id="breadcrumbs-wrapper">
+                            <!-- Search for small screen-->
+                            <div class="container">
+                                <div class="row ">
+                                    <div class="col s12 m12 l12 mb-6">
+                                        <h5 class="breadcrumbs-title"><span>وضعیت سفارش</span></h5>
+                                    </div>
+                                    <div class="col s12 m12 l12 mb-3">
+                                        <h6 class="grey-text"><span>شما می توانید وضعیت کالای خود را از اینجا ملاحظه فرمایید</span>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="invoice-action-btn">
-                            <a href="#" class="btn waves-effect waves-light display-flex align-items-center justify-content-center">
-                                <i class="material-icons mr-3">attach_money</i>
-                                <span class="text-nowrap">پرداخت</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
+                <div class="col s12">
+                    <!-- timeline -->
+
+                    <!-- / timeline -->
+
+                                                <div class="content-overlay"></div>
+{{--                    {{$quotation->purchased->status}}--}}
+                </div>
             </div>
+
         </div>
     </section>
 
-
+    <link rel="stylesheet" type="text/css" href="{{asset('css-rtl/pages/page-timeline.min.css')}}">
 
 @endsection

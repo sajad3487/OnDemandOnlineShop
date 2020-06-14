@@ -34,5 +34,8 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('emptyCart','QuotationController@emptyCart');
         Route::get('index','QuotationController@index');
         Route::get('/{quotation_id}/view','QuotationController@view');
+        Route::get('purchased','QuotationController@purchased');
+        Route::get('/purchased/{quotation_id}/view','QuotationController@purchasedView');
     });
+
 });

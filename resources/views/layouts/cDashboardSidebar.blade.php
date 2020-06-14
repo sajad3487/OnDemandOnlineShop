@@ -13,7 +13,7 @@
         <li class="bold"><a class="waves-effect waves-cyan " href="{{url('quotation/index')}}"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="Invoice">پیشفاکتورهای گذشته</span></a>
 
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="app-chat.html"><i class="material-icons">local_shipping</i><span class="menu-title" data-i18n="Chat">پیگیری سفارشات</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="{{url('quotation/purchased')}}"><i class="material-icons">local_shipping</i><span class="menu-title" data-i18n="Chat">پیگیری سفارشات</span></a>
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="app-chat.html"><i class="material-icons">favorite_border</i><span class="menu-title" data-i18n="Chat">لیست علاقه مندی ها</span></a>
         </li>

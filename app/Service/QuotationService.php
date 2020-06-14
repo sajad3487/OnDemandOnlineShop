@@ -43,4 +43,7 @@ class QuotationService
     public function getQuotationById ($id) {
         return $this->quotationRepo->getQuotationWithId($id);
     }
+    public function purchasedQuotationByUserId ($user_id){
+        return $this->quotationRepo->getPurchasedByUserId($user_id);
+    }
 }

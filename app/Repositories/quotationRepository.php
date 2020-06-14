@@ -20,5 +20,11 @@ class quotationRepository
     public function getQuotationWithId ($id){
         return quotation::findOrFail($id);
     }
+    public function getPurchasedByUserId($user_id){
+        return \DB::table('quotations')
+            ->where('user_id',$user_id)
+            ->where('status','=',4)
+            ->get();
+    }
 
 }

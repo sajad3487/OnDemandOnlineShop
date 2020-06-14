@@ -54,14 +54,30 @@ class QuotationController extends Controller
     public function index(){
         $user_id = auth()->id();
         $itemsInCart = $this->quotationService->ItemOfCart();
+        $cartRequest = $this ->requestService->requestItemInCart();
         $quotations = $this->quotationService->unpaidQuotationByUserId($user_id);
-        return view('dashboard.quotations',compact('itemsInCart','quotations'));
+        return view('dashboard.quotations',compact('cartRequest','itemsInCart','quotations'));
     }
     public function view ($quotation_id){
         $itemsInCart = $this->quotationService->ItemOfCart();
+        $cartRequest = $this ->requestService->requestItemInCart();
         $quotation = $this->quotationService->getQuotationById($quotation_id);
-        return view('dashboard.viewQuotation',compact('itemsInCart','quotation'));
+        return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation'));
     }
+    public function purchased (){
+        $user_id = auth()->id();
+        $itemsInCart = $this->quotationService->ItemOfCart();
+        $cartRequest = $this ->requestService->requestItemInCart();
+        $quotations = $this->quotationService->purchasedQuotationByUserId($user_id);
+        return view('dashboard.quotations',compact('cartRequest','itemsInCart','quotations'));
+    }
+    public function purchasedView ($quotation_id){
 
+        $itemsInCart = $this->quotationService->ItemOfCart();
+        $cartRequest = $this ->requestService->requestItemInCart();
+        $quotation = $this->quotationService->getQuotationById($quotation_id);
+//        dd($quotation->purchased->status);
+        return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation'));
+    }
 
 }

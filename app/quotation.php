@@ -13,5 +13,8 @@ class quotation extends Model
     public function user (){
         return $this->belongsTo(User::class);
     }
+    public function purchased (){
+        return $this->hasMany(purchasedItem::class);
+    }
 }
 

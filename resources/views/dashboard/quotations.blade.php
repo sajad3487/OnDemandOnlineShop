@@ -35,7 +35,7 @@
                     <td></td>
                     <td> </td>
                     <td>
-                        <a href="app-invoice-view.html">{{$quotation->id}}</a>
+                        {{$quotation->id}}
                     </td>
                     <td><span class="invoice-amount">{{$quotation->price}}</span></td>
                     <td><small>{{$quotation->created_at}}</small></td>
@@ -45,18 +45,23 @@
                         <small>{{$quotation->discount_code}}</small>
                     </td>
                     <td>
-                        @if($quotation->status == 1)
-                            <span class="chip lighten-5 orange orange-text">صادر نشده</span>
-                            @elseif($quotation->status == 2)
-                            <span class="chip lighten-5 green green-text">صادر شده</span>
-                            @elseif($quotation->status == 3)
-                            <span class="chip lighten-5 red red-text">رد شده</span>
+                        @if($quotation->status == 2)
+                            <span class="chip lighten-5 orange orange-text">صادر شده</span>
+                            @elseif($quotation->status == 4)
+                            <span class="chip lighten-5 green green-text">پرداخت شده</span>
+                            @elseif($quotation->status == 1)
+                            <span class="chip lighten-5 red red-text">صادر نشده</span>
                             @endif
                     </td>
                     <td>
                         <div class="invoice-action">
-                            <a href="{{url("/quotation/$quotation->id/view")}}" class="invoice-action-view mr-4">
-                                <i class="material-icons red-text">remove_red_eye</i>
+                            <a href="
+                            @if($quotation->status == 4)
+                                {{url("/quotation/purchased/$quotation->id/view")}}" class="invoice-action-view mr-4">
+                            @else
+                                {{url("/quotation/$quotation->id/view")}}" class="invoice-action-view mr-4">
+                            @endif
+                                <i class="material-icons green-text">remove_red_eye</i>
                             </a>
                         </div>
                     </td>

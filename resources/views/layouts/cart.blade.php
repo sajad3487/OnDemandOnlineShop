@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="slide-out-right-body row pl-3">
-                @if($itemsInCart > 0)
+                @if($itemsInCart ?? 0 > 0)
                     <div id="byOrder" class="col s12 pb-0">
                         <div class="collection border-none mb-0">
                             @foreach($cartRequest as $cartRequests)
