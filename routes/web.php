@@ -37,5 +37,13 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('purchased','QuotationController@purchased');
         Route::get('/purchased/{quotation_id}/view','QuotationController@purchasedView');
     });
-
+    Route::group(['prefix'=>'wishList'],function (){
+        Route::get('create','wishListController@create');
+        Route::get('index','wishListController@index');
+        Route::post('score','wishListController@score');
+        Route::delete('/{wish_id}/delete','wishListController@delete');
+    });
+    Route::get('test',function (){
+       return view('dashboard.createWishList');
+    });
 });

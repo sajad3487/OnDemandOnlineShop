@@ -15,7 +15,7 @@
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="{{url('quotation/purchased')}}"><i class="material-icons">local_shipping</i><span class="menu-title" data-i18n="Chat">پیگیری سفارشات</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="app-chat.html"><i class="material-icons">favorite_border</i><span class="menu-title" data-i18n="Chat">لیست علاقه مندی ها</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="{{url('wishList/index')}}"><i class="material-icons">favorite_border</i><span class="menu-title" data-i18n="wishList">لیست علاقه مندی ها</span></a>
         </li>
 
         <li class="bold"><a class="waves-effect waves-cyan " href="user-profile-page.html"><i class="material-icons">fingerprint</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>

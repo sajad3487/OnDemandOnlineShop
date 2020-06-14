@@ -59,10 +59,11 @@
                                     <th>تعداد</th>
                                     <th>قیمت واحد</th>
                                     <th class="right-align">قیمت کل</th>
+                                    <th>وضعیت</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($quotation->request as $request)
+                                @foreach($quotation->request as $key => $request)
                                 <tr>
                                     <td>{{$request->link}} </td>
                                     <td>{{$request->description}}</td>
@@ -70,25 +71,19 @@
                                     <td>{{$request->customer_price}} ریال </td>
                                     <td class="indigo-text right-align">{{$request->customer_price}} ریال </td>
                                     <td>
-
                                     @if($quotation->status == 4)
                                         <!-- Modal Trigger -->
-                                        <a class="waves-effect waves-light btn modal-trigger" href="#modal۱">وضعیت</a>
-                                        <!-- Modal Structure -->
-                                        <div id="modal۱" class="modal">
-                                            <div class="modal-content">
-{{--                                                <h4>{{$request->purchased_item['id']}}</h4>--}}
-{{--                                                <p>A bunch of text</p>--}}
-                                                @include('layouts.timeline')
+                                            <a class="waves-effect waves-light invoice-action-view mr-4 modal-trigger" href="#modal-{{$key}}"><i class="material-icons green-text">remove_red_eye</i></a>
+                                            <!-- Modal Structure -->
+                                            <div id="modal-{{$key}}" class="modal ">
+                                                <div class="modal-content">
+                                                    @include('layouts.timeline')
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">بستن</a>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                                            </div>
-                                        </div>
                                         @endif
-
-
-
                                     </td>
                                 </tr>
                                 @endforeach
