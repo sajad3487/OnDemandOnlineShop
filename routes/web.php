@@ -38,12 +38,12 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('/purchased/{quotation_id}/view','QuotationController@purchasedView');
     });
     Route::group(['prefix'=>'wishList'],function (){
-        Route::get('create','wishListController@create');
-        Route::get('index','wishListController@index');
-        Route::post('score','wishListController@score');
-        Route::delete('/{wish_id}/delete','wishListController@delete');
+        Route::get('create','WishListController@create');
+        Route::get('index','WishListController@index');
+        Route::post('score','WishListController@score');
+        Route::delete('/{wish_id}/delete','WishListController@delete');
     });
     Route::get('test',function (){
-       return view('dashboard.createWishList');
+       return view('dashboard.editProfile');
     });
 });

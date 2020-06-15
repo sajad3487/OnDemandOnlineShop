@@ -20,7 +20,7 @@ class WishListController extends Controller
     }
 
     public function index (){
-        return view('dashboard.wishlist');
+        return view('dashboard.wishList');
     }
     public function create (){
         return view('dashboard.createWishList');
