@@ -41,18 +41,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user_id=auth()->id();
+        if(auth()->user()->roles == 1){
+            return redirect('/admin/panel');
+        }
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this->requestService->requestItemInCart();
         return view('dashboard.customerDashboard',compact('cartRequest','itemsInCart'));
     }
     public function view (){
-        $user = User::findOrFail(auth()->id());
+        $user = auth()->user();
         return view('dashboard.editProfile',compact('user'));
     }
     public function edit (UserRequest $userRequest){
-        $user = User::findOrFail(auth()->id());
+        $user = auth()->user();
         $user->update($userRequest->all());
         return back();
+    }
+    public function adminIndex (){
+        return view('panel.adminPanel');
+
     }
 }

@@ -42,6 +42,10 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::post('score','WishListController@score');
         Route::delete('/{wish_id}/delete','WishListController@delete');
     });
+    Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
+        Route::get('panel','HomeController@adminIndex');
+//        Route::get('currencyPrice','CurrencyController@index');
+    });
     Route::get('test',function (){
        return view('dashboard.editProfile');
     });

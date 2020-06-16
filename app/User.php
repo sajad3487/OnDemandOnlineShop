@@ -42,4 +42,7 @@ class User extends Authenticatable
     public function wishList (){
         return $this->hasMany(wishList::class);
     }
+    public function roles(){
+        return $this->hasOne(roles::class);
+    }
 }

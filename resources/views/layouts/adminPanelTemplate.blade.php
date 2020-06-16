@@ -40,7 +40,7 @@
 <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
 
 <!-- BEGIN: Header-->
-@include('layouts.cDashboardHeader')
+@include('layouts.adminPanelHeader')
 <!-- END: Header-->
 <ul class="display-none" id="default-search-main">
     <li class="auto-suggestion-title">
@@ -152,33 +152,13 @@
 
 
 <!-- BEGIN: SideNav-->
-@include('layouts.cDashboardSidebar')
+@include('layouts.adminPanelSidebar')
 <!-- END: SideNav-->
 
 <!-- BEGIN: Page Main-->
-<div id="main">
-    <div class="row">
-        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
-        <div class="col s12">
-            <div class="container">
-                <div class="section">
 
                 @yield('content')
 
-                </div>
-
-{{--                @include('layouts.intro')--}}
-
-
-{{--                    @include('layouts.fixButton')--}}
-            </div>
-            <div class="content-overlay"></div>
-
-
-        </div>
-    </div>
-</div>
-<!-- END: Page Main-->
 
 <!-- Theme Customizer -->
 
