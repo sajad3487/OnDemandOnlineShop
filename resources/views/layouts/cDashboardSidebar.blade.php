@@ -18,7 +18,7 @@
         <li class="bold"><a class="waves-effect waves-cyan " href="{{url('wishList/index')}}"><i class="material-icons">favorite_border</i><span class="menu-title" data-i18n="wishList">لیست علاقه مندی ها</span></a>
         </li>
 
-        <li class="bold"><a class="waves-effect waves-cyan " href="user-profile-page.html"><i class="material-icons">fingerprint</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/viewProfile')}}"><i class="material-icons">fingerprint</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>
         </li>
 
         <li class="bold"><a class="waves-effect waves-cyan " href="https://pixinvent.ticksy.com/" target="_blank"><i class="material-icons">help_outline</i><span class="menu-title" data-i18n="Support">پشتیبانی</span></a>

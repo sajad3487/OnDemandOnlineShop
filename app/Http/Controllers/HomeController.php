@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Service\QuotationService;
 use App\Service\RequestService;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -43,5 +45,14 @@ class HomeController extends Controller
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this->requestService->requestItemInCart();
         return view('dashboard.customerDashboard',compact('cartRequest','itemsInCart'));
+    }
+    public function view (){
+        $user = User::findOrFail(auth()->id());
+        return view('dashboard.editProfile',compact('user'));
+    }
+    public function edit (UserRequest $userRequest){
+        $user = User::findOrFail(auth()->id());
+        $user->update($userRequest->all());
+        return back();
     }
 }
