@@ -30,7 +30,7 @@ class QuotationService
         $this->requestRepo = $requestRepository;
     }
 
-    public function scoreQuotation($user_id,$discount_code){
+    public function storeQuotation($user_id,$discount_code){
         return $this->quotationRepo->createQuotation($user_id,$discount_code);
     }
     public function ItemOfCart (){

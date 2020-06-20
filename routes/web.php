@@ -24,12 +24,12 @@ Route::group(['middleware' => ['auth','web']], function () {
     Route::post('/editProfile', 'HomeController@edit');
 
     Route::group(['prefix'=>'request'],function (){
-       Route::post('store','RequestItemController@score');
+       Route::post('store','RequestItemController@store');
        Route::delete('/{request_id}/delete','RequestItemController@delete');
     });
     Route::group(['prefix'=>'quotation'],function (){
         Route::get('create','QuotationController@create');
-        Route::post('score','QuotationController@score');
+        Route::post('store','QuotationController@store');
         Route::get('emptyCart','QuotationController@emptyCart');
         Route::get('index','QuotationController@index');
         Route::get('/{quotation_id}/view','QuotationController@view');
@@ -39,15 +39,17 @@ Route::group(['middleware' => ['auth','web']], function () {
     Route::group(['prefix'=>'wishList'],function (){
         Route::get('create','WishListController@create');
         Route::get('index','WishListController@index');
-        Route::post('score','WishListController@score');
+        Route::post('store','WishListController@store');
         Route::delete('/{wish_id}/delete','WishListController@delete');
     });
     Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
         Route::get('panel','HomeController@adminIndex');
-        Route::get('currencyPrice','CurrencyController@index');
-        Route::post('currencyPrice/score','CurrencyController@score');
+        Route::get('/currencyPrice','CurrencyController@index');
+        Route::post('currencyPrice/store','CurrencyController@store');
         Route::delete('currencyPrice/{currency_id}/delete','CurrencyController@delete');
         Route::get('quotation','quotationController@adminQuotation');
+        Route::get('quotation/{quotation_id}/view','quotationController@adminViewQuotation');
+        Route::put('request/{request_id}/store','RequestItemController@update');
     });
     Route::get('test',function (){
        return view('dashboard.editProfile');

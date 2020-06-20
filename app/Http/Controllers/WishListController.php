@@ -25,7 +25,7 @@ class WishListController extends Controller
     public function create (){
         return view('dashboard.createWishList');
     }
-    public function score (wishListRequest $wishListRequest){
+    public function store (wishListRequest $wishListRequest){
         $wish =$wishListRequest->all();
         $wish['user_id']=auth()->id();
         $this->wishListService->createWishList($wish);
@@ -33,6 +33,6 @@ class WishListController extends Controller
     }
     public function delete ($wish_id){
         $this->wishListService->deleteWish($wish_id);
-        return back();
+        return view('dashboard.wishList');
     }
 }

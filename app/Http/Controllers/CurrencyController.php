@@ -23,12 +23,12 @@ class CurrencyController extends Controller
         $currencyPrice = $this->currencyPrice->getAllCurrencyPrices();
         return view('panel.currencyPrice',compact('currencyPrice'));
     }
-    public function score (cuurencyRequest $cuurencyRequest){
+    public function store (cuurencyRequest $cuurencyRequest){
         $this->currencyPrice->setNewCurrencyPrice($cuurencyRequest->all());
         return back();
     }
     public function delete ($currency_id){
         $this->currencyPrice->deleteCurrencyPrice($currency_id);
-        return back();
+        return redirect('/admin/currencyPrice');
     }
 }

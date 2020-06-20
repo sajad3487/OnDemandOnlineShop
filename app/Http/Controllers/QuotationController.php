@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\quotationRequest;
+use App\Service\currencyService;
 use App\Service\RequestService;
 use App\Service\UserService;
 use App\User;
@@ -20,15 +21,21 @@ class QuotationController extends Controller
      */
     private $userService;
     private $requestService;
+    /**
+     * @var currencyService
+     */
+    private $currencyService;
 
     public function __construct(
         QuotationService $quotationService,
         UserService $userService,
-        RequestService $requestService
+        RequestService $requestService,
+        CurrencyService $currencyService
     ){
         $this->quotationService =$quotationService;
         $this->userService =$userService;
         $this->requestService =$requestService;
+        $this->currencyService =$currencyService;
     }
 
     public function create (){
@@ -38,11 +45,11 @@ class QuotationController extends Controller
         $cartRequest = $this ->requestService->requestItemInCart();
     return view('dashboard.createQuotation',compact("cartRequest","user","itemsInCart"));
     }
-    public function score (QuotationRequest $quotationRequest){
+    public function store (QuotationRequest $quotationRequest){
         $user_id =auth()->id();
         $this->userService->updateUserInfo($user_id,$quotationRequest);
         $discount_code = 3;
-        $quotation_id= $this->quotationService->scoreQuotation($user_id,$discount_code);
+        $quotation_id= $this->quotationService->storeQuotation($user_id,$discount_code);
         $this->requestService->updateRequest($user_id,$quotation_id);
         return "hi";
     }
@@ -81,8 +88,12 @@ class QuotationController extends Controller
     }
     public function adminQuotation (){
         $unpriceQuotation = $this->quotationService->getUnpriceQuotation();
-//        dd($unpriceQuotation);
         return view('panel.adminQuotation',compact('unpriceQuotation'));
+    }
+    public function adminViewQuotation ($quotation_id){
+        $quotation = $this->quotationService->getQuotationById($quotation_id);
+
+        return view('panel.adminViewQuotation',compact('quotation'));
     }
 
 }

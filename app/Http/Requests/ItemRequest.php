@@ -23,11 +23,25 @@ class ItemRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'link' => 'required|max:5000',
-            'quantity' => 'required',
-            'description' => 'min:0|max:65535',
-            'rules' => 'required',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'link' => 'required|max:5000',
+                    'quantity' => 'required',
+                    'description' => 'min:0|max:65535',
+                    'rules' => 'required',
+                ];
+                break;
+
+            case 'PUT':
+                return [
+                    'currency_id' => 'required| string',
+                    'item_price' => 'required',
+                    'shipping_price' => 'required',
+                    'commission' => 'required',
+                ];
+                break;
+        }
+
     }
 }

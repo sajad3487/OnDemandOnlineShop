@@ -25,5 +25,8 @@ class currencyService
     public function deleteCurrencyPrice($id){
         return $this->currencyRepo->deletePrice($id);
     }
+    public function getLastCurrencyPrice(){
+        return $this->currencyRepo->getLastPrice();
+    }
 
 }

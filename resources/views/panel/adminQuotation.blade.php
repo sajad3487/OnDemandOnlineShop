@@ -49,18 +49,18 @@
                                                         <th>ایمیل</th>
                                                         <th>موبایل</th>
                                                         <th>تاریخ</th>
-                                                        <th>صدور</th>
+                                                        <th></th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     @foreach($unpriceQuotation as $quotation)
                                                     <tr>
                                                         <td>{{$quotation->id}}</td>
-                                                        <td>{{$quotation->user['id']}}</td>
-                                                        <td>ادینبورگ</td>
-                                                        <td>61</td>
-                                                        <td>2011/04/25</td>
-                                                        <td>تومان320,800</td>
+                                                        <td>{{$quotation->user->name}}</td>
+                                                        <td>{{$quotation->user->email}}</td>
+                                                        <td>{{$quotation->user->tel}}</td>
+                                                        <td>{{$quotation->created_at}}</td>
+                                                        <td><a href="{{url("/admin/quotation/$quotation->id/view")}}" class="btn">صدور</a></td>
                                                     </tr>
                                                     @endforeach
                                                     <tfoot>

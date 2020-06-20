@@ -14,7 +14,7 @@
 
 
                         <div class="col s12">
-                            <form class="formValidate" method="post" action="{{url('quotation/score')}}" id="inquery">
+                            <form class="formValidate" method="post" action="{{url('quotation/store')}}" id="inquery">
                                 @csrf
                                 <div class="row">
                                     <div class="col s12">

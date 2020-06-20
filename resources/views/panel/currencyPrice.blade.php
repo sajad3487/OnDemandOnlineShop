@@ -26,7 +26,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <h4 class="card-title">فرم درون خطی</h4>
-                                <form action="{{url('/admin/currencyPrice/score')}}" method="post">
+                                <form action="{{url('/admin/currencyPrice/store')}}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="input-field col m2 s6">

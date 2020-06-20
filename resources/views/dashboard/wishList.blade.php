@@ -37,7 +37,7 @@
                                             <div class="list-desc">{{$wishes->description}}</div>
                                         </div>
                                         <form action="{{url("wishList/$wishes->id/delete")}}" method="post">
-                                            @method('DELETE')
+                                            @method('delete')
                                             @csrf
                                             <button type="submit" class="list-right btn-flat ">
                                                 <div class="delete-task p-0"><i class="material-icons red-text p-0">delete</i>

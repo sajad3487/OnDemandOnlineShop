@@ -4,7 +4,7 @@
         <div id="basic-form" class="card card card-default scrollspy">
             <div class="card-content">
                 <h4 class="card-title">فرم پایه</h4>
-                <form action="{{url('wishList/score')}}" method="post">
+                <form action="{{url('wishList/store')}}" method="post">
                     @csrf
                     <div class="row">
                         <div class="input-field col s12">

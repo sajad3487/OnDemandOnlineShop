@@ -27,9 +27,12 @@ class quotationRepository
             ->get();
     }
     public function getAllUnpriceQuotation(){
-        return \DB::table('quotations')
-            ->where('status',1)
+        return quotation::where('status',1)
+            ->orderBy('created_at','asc')
             ->get();
+//        return \DB::table('quotations')
+//            ->where('status',1)
+//            ->get();
     }
 
 }

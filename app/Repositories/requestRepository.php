@@ -53,4 +53,8 @@ class requestRepository
             ->where('quotation_id',3)
             ->delete();
     }
+    public function quoteRequestById ($id,$data){
+        return RequestItem::where('id',$id)->update($data);
+
+    }
 }

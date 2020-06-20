@@ -17,4 +17,8 @@ class currencyRepository
     public function deletePrice ($id){
         return currency::find($id)->delete();
     }
+    public function getLastPrice(){
+        return currency::orderBy('id','DESC')->first();
+    }
+
 }

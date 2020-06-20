@@ -16,7 +16,7 @@ class RequestService
         $this->requestRepo = $requestItemRepository;
     }
 
-    public function scoreRequest ($itemRequest){
+    public function storeRequest ($itemRequest){
         return $this->requestRepo->createRequestItem($itemRequest);
     }
     public function updateRequest ($id,$quotation_id){
@@ -34,5 +34,12 @@ class RequestService
 //    }
     public function deleteRequestByUserId($user_id){
         return $this->requestRepo->deleteItemByUserId($user_id);
+    }
+    public function quoteRequest($id,$data){
+        return $this->requestRepo->quoteRequestById($id,$data);
+    }
+    public function caculateItemPrice($item_price,$currency_price,$shipping_price,$commission){
+        $res = $currency_price*($commission*($item_price+$shipping_price));
+        return $res;
     }
 }
