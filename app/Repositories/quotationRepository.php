@@ -26,5 +26,10 @@ class quotationRepository
             ->where('status','=',4)
             ->get();
     }
+    public function getAllUnpriceQuotation(){
+        return \DB::table('quotations')
+            ->where('status',1)
+            ->get();
+    }
 
 }

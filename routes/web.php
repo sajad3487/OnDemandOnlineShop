@@ -44,7 +44,10 @@ Route::group(['middleware' => ['auth','web']], function () {
     });
     Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
         Route::get('panel','HomeController@adminIndex');
-//        Route::get('currencyPrice','CurrencyController@index');
+        Route::get('currencyPrice','CurrencyController@index');
+        Route::post('currencyPrice/score','CurrencyController@score');
+        Route::delete('currencyPrice/{currency_id}/delete','CurrencyController@delete');
+        Route::get('quotation','quotationController@adminQuotation');
     });
     Route::get('test',function (){
        return view('dashboard.editProfile');

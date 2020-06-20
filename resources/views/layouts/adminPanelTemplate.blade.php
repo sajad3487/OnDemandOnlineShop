@@ -33,6 +33,9 @@
 
 
     <link rel="stylesheet" type="text/css" href="{{asset('css-rtl/custom/custom.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/vendors/data-tables/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/vendors/data-tables/css/select.dataTables.min.css')}}">
 
 </head>
 <!-- END: Head-->
@@ -201,6 +204,7 @@
 <script src="{{asset('js/scripts/app-invoice.min.js')}}"></script>
 <script src="{{asset('js/scripts/advance-ui-modals.min.js')}}"></script>
 
+<script src="{{asset('js/scripts/data-tables.min.js')}}"></script>
 </body>
 
 </html>

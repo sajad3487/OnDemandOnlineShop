@@ -46,4 +46,7 @@ class QuotationService
     public function purchasedQuotationByUserId ($user_id){
         return $this->quotationRepo->getPurchasedByUserId($user_id);
     }
+    public function getUnpriceQuotation (){
+        return $this->quotationRepo->getAllUnpriceQuotation();
+    }
 }

@@ -9,7 +9,7 @@
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                 <li ><a class="active" href="{{url('/admin/panel')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">داشبورد</span></a>
                 </li>
-                <li ><a href="{{url('/admin/currencyPrice')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">قیمت گذاری</span></a>
+                <li ><a href="{{url('/admin/currencyPrice')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">قیمت ارز</span></a>
                 </li>
                 <li><a href="dashboard-ecommerce.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">گزارش گیری</span></a>
                 </li>
@@ -18,9 +18,9 @@
 
 
 
-            <li class="navigation-header"><a class="navigation-header-text">لاجستیک </a><i class="navigation-header-icon material-icons">more_horiz</i>
+            <li class="navigation-header"><a class="navigation-header-text">فاکتورها </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-            <li class="bold"><a class="waves-effect waves-cyan " href="user-profile-page.html"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>
+            <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/quotation')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">استعلام های صادر نشده</span></a>
             </li>
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">صفحات</span></a>
                 <div class="collapsible-body">
@@ -49,89 +49,12 @@
 
             <li class="navigation-header"><a class="navigation-header-text">مالی </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-            <li class="bold"><a class="waves-effect waves-cyan " href="user-profile-page.html"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>
-            </li>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">صفحات</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="page-contact.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">مخاطب</span></a>
-                        </li>
-                        <li><a href="page-blog-list.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">وبلاگ</span></a>
-                        </li>
-                        <li><a href="page-search.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Search">جست و جو</span></a>
-                        </li>
-                        <li><a href="page-knowledge.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Knowledge">دانش</span></a>
-                        </li>
-                        <li><a href="page-timeline.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Timeline">خط زمانی</span></a>
-                        </li>
-                        <li><a href="page-account-settings.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Account Settings">تنظیمات حساب</span></a>
-                        </li>
-                        <li><a href="page-faq.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="FAQs">سؤالات متداول</span></a>
-                        </li>
-                        <li><a href="page-blank.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">صفحه خالی</span></a>
-                        </li>
-                        <li><a href="page-collapse.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">فروپاشی صفحه</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
 
             <li class="navigation-header"><a class="navigation-header-text">وبلاگ </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-            <li class="bold"><a class="waves-effect waves-cyan " href="user-profile-page.html"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>
-            </li>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">صفحات</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="page-contact.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">مخاطب</span></a>
-                        </li>
-                        <li><a href="page-blog-list.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">وبلاگ</span></a>
-                        </li>
-                        <li><a href="page-search.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Search">جست و جو</span></a>
-                        </li>
-                        <li><a href="page-knowledge.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Knowledge">دانش</span></a>
-                        </li>
-                        <li><a href="page-timeline.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Timeline">خط زمانی</span></a>
-                        </li>
-                        <li><a href="page-account-settings.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Account Settings">تنظیمات حساب</span></a>
-                        </li>
-                        <li><a href="page-faq.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="FAQs">سؤالات متداول</span></a>
-                        </li>
-                        <li><a href="page-blank.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">صفحه خالی</span></a>
-                        </li>
-                        <li><a href="page-collapse.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">فروپاشی صفحه</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+
 
             <li class="navigation-header"><a class="navigation-header-text">پشتیبانی </a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
-            <li class="bold"><a class="waves-effect waves-cyan " href="user-profile-page.html"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>
-            </li>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">صفحات</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="page-contact.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">مخاطب</span></a>
-                        </li>
-                        <li><a href="page-blog-list.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">وبلاگ</span></a>
-                        </li>
-                        <li><a href="page-search.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Search">جست و جو</span></a>
-                        </li>
-                        <li><a href="page-knowledge.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Knowledge">دانش</span></a>
-                        </li>
-                        <li><a href="page-timeline.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Timeline">خط زمانی</span></a>
-                        </li>
-                        <li><a href="page-account-settings.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Account Settings">تنظیمات حساب</span></a>
-                        </li>
-                        <li><a href="page-faq.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="FAQs">سؤالات متداول</span></a>
-                        </li>
-                        <li><a href="page-blank.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">صفحه خالی</span></a>
-                        </li>
-                        <li><a href="page-collapse.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">فروپاشی صفحه</span></a>
-                        </li>
-                    </ul>
-                </div>
             </li>
 
 

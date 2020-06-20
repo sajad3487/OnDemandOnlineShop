@@ -79,5 +79,10 @@ class QuotationController extends Controller
 //        dd($quotation->purchased->status);
         return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation'));
     }
+    public function adminQuotation (){
+        $unpriceQuotation = $this->quotationService->getUnpriceQuotation();
+//        dd($unpriceQuotation);
+        return view('panel.adminQuotation',compact('unpriceQuotation'));
+    }
 
 }

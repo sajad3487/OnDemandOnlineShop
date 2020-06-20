@@ -45,4 +45,7 @@ class User extends Authenticatable
     public function roles(){
         return $this->hasOne(roles::class);
     }
+    public function quotation (){
+        return $this->hasMany(quotation::class);
+    }
 }
