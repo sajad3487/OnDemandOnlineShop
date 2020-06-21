@@ -13,7 +13,7 @@ class CreatePurchasedItemsTable extends Migration
             $table->id();
             $table->integer('quotation_id');
             $table->integer('request_item_id');
-            $table->float('purchased_price');
+            $table->integer('purchased_price');
             $table->date('purchased_date');
             $table->string('purchased_name');
             $table->string('buyer');

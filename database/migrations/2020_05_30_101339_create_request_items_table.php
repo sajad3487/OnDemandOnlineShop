@@ -20,12 +20,12 @@ class CreateRequestItemsTable extends Migration
             $table->text('link');
             $table->integer('quantity');
             $table->text('description')->nullable();
-            $table->float('weight')->nullable();
-            $table->integer('currency_id')->nullable();
+            $table->integer('weight')->nullable();
+            $table->string('currency_id')->nullable();
             $table->integer('currency_price')->nullable();
-            $table->float('commission')->nullable();
-            $table->float('shipping_price')->nullable();
-            $table->float('item_price')->nullable();
+            $table->integer('commission')->nullable();
+            $table->integer('shipping_price')->nullable();
+            $table->integer('item_price')->nullable();
             $table->integer('customer_price')->nullable();
             $table->string('rules');
 

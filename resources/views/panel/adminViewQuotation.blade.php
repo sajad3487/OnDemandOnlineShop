@@ -139,7 +139,7 @@
                                                     <div class="col m5 s12">
                                                         <div class="input-field">
                                                             <label for="discount_code">کد تخفیف</label>
-                                                            <input type="text" class="iransans" value="{{$discount_amount['discount_code']}}" id="discount_code" >
+                                                            <input type="text" class="iransans" value="{{$discount_amount['discount_code']??''}}" id="discount_code" >
                                                         </div>
                                                         <div class="input-field ">
                                                             <label for="description">توضیحات</label>

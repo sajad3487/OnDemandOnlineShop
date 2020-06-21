@@ -18,10 +18,10 @@ class CreateQuotationsTable extends Migration
             $table->integer('user_id');
             $table->integer('currency_price')->nullable();
             $table->date('payment_date')->nullable();
-            $table->float('price')->nullable();
+            $table->integer('price')->nullable();
             $table->string('discount_code')->nullable();
-            $table->float('discount')->nullable();
-            $table->float('total_price')->nullable();
+            $table->integer('discount')->nullable();
+            $table->integer('total_price')->nullable();
             $table->integer('status');
             $table->timestamps();
         });

@@ -16,11 +16,11 @@ class CreateProductsTable extends Migration
             $table->string('link');
             $table->string('spec');
             $table->text('description');
-            $table->float('price');
-            $table->float('discount');
-            $table->float('finalPrice');
+            $table->integer('price');
+            $table->integer('discount');
+            $table->integer('finalPrice');
             $table->string('tags');
-            $table->float('score');
+            $table->integer('score');
             $table->string('size');
             $table->integer('quantity');
             $table->integer('deliveryTime');
