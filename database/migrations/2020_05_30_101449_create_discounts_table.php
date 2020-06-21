@@ -15,6 +15,7 @@ class CreateDiscountsTable extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
+            $table->integer('percentage');
             $table->string('discount_code');
             $table->date('discount_expiration');
             $table->integer('limit');

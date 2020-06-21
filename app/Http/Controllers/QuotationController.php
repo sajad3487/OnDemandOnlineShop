@@ -6,6 +6,7 @@ use App\Http\Requests\quotationRequest;
 use App\Service\currencyService;
 use App\Service\RequestService;
 use App\Service\UserService;
+use App\Service\discountService;
 use App\User;
 use Illuminate\Http\Request;
 use App\Service\QuotationService;
@@ -25,17 +26,23 @@ class QuotationController extends Controller
      * @var currencyService
      */
     private $currencyService;
+    /**
+     * @var discountService
+     */
+    private $discountService;
 
     public function __construct(
         QuotationService $quotationService,
         UserService $userService,
         RequestService $requestService,
-        CurrencyService $currencyService
+        CurrencyService $currencyService,
+        discountService $discountService
     ){
         $this->quotationService =$quotationService;
         $this->userService =$userService;
         $this->requestService =$requestService;
         $this->currencyService =$currencyService;
+        $this->discountService =$discountService;
     }
 
     public function create (){
@@ -51,7 +58,7 @@ class QuotationController extends Controller
         $discount_code = 3;
         $quotation_id= $this->quotationService->storeQuotation($user_id,$discount_code);
         $this->requestService->updateRequest($user_id,$quotation_id);
-        return "hi";
+        return back();
     }
     public function emptyCart (){
         $user_id =auth()->id();
@@ -92,8 +99,13 @@ class QuotationController extends Controller
     }
     public function adminViewQuotation ($quotation_id){
         $quotation = $this->quotationService->getQuotationById($quotation_id);
+        $discount_amount = $this->discountService->getDiscountCodeByCode($quotation['discount_code']);
+//        $discount = $discount_amount->toArray();
+        return view('panel.adminViewQuotation',compact('quotation','discount_amount'));
+    }
+    public function adminStore ($quotation_id){
+        dd($quotation_id);
 
-        return view('panel.adminViewQuotation',compact('quotation'));
     }
 
 }

@@ -43,12 +43,20 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::delete('/{wish_id}/delete','WishListController@delete');
     });
     Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
+
         Route::get('panel','HomeController@adminIndex');
+
         Route::get('/currencyPrice','CurrencyController@index');
         Route::post('currencyPrice/store','CurrencyController@store');
         Route::delete('currencyPrice/{currency_id}/delete','CurrencyController@delete');
-        Route::get('quotation','quotationController@adminQuotation');
-        Route::get('quotation/{quotation_id}/view','quotationController@adminViewQuotation');
+
+        Route::get('/discount','DiscountController@index');
+        Route::post('/discount/store','DiscountController@store');
+        Route::delete('/discount/{discount_id}/delete','DiscountController@delete');
+
+        Route::get('quotation','QuotationController@adminQuotation');
+        Route::get('quotation/{quotation_id}/view','QuotationController@adminViewQuotation');
+        Route::get('quotation/{quotation_id}/store','QuotationController@adminStore');
         Route::put('request/{request_id}/store','RequestItemController@update');
     });
     Route::get('test',function (){

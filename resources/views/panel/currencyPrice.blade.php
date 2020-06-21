@@ -116,12 +116,14 @@
                                                     @endforeach
                                                     <tfoot>
                                                     <tr>
-                                                        <th>نام</th>
-                                                        <th>حالت</th>
-                                                        <th>محل کار</th>
-                                                        <th>سن</th>
-                                                        <th>تاریخ شروع</th>
-                                                        <th>حقوق</th>
+                                                        <th>تاریخ</th>
+                                                        <th>دلار</th>
+                                                        <th>یورو</th>
+                                                        <th>پوند</th>
+                                                        <th>دلار کانادا</th>
+                                                        <th>درهم</th>
+                                                        <th>لیر</th>
+                                                        <th>حذف</th>
                                                     </tr>
                                                     </tfoot>
                                                 </table>

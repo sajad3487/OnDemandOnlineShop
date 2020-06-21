@@ -11,6 +11,8 @@
                 </li>
                 <li ><a href="{{url('/admin/currencyPrice')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">قیمت ارز</span></a>
                 </li>
+                <li ><a href="{{url('/admin/discount')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">تخفیف ها</span></a>
+                </li>
                 <li><a href="dashboard-ecommerce.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">گزارش گیری</span></a>
                 </li>
 
