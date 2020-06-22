@@ -49,4 +49,26 @@ class QuotationService
     public function getUnpriceQuotation (){
         return $this->quotationRepo->getAllUnpriceQuotation();
     }
+    public function getTotalNetPriceOfRequest($data){
+        $price = 0;
+        foreach ($data as $request){
+            $price = $price + $request->customer_price;
+        }
+        return $price;
+    }
+    public function calculateTotalPrice ($price,$discount_amount){
+        return $price-$discount_amount;
+    }
+    public function updateQuotation($quotation_id,$data){
+        return $this->quotationRepo->updateQuotationWithPrice($quotation_id,$data);
+    }
+    public function payQuotationByGate ($quotation_id){
+        return 1;
+    }
+    public function changeStatus ($id,$status){
+        return $this->quotationRepo->changStatusOfQuotation($id,$status);
+    }
+    public function getQuotationByStatus ($status){
+        return $this->quotationRepo->getQuotationWithStatus($status);
+    }
 }

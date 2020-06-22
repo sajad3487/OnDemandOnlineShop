@@ -55,6 +55,8 @@ class requestRepository
     }
     public function quoteRequestById ($id,$data){
         return RequestItem::where('id',$id)->update($data);
-
+    }
+    public function getRequestByQuotationId ($quotation_id){
+        return RequestItem::where('quotation_id',$quotation_id)->get();
     }
 }

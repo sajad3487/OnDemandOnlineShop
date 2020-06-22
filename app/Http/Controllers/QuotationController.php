@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\quotationRequest;
+use App\Http\Requests\userProfileRequest;
 use App\Service\currencyService;
+use App\Service\purchasedItemService;
 use App\Service\RequestService;
 use App\Service\UserService;
 use App\Service\discountService;
@@ -16,7 +18,7 @@ class QuotationController extends Controller
     /**
      * @var QuotationService
      */
-    private $quotationService;
+    private  $quotationService;
     /**
      * @var UserService
      */
@@ -30,19 +32,25 @@ class QuotationController extends Controller
      * @var discountService
      */
     private $discountService;
+    /**
+     * @var purchasedItemService
+     */
+    private $purchasedItemService;
 
     public function __construct(
         QuotationService $quotationService,
         UserService $userService,
         RequestService $requestService,
         CurrencyService $currencyService,
-        discountService $discountService
+        discountService $discountService,
+        purchasedItemService $purchasedItemService
     ){
         $this->quotationService =$quotationService;
         $this->userService =$userService;
         $this->requestService =$requestService;
         $this->currencyService =$currencyService;
         $this->discountService =$discountService;
+        $this->purchasedItemService =$purchasedItemService;
     }
 
     public function create (){
@@ -52,9 +60,9 @@ class QuotationController extends Controller
         $cartRequest = $this ->requestService->requestItemInCart();
     return view('dashboard.createQuotation',compact("cartRequest","user","itemsInCart"));
     }
-    public function store (QuotationRequest $quotationRequest){
+    public function store (userProfileRequest $userProfileRequest){
         $user_id =auth()->id();
-        $this->userService->updateUserInfo($user_id,$quotationRequest);
+        $this->userService->updateUserInfo($user_id,$userProfileRequest);
         $discount_code = 3;
         $quotation_id= $this->quotationService->storeQuotation($user_id,$discount_code);
         $this->requestService->updateRequest($user_id,$quotation_id);
@@ -78,6 +86,16 @@ class QuotationController extends Controller
         $quotation = $this->quotationService->getQuotationById($quotation_id);
         return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation'));
     }
+    public function pay($quotation_id){
+        if ($this->quotationService->payQuotationByGate($quotation_id) == 1){
+            $data = $this->requestService->getRequestOfQuotation($quotation_id);
+            $this->purchasedItemService->storePurchasedItem($data);
+            $this->quotationService->changeStatus($quotation_id,4);
+            return redirect('home');
+        }else{
+            dd("this reject payment");
+        }
+    }
     public function purchased (){
         $user_id = auth()->id();
         $itemsInCart = $this->quotationService->ItemOfCart();
@@ -90,11 +108,10 @@ class QuotationController extends Controller
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this ->requestService->requestItemInCart();
         $quotation = $this->quotationService->getQuotationById($quotation_id);
-//        dd($quotation->purchased->status);
         return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation'));
     }
     public function adminQuotation (){
-        $unpriceQuotation = $this->quotationService->getUnpriceQuotation();
+        $unpriceQuotation = $this->quotationService->getQuotationByStatus(1);
         return view('panel.adminQuotation',compact('unpriceQuotation'));
     }
     public function adminViewQuotation ($quotation_id){
@@ -103,9 +120,22 @@ class QuotationController extends Controller
 //        $discount = $discount_amount->toArray();
         return view('panel.adminViewQuotation',compact('quotation','discount_amount'));
     }
-    public function adminStore ($quotation_id){
-        dd($quotation_id);
+    public function adminUpdateQuotation ($quotation_id,quotationRequest $quotationRequest){
+        $quotation = $quotationRequest->all();
+        $requests = $this->requestService->getRequestOfQuotation($quotation_id);
+        $quotation['price'] = $this->quotationService->getTotalNetPriceOfRequest($requests);
+        $quotation['discount'] = $this->discountService->calculateDiscountAmount($quotation['price'],$quotationRequest->discount_code);
+        $quotation['total_price'] = $this->quotationService->calculateTotalPrice($quotation['price'],$quotation['discount']);
+        $quotation['status']=2;
+        $quotation['payment_date']=now();
+        unset($quotation['_token']);
+        $this->quotationService->updateQuotation($quotation_id,$quotation);
+        return back();
+    }
+    public function adminPaidQuotation (){
+        $purchasedItem = $this->purchasedItemService->getPurchasedItemByStatus(1);
 
+        return view('panel.adminPaidQuotation',compact('purchasedItem'));
     }
 
 }

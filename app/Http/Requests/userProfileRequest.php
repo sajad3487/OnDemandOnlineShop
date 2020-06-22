@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class quotationRequest extends FormRequest
+class userProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class quotationRequest extends FormRequest
     public function rules()
     {
         return [
-            'discount_code'=>'nullable | string',
-            'description'=>'nullable | string',
+            'tel'=>'required',
+            'address'=>'required|min:0|max:65535'
         ];
     }
 }

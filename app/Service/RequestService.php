@@ -39,7 +39,12 @@ class RequestService
         return $this->requestRepo->quoteRequestById($id,$data);
     }
     public function caculateItemPrice($item_price,$currency_price,$shipping_price,$commission){
-        $res = $currency_price*($commission*($item_price+$shipping_price));
-        return $res;
+        if ($commission == 0){
+            return $currency_price*($item_price+$shipping_price);
+        }
+        return $currency_price*($commission*($item_price+$shipping_price));
+    }
+    public function getRequestOfQuotation($quotation_id){
+        return $this->requestRepo->getRequestByQuotationId($quotation_id);
     }
 }

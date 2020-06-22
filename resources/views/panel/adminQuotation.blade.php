@@ -25,19 +25,11 @@
             <div class="col s12">
                 <div class="container">
                     <div class="section section-data-tables">
-                        <div class="card">
-                            <div class="card-content">
-                                <p class="caption mb-0">جداول روش خوبی برای سازماندهی داده های زیادی است. ما چند کلاس ابزار را برای کمک به شما در سبک کردن جدول خود در اسرع وقت فراهم می کنیم. علاوه بر این ، برای بهبود تجربه تلفن همراه ، تمام جداول در عرض صفحه نمایش تلفن همراه
-                                    به طور خودکار متمرکز می شوند.
-                                </p>
-                            </div>
-                        </div>
                         <!-- DataTables example -->
                         <div class="row">
                             <div class="col s12 m12 l12">
                                 <div id="button-trigger" class="card card card-default scrollspy">
                                     <div class="card-content">
-                                        <h4 class="card-title">به عنوان مثال جداول داده</h4>
                                         <div class="row">
 
                                             <div class="col s12">
@@ -65,12 +57,12 @@
                                                     @endforeach
                                                     <tfoot>
                                                     <tr>
-                                                        <th>نام</th>
-                                                        <th>حالت</th>
-                                                        <th>محل کار</th>
-                                                        <th>سن</th>
-                                                        <th>تاریخ شروع</th>
-                                                        <th>حقوق</th>
+                                                        <th>شماره پیشفاکتور</th>
+                                                        <th>نام مشتری</th>
+                                                        <th>ایمیل</th>
+                                                        <th>موبایل</th>
+                                                        <th>تاریخ</th>
+                                                        <th></th>
                                                     </tr>
                                                     </tfoot>
                                                 </table>

@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('emptyCart','QuotationController@emptyCart');
         Route::get('index','QuotationController@index');
         Route::get('/{quotation_id}/view','QuotationController@view');
+        Route::get('/{quotation_id}/pay','QuotationController@pay');
         Route::get('purchased','QuotationController@purchased');
         Route::get('/purchased/{quotation_id}/view','QuotationController@purchasedView');
     });
@@ -56,7 +57,9 @@ Route::group(['middleware' => ['auth','web']], function () {
 
         Route::get('quotation','QuotationController@adminQuotation');
         Route::get('quotation/{quotation_id}/view','QuotationController@adminViewQuotation');
-        Route::get('quotation/{quotation_id}/store','QuotationController@adminStore');
+        Route::post('quotation/{quotation_id}/update','QuotationController@adminUpdateQuotation');
+        Route::get('/quotation/paid','QuotationController@adminPaidQuotation');
+
         Route::put('request/{request_id}/store','RequestItemController@update');
     });
     Route::get('test',function (){

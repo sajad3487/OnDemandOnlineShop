@@ -135,47 +135,44 @@
                                         <!-- invoice subtotal -->
                                         <div class="invoice-subtotal">
                                             <div class="row">
-                                                <form action="">
+                                                <form action="{{url("/admin/quotation/$quotation->id/update")}}" method="post" id="quotation_form">
+                                                    @csrf
                                                     <div class="col m5 s12">
                                                         <div class="input-field">
                                                             <label for="discount_code">کد تخفیف</label>
-                                                            <input type="text" class="iransans" value="{{$discount_amount['discount_code']??''}}" id="discount_code" >
+                                                            <input type="text" class="iransans" value="{{$discount_amount['discount_code']??''}}" id="discount_code" name="discount_code">
                                                         </div>
                                                         <div class="input-field ">
                                                             <label for="description">توضیحات</label>
-
-                                                            <input type="text" class="iransans" value="" id="description">
+                                                            <input type="text" class="iransans" value="{{$quotation->description}}" id="description" name="description">
                                                         </div>
                                                     </div>
                                                     <div class="col xl4 m7 s12 offset-xl3">
                                                         <ul>
                                                             <li class="display-flex justify-content-between ">
-                                                            <span class="invoice-subtotal-title">جمع جزء
+                                                            <span class="invoice-subtotal-title">جمع جزء :
                                                             </span>
                                                                 <h6 class="invoice-subtotal-value"> {{$quotation->price}} تومان  </h6>
                                                             </li>
                                                             <li class="display-flex justify-content-between">
-                                                                <span class="invoice-subtotal-title">تخفیف</span>
-                                                                <h6 class="invoice-subtotal-value">{{$quotation->discount_code}} تومان </h6>
+                                                                <span class="invoice-subtotal-title">تخفیف :</span>
+                                                                <h6 class="invoice-subtotal-value">{{$quotation->discount}} تومان </h6>
                                                             </li>
-                                                            <li class="display-flex justify-content-between">
-                                                                <span class="invoice-subtotal-title">مالیات</span>
-                                                                <h6 class="invoice-subtotal-value">21%</h6>
-                                                            </li>
+
                                                             <li>
                                                                 <div class="divider mt-2 mb-2"></div>
                                                             </li>
                                                             <li class="display-flex justify-content-between">
-                                                                <span class="invoice-subtotal-title">کل فاکتور</span>
-                                                                <h6 class="invoice-subtotal-value">تومان 61.40</h6>
+                                                                <span class="invoice-subtotal-title">کل فاکتور :</span>
+                                                                <h6 class="invoice-subtotal-value">تومان  {{$quotation->total_price}}</h6>
                                                             </li>
                                                             <li class="display-flex justify-content-between">
-                                                                <span class="invoice-subtotal-title">پرداخت شده تا امروز</span>
-                                                                <h6 class="invoice-subtotal-value">- تومان 00.00</h6>
+                                                                <span class="invoice-subtotal-title">پرداخت شده : </span>
+                                                                <h6 class="invoice-subtotal-value"> تومان </h6>
                                                             </li>
                                                             <li class="display-flex justify-content-between">
-                                                                <span class="invoice-subtotal-title">مانده (USD)</span>
-                                                                <h6 class="invoice-subtotal-value">تومان 10,953</h6>
+                                                                <span class="invoice-subtotal-title">باقی مانده :</span>
+                                                                <h6 class="invoice-subtotal-value">تومان  </h6>
                                                             </li>
 
                                                         </ul>
@@ -203,9 +200,9 @@
 {{--                                            </a>--}}
 {{--                                        </div>--}}
                                         <div class="invoice-action-btn">
-                                            <a href="{{url("/admin/quotation/$quotation->id/store")}}" class="btn waves-effect waves-light display-flex align-items-center justify-content-center">
+                                            <button form="quotation_form" type="submit" class="btn waves-effect waves-light display-flex align-items-center justify-content-center width-100">
                                                 <span class="responsive-text">صدور فاکتور</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

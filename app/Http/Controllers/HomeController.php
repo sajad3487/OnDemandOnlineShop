@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\userProfileRequest;
 use App\Service\QuotationService;
 use App\Service\RequestService;
 use App\User;
@@ -52,7 +52,7 @@ class HomeController extends Controller
         $user = auth()->user();
         return view('dashboard.editProfile',compact('user'));
     }
-    public function edit (UserRequest $userRequest){
+    public function edit (userProfileRequest $userRequest){
         $user = auth()->user();
         $user->update($userRequest->all());
         return back();

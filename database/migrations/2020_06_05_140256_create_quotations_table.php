@@ -22,7 +22,8 @@ class CreateQuotationsTable extends Migration
             $table->string('discount_code')->nullable();
             $table->integer('discount')->nullable();
             $table->integer('total_price')->nullable();
-            $table->integer('status');
+            $table->text('description')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

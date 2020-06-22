@@ -31,5 +31,13 @@ class discountService
     public function getDiscountCodeByCode($discount_code){
         return $this->discountRepo->getDiscountByCode($discount_code);
     }
+    public function calculateDiscountAmount($price, $discount_code){
+        $discount = $this->getDiscountCodeByCode($discount_code);
+        $discount_percentage = 0;
+        if (isset($discount)){
+            $discount_percentage = $discount->percentage;
+        }
+        return round(($price*$discount_percentage)/100);
+    }
 
 }

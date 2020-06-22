@@ -146,13 +146,13 @@
                             </a>
                         </div>
                         <div class="invoice-action-btn">
-                            <a href="#" class="btn-block btn btn-light-indigo waves-effect waves-light invoice-print">
+                            <a href="#" class="btn-block btn btn-light-indigo waves-effect waves-light invoice-print " >
                                 <span>چاپ</span>
                             </a>
                         </div>
 
                         <div class="invoice-action-btn">
-                            <a href="#" class="btn waves-effect waves-light display-flex align-items-center justify-content-center">
+                            <a href="{{url("/quotation/$quotation->id/pay")}}" class="btn waves-effect waves-light display-flex align-items-center justify-content-center @if($quotation->status != 2) disabled @endif">
                                 <i class="material-icons mr-3">attach_money</i>
                                 <span class="text-nowrap">پرداخت</span>
                             </a>

@@ -26,13 +26,24 @@ class quotationRepository
             ->where('status','=',4)
             ->get();
     }
-    public function getAllUnpriceQuotation(){
-        return quotation::where('status',1)
+    public function getQuotationWithStatus($status){
+        return quotation::where('status',$status)
             ->orderBy('created_at','asc')
             ->get();
 //        return \DB::table('quotations')
 //            ->where('status',1)
 //            ->get();
+    }
+    public function updateQuotationWithPrice($quotation_id,$data){
+//        $quotation = $this->getQuotationWithId($quotation_id);
+        return quotation::where('id',$quotation_id)
+            ->update($data);
+    }
+    public function changStatusOfQuotation ($id,$status){
+        $quotation['status']=$status;
+        return quotation::find($id)
+            ->update($quotation);
+
     }
 
 }
