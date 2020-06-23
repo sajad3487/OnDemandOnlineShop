@@ -8,7 +8,7 @@
                     <div class="section">
 
                         <section class="invoice-list-wrapper section">
-                            <h4 class="white-text">پرداخت شده</h4>
+                            <h4 class="white-text">ارسال شده به ایران</h4>
                             <div class="responsive-table">
                                 <table class="table invoice-data-table white border-radius-4 pt-1">
                                     <thead>
@@ -30,8 +30,8 @@
                                     </thead>
 
                                     <tbody>
-                                    @isset($purchasedItem)
-                                        @foreach($purchasedItem as $item)
+                                    @isset($items)
+                                        @foreach($items as $item)
                                             <tr>
                                                 <td></td>
                                                 <td> </td>

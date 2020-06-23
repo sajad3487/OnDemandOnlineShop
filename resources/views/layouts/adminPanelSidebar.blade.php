@@ -24,26 +24,20 @@
             </li>
             <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/quotation')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">استعلام های صادر نشده</span></a>
             </li>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">صفحات</span></a>
+            <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/quotation/paid')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">پرداخت شده</span></a>
+            </li>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">لاجستیک</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="page-contact.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">مخاطب</span></a>
+                        <li><a href="{{url('/admin/quotation/purchased')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">خریداری شده</span></a>
                         </li>
-                        <li><a href="page-blog-list.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">وبلاگ</span></a>
+                        <li><a href="{{url('/admin/quotation/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">دفتر خارجی</span></a>
                         </li>
-                        <li><a href="page-search.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Search">جست و جو</span></a>
+                        <li><a href="{{url('/admin/quotation/shipped')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Search">ارسال به ایران</span></a>
                         </li>
-                        <li><a href="page-knowledge.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Knowledge">دانش</span></a>
+                        <li><a href="{{url('/admin/quotation/received')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Knowledge">دفتر تهران</span></a>
                         </li>
-                        <li><a href="page-timeline.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Timeline">خط زمانی</span></a>
-                        </li>
-                        <li><a href="page-account-settings.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Account Settings">تنظیمات حساب</span></a>
-                        </li>
-                        <li><a href="page-faq.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="FAQs">سؤالات متداول</span></a>
-                        </li>
-                        <li><a href="page-blank.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">صفحه خالی</span></a>
-                        </li>
-                        <li><a href="page-collapse.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Page Blank">فروپاشی صفحه</span></a>
+                        <li><a href="{{url('/admin/quotation/delivered')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Timeline">ارسال به مشتری</span></a>
                         </li>
                     </ul>
                 </div>

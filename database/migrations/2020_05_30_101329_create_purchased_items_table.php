@@ -15,9 +15,8 @@ class CreatePurchasedItemsTable extends Migration
             $table->integer('request_item_id')->unique();
             $table->integer('purchased_price')->nullable();
             $table->date('purchased_date')->nullable();
-            $table->string('purchased_name')->nullable();
+            $table->string('purchased_number')->nullable();
             $table->string('buyer')->nullable();
-            $table->date('purchasing_date')->nullable();
             $table->string('co_worker')->nullable();
             $table->date('receiving_date')->nullable();
             $table->string('passenger')->nullable();
