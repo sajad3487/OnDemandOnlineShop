@@ -58,12 +58,14 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('quotation','QuotationController@adminQuotation');
         Route::get('quotation/{quotation_id}/view','QuotationController@adminViewQuotation');
         Route::post('quotation/{quotation_id}/update','QuotationController@adminUpdateQuotation');
-        Route::get('/quotation/paid','QuotationController@adminPaidQuotation');
-        Route::get('/quotation/purchased','QuotationController@adminPurchasedQuotation');
-        Route::get('/quotation/arrived','QuotationController@adminArrivedQuotation');
-        Route::get('/quotation/shipped','QuotationController@adminShippedQuotation');
-        Route::get('/quotation/received','QuotationController@adminReceivedQuotation');
-        Route::get('/quotation/delivered','QuotationController@adminDeliveredQuotation');
+
+        Route::get('/purchasedItem/paid','PurchasedItemController@adminPaidQuotation');
+        Route::get('/purchasedItem/purchased','PurchasedItemController@adminPurchasedQuotation');
+        Route::get('/purchasedItem/arrived','PurchasedItemController@adminArrivedQuotation');
+        Route::get('/purchasedItem/shipped','PurchasedItemController@adminShippedQuotation');
+        Route::get('/purchasedItem/received','PurchasedItemController@adminReceivedQuotation');
+        Route::get('/purchasedItem/delivered','PurchasedItemController@adminDeliveredQuotation');
+        Route::get('/purchasedItem/{purchasedItem_id}/edit','PurchasedItemController@adminDataentry');
 
         Route::put('request/{request_id}/store','RequestItemController@update');
     });

@@ -24,20 +24,20 @@
             </li>
             <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/quotation')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">استعلام های صادر نشده</span></a>
             </li>
-            <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/quotation/paid')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">پرداخت شده</span></a>
+            <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/purchasedItem/paid')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">پرداخت شده</span></a>
             </li>
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">لاجستیک</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="{{url('/admin/quotation/purchased')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">خریداری شده</span></a>
+                        <li><a href="{{url('/admin/purchasedItem/purchased')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">خریداری شده</span></a>
                         </li>
-                        <li><a href="{{url('/admin/quotation/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">دفتر خارجی</span></a>
+                        <li><a href="{{url('/admin/purchasedItem/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">دفتر خارجی</span></a>
                         </li>
-                        <li><a href="{{url('/admin/quotation/shipped')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Search">ارسال به ایران</span></a>
+                        <li><a href="{{url('/admin/purchasedItem/shipped')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Search">ارسال به ایران</span></a>
                         </li>
-                        <li><a href="{{url('/admin/quotation/received')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Knowledge">دفتر تهران</span></a>
+                        <li><a href="{{url('/admin/purchasedItem/received')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Knowledge">دفتر تهران</span></a>
                         </li>
-                        <li><a href="{{url('/admin/quotation/delivered')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Timeline">ارسال به مشتری</span></a>
+                        <li><a href="{{url('/admin/purchasedItem/delivered')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Timeline">ارسال به مشتری</span></a>
                         </li>
                     </ul>
                 </div>

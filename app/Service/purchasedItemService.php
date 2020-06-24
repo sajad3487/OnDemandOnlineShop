@@ -20,4 +20,7 @@ class purchasedItemService
     public function getPurchasedItemByStatus($status){
         return $this->purchasedItemRepo->getPurchasedItemWithStatus($status);
     }
+    public function getPurchasedItemById($id){
+        return $this->purchasedItemRepo->getPurchasedItemWithId($id);
+    }
 }

@@ -21,4 +21,9 @@ class purchasedItemRepository
             ->with(['request','quotation'])
             ->get();
     }
+    public function getPurchasedItemWithId ($id){
+        return purchasedItem::with(array('quotation.user'))
+            ->where('id',$id)
+            ->first();
+    }
 }
