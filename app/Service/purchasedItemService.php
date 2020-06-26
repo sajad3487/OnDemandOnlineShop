@@ -23,4 +23,9 @@ class purchasedItemService
     public function getPurchasedItemById($id){
         return $this->purchasedItemRepo->getPurchasedItemWithId($id);
     }
+    public function updatePurchasedItemData ($id,$data){
+        unset($data['_token']);
+        $this->purchasedItemRepo->updatePurchasedItem($id,$data);
+        return back();
+    }
 }

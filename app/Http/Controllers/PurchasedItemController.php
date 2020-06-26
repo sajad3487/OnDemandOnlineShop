@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\purchasedItemRequest;
 use App\purchasedItem;
 use App\Service\purchasedItemService;
 use Illuminate\Http\Request;
@@ -46,6 +47,13 @@ class PurchasedItemController extends Controller
     }
     public function adminDataentry ($purchasedItem_id){
         $item =$this->purchasedItemService->getPurchasedItemById($purchasedItem_id);
-        return view('panel.logisticsDataentry',compact('item'));
+        return view('panel.logisticsDataEntry',compact('item'));
+    }
+    public function adminPurchasedItemUpdate($purchasedItem_id,$status,purchasedItemRequest $purchasedItemRequest){
+        $data = $purchasedItemRequest->all();
+        if ($status < 6){
+            $data['status']=$status+1;
+        }
+        return $this->purchasedItemService->updatePurchasedItemData($purchasedItem_id,$data);
     }
 }

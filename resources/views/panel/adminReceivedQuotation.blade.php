@@ -20,10 +20,10 @@
                                         <th>
                                             <span>فاکتور#</span>
                                         </th>
-                                        <th>تاریخ پرداخت</th>
-                                        <th>نوع ارز</th>
+                                        <th>نام کالا</th>
                                         <th>نام مشتری</th>
-                                        <th>ایمیل مشتری</th>
+                                        <th>شماره تماس</th>
+                                        <th>آدرس مشتری</th>
                                         <th>تعداد</th>
                                         <th>صدور</th>
                                     </tr>
@@ -36,18 +36,22 @@
                                                 <td></td>
                                                 <td> </td>
                                                 <td>{{$item->quotation->id}}</td>
-                                                <td><span class="invoice-amount">{{$item->quotation->payment_date}}</span></td>
-                                                <td><small>{{$item->request->currency_id}}</small></td>
-                                                <td><span class="invoice-customer"><small>{{$item->quotation->user->name}}</small></span></td>
+                                                <td><span class="invoice-amount">{{$item->name}}</span></td>
+                                                <td><small>{{$item->quotation->user->name}}</small></td>
+                                                <td><span class="invoice-customer"><small>{{$item->quotation->user->tel}}</small></span></td>
                                                 <td>
                                                     <span class="bullet red"></span>
-                                                    <small>{{$item->quotation->user->email}}</small>
+                                                    <small>{{$item->quotation->user->address}}</small>
                                                 </td>
                                                 <td>{{$item->request->quantity}}</td>
                                                 <td>
                                                     <div class="invoice-action">
-                                                        <a href="{{url("/quotation/purchased/$item->id/view")}}" class="invoice-action-view mr-4">
+                                                        <a href="{{url("/admin/purchasedItem/$item->id/edit")}}" class="invoice-action-view mr-4">
                                                             <i class="material-icons green-text">remove_red_eye</i>
+                                                        </a>
+                                                        <input type="number" value="{{$user_id=$item->quotation->user->id}}" class="display-none">
+                                                        <a href="{{url("/admin/user/$user_id/view")}}" target="_blank" class="invoice-action-view mr-4">
+                                                            <i class="material-icons orange-text">info_outline</i>
                                                         </a>
                                                     </div>
                                                 </td>

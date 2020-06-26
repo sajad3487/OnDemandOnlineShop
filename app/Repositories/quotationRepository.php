@@ -18,7 +18,10 @@ class quotationRepository
             ->get();
     }
     public function getQuotationWithId ($id){
-        return quotation::findOrFail($id);
+        return quotation::where('id',$id)
+            ->with('request')
+            ->with('request.purchased')
+            ->first();
     }
     public function getPurchasedByUserId($user_id){
         return \DB::table('quotations')

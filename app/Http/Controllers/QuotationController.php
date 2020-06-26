@@ -104,7 +104,6 @@ class QuotationController extends Controller
         return view('dashboard.quotations',compact('cartRequest','itemsInCart','quotations'));
     }
     public function purchasedView ($quotation_id){
-
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this ->requestService->requestItemInCart();
         $quotation = $this->quotationService->getQuotationById($quotation_id);

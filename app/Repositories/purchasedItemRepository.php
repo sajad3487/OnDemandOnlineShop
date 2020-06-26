@@ -11,7 +11,7 @@ class purchasedItemRepository
         foreach ($data as $data){
             $purchasedItem['quotation_id'] = $data['quotation_id'];
             $purchasedItem['request_item_id'] = $data['id'];
-            $purchasedItem['status'] = 1;
+            $purchasedItem['status'] = 0;
             purchasedItem::create($purchasedItem);
         }
     }
@@ -22,8 +22,12 @@ class purchasedItemRepository
             ->get();
     }
     public function getPurchasedItemWithId ($id){
-        return purchasedItem::with(array('quotation.user'))
-            ->where('id',$id)
+        return purchasedItem::where('id',$id)
+            ->with(['request','quotation'])
             ->first();
+    }
+    public function updatePurchasedItem ($id,$data){
+
+        return purchasedItem::where('id',$id)->update($data);
     }
 }

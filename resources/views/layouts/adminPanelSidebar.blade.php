@@ -43,6 +43,11 @@
                 </div>
             </li>
 
+            <li class="navigation-header"><a class="navigation-header-text">اطلاعات </a><i class="navigation-header-icon material-icons">more_horiz</i>
+            </li>
+            <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/user/view')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">اطلاعات کاربران</span></a>
+            </li>
+
             <li class="navigation-header"><a class="navigation-header-text">مالی </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
 

@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth','web']], function () {
        Route::post('store','RequestItemController@store');
        Route::delete('/{request_id}/delete','RequestItemController@delete');
     });
+
     Route::group(['prefix'=>'quotation'],function (){
         Route::get('create','QuotationController@create');
         Route::post('store','QuotationController@store');
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::post('store','WishListController@store');
         Route::delete('/{wish_id}/delete','WishListController@delete');
     });
+
     Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
 
         Route::get('panel','HomeController@adminIndex');
@@ -66,6 +68,10 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('/purchasedItem/received','PurchasedItemController@adminReceivedQuotation');
         Route::get('/purchasedItem/delivered','PurchasedItemController@adminDeliveredQuotation');
         Route::get('/purchasedItem/{purchasedItem_id}/edit','PurchasedItemController@adminDataentry');
+        Route::post('/purchasedItem/{purchasedItem_id}/update/{status}','PurchasedItemController@adminPurchasedItemUpdate');
+
+        Route::get('/user/{user_id}/view','HomeController@adminView');
+        Route::get('/user/view','HomeController@adminUserView');
 
         Route::put('request/{request_id}/store','RequestItemController@update');
     });

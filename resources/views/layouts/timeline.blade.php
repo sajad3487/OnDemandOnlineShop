@@ -1,6 +1,6 @@
 <ul class="timeline">
 
-    @if($request->purchased_item['status'] >= 1)
+    @if($request->purchased->status >= 1)
         <li>
             <div class="timeline-badge cyan">
                 <a><i class="material-icons white-text">add_box</i></a>
@@ -44,7 +44,7 @@
             </div>
         </li>
     @endif
-    @if($request->purchased_item['status'] >= 2)
+    @if($request->purchased->status >= 2)
             <li class="timeline-inverted">
                 <div class="timeline-badge blue">
                     <a><i class="material-icons white-text">local_shipping</i></a>
@@ -89,7 +89,7 @@
                 </div>
             </li>
     @endif
-    @if($request->purchased_item['status'] >= 3)
+    @if($request->purchased->status >= 3)
             <li>
                 <div class="timeline-badge green">
                     <a><i class="material-icons white-text">storage</i></a>
@@ -135,7 +135,7 @@
 
 
     @endif
-    @if($request->purchased_item['status'] >= 4)
+    @if($request->purchased->status >= 4)
             <li class="timeline-inverted">
                 <div class="timeline-badge yellow">
                     <a><i class="material-icons white-text">flight_takeoff</i></a>
@@ -182,7 +182,7 @@
 
 
     @endif
-    @if($request->purchased_item['status'] >= 5)
+    @if($request->purchased->status >= 5)
             <li>
                 <div class="timeline-badge red">
                     <a><i class="material-icons white-text">chrome_reader_mode</i></a>
@@ -227,7 +227,7 @@
             </li>
 
     @endif
-    @if($request->purchased_item['status'] >= 6)
+    @if($request->purchased->status >= 6)
             <li class="">
                 <div class="timeline-badge orange">
                     <a><i class="material-icons white-text">store</i></a>
@@ -273,7 +273,7 @@
             </li>
 
     @endif
-    @if($request->purchased_item['status'] >= 7)
+    @if($request->purchased->status >= 7)
             <li class="timeline-inverted">
                 <div class="timeline-badge brown">
                     <a><i class="material-icons white-text">local_shipping</i></a>

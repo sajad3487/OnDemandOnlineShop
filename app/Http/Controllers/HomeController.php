@@ -59,6 +59,11 @@ class HomeController extends Controller
     }
     public function adminIndex (){
         return view('panel.adminPanel');
-
+    }
+    public function adminUserView(){
+        return "here in search for user";
+    }
+    public function adminView($user_id){
+        dd($user_id);
     }
 }
