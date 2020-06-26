@@ -25,7 +25,6 @@ class purchasedItemService
     }
     public function updatePurchasedItemData ($id,$data){
         unset($data['_token']);
-        $this->purchasedItemRepo->updatePurchasedItem($id,$data);
-        return back();
+        return $this->purchasedItemRepo->updatePurchasedItem($id,$data);
     }
 }

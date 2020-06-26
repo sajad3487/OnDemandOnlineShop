@@ -71,7 +71,8 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::post('/purchasedItem/{purchasedItem_id}/update/{status}','PurchasedItemController@adminPurchasedItemUpdate');
 
         Route::get('/user/{user_id}/view','HomeController@adminView');
-        Route::get('/user/view','HomeController@adminUserView');
+        Route::get('/user/view','HomeController@adminUserViewLanding');
+        Route::put('/user/find','HomeController@adminFindUser');
 
         Route::put('request/{request_id}/store','RequestItemController@update');
     });

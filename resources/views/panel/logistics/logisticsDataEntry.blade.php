@@ -107,7 +107,7 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12">
                                                                                 <i class="material-icons prefix">card_travel</i>
-                                                                                <input id="name" type="text"
+                                                                                <input required id="name" type="text"
                                                                                        class="validate"
                                                                                        value="{{old('name') ?? $item->name }}"
                                                                                        name="name">
@@ -119,7 +119,7 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix">date_range</i>
-                                                                                <input id="purchased_date" type="date"
+                                                                                <input required id="purchased_date" type="date"
                                                                                        class="validate"
                                                                                        value="{{old('purchased_date') ?? $item->purchased_date  }}"
                                                                                        name="purchased_date">
@@ -128,7 +128,7 @@
                                                                             </div>
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix mr-4">person_add</i>
-                                                                                <input id="buyer" type="text"
+                                                                                <input required id="buyer" type="text"
                                                                                        class="validate"
                                                                                        value="{{old('buyer') ?? $item->buyer  }}" name="buyer">
                                                                                 <label for="buyer"
@@ -138,7 +138,7 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix">code</i>
-                                                                                <input id="purchased_number" type="text"
+                                                                                <input required id="purchased_number" type="text"
                                                                                        class="validate"
                                                                                        value="{{old('purchased_number') ?? $item->purchased_number  }}"
                                                                                        name="purchased_number">
@@ -147,7 +147,7 @@
                                                                             </div>
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix ">attach_money</i>
-                                                                                <input id="purchased_price"
+                                                                                <input required id="purchased_price"
                                                                                        type="number" class="validate"
                                                                                        value="{{old('purchased_price') ?? $item->purchased_price  }}"
                                                                                        name="purchased_price">
@@ -183,7 +183,7 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix">date_range</i>
-                                                                                <input id="received_date" type="date"
+                                                                                <input required id="received_date" type="date"
                                                                                        class="validate"
                                                                                        value="{{old('received_date') ?? $item->received_date  }}"
                                                                                        name="received_date">
@@ -193,7 +193,7 @@
                                                                             </div>
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix mr-4">person_add</i>
-                                                                                <input id="co_worker" type="text"
+                                                                                <input required id="co_worker" type="text"
                                                                                        class="validate"
                                                                                        value="{{old('co_worker') ?? $item->co_worker  }}"
                                                                                        name="co_worker">
@@ -231,7 +231,7 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix">date_range</i>
-                                                                                <input id="sending_date" type="date"
+                                                                                <input required id="sending_date" type="date"
                                                                                        class="validate"
                                                                                        value="{{old('sending_date') ?? $item->sending_date  }}"
                                                                                        name="sending_date">
@@ -241,7 +241,7 @@
                                                                             </div>
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix mr-4">person_add</i>
-                                                                                <input id="passenger" type="text"
+                                                                                <input required id="passenger" type="text"
                                                                                        class="validate"
                                                                                        value="{{old('passenger') ?? $item->passenger  }}"
                                                                                        name="passenger">
@@ -279,7 +279,7 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix">date_range</i>
-                                                                                <input id="arrival_date" type="date"
+                                                                                <input required id="arrival_date" type="date"
                                                                                        class="validate"
                                                                                        value="{{old('arrival_date') ?? $item->arrival_date  }}"
                                                                                        name="arrival_date">
@@ -318,7 +318,7 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12 m6">
                                                                                 <i class="material-icons prefix">date_range</i>
-                                                                                <input id="delivered_date" type="date"
+                                                                                <input required id="delivered_date" type="date"
                                                                                        class="validate"
                                                                                        value="{{old('delivered_date') ?? $item->delivered_date  }}"
                                                                                        name="delivered_date">

@@ -23,5 +23,8 @@ class UserService
     public function updateUserInfo ($id,$data){
         $this->userRepo->updateUser($id,$data);
     }
+    public function getUserByInfo ($data){
+        return $this->userRepo->getUserWithInfo($data);
+    }
 
 }

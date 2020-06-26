@@ -23,9 +23,22 @@ class userProfileRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'tel'=>'required',
-            'address'=>'required|min:0|max:65535'
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'tel'=>'required',
+                    'address'=>'required|min:0|max:65535'
+                ];
+                break;
+
+            case 'PUT':
+                return [
+                    'name'=>'string|nullable',
+                    'tel'=>'string|nullable',
+                    'address'=>'string|nullable|min:0|max:65535'
+                ];
+                break;
+        }
+
     }
 }

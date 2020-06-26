@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\userProfileRequest;
 use App\Service\QuotationService;
 use App\Service\RequestService;
+use App\Service\UserService;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,10 @@ class HomeController extends Controller
      * @var QuotationService
      */
     private $requestService;
+    /**
+     * @var UserService
+     */
+    private $userService;
 
     /**
      * Create a new controller instance.
@@ -27,11 +32,13 @@ class HomeController extends Controller
      */
     public function __construct(
         QuotationService $quotationService,
+        UserService $userService,
         RequestService $requestService
     ){
         $this->middleware('auth');
         $this->quotationService =$quotationService;
         $this->requestService =$requestService;
+        $this->userService =$userService;
     }
 
     /**
@@ -60,8 +67,12 @@ class HomeController extends Controller
     public function adminIndex (){
         return view('panel.adminPanel');
     }
-    public function adminUserView(){
-        return "here in search for user";
+    public function adminUserViewLanding(){
+        return view('panel.adminUserView');
+    }
+    public function adminFindUser(userProfileRequest $userProfileRequest){
+        $user = $this->userService->getUserByInfo($userProfileRequest);
+        dd($user);
     }
     public function adminView($user_id){
         dd($user_id);

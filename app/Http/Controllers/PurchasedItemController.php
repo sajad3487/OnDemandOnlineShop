@@ -23,37 +23,38 @@ class PurchasedItemController extends Controller
 
     public function adminPaidQuotation (){
         $purchasedItem = $this->purchasedItemService->getPurchasedItemByStatus(1);
-        return view('panel.adminPaidQuotation',compact('purchasedItem'));
+        return view('panel.logistics.adminPaidQuotation',compact('purchasedItem'));
     }
     public function adminPurchasedQuotation (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(2);
-        return view('panel.adminPurchasedQuotation',compact('items'));
+        return view('panel.logistics.adminPurchasedQuotation',compact('items'));
     }
     public function adminArrivedQuotation(){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(3);
-        return view('panel.adminArrivedQuotation',compact('items'));
+        return view('panel.logistics.adminArrivedQuotation',compact('items'));
     }
     public function adminShippedQuotation(){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(4);
-        return view('panel.adminShippedQuotation',compact('items'));
+        return view('panel.logistics.adminShippedQuotation',compact('items'));
     }
     public function adminReceivedQuotation (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(5);
-        return view('panel.adminReceivedQuotation',compact('items'));
+        return view('panellogistics..adminReceivedQuotation',compact('items'));
     }
     public function adminDeliveredQuotation (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(6);
-        return view('panel.adminDeliveredQuotation',compact('items'));
+        return view('panel.logistics.adminDeliveredQuotation',compact('items'));
     }
     public function adminDataentry ($purchasedItem_id){
         $item =$this->purchasedItemService->getPurchasedItemById($purchasedItem_id);
-        return view('panel.logisticsDataEntry',compact('item'));
+        return view('panel.logistics.logisticsDataEntry',compact('item'));
     }
     public function adminPurchasedItemUpdate($purchasedItem_id,$status,purchasedItemRequest $purchasedItemRequest){
         $data = $purchasedItemRequest->all();
         if ($status < 6){
             $data['status']=$status+1;
         }
-        return $this->purchasedItemService->updatePurchasedItemData($purchasedItem_id,$data);
+        $this->purchasedItemService->updatePurchasedItemData($purchasedItem_id,$data);
+        return back();
     }
 }

@@ -46,6 +46,6 @@ class User extends Authenticatable
         return $this->hasOne(roles::class);
     }
     public function quotation (){
-        return $this->hasMany(User::class);
+        return $this->hasMany(quotation::class);
     }
 }

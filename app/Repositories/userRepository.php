@@ -17,4 +17,12 @@ class userRepository
         $user->address = $data['address'];
         $user->save();
     }
+    public function getUserWithInfo ($data){
+        return User::where('name',$data->name)
+            ->orWhere('tel',$data->tel)
+            ->orWhere('email',$data->email)
+            ->with(array('quotation','quotation.request','quotation.purchased'))
+            ->first();
+
+    }
 }
