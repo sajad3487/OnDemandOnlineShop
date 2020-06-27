@@ -72,7 +72,7 @@ class HomeController extends Controller
     }
     public function adminFindUser(userProfileRequest $userProfileRequest){
         $user = $this->userService->getUserByInfo($userProfileRequest);
-        dd($user);
+        return view('panel.adminViewProfile',compact('user'));
     }
     public function adminView($user_id){
         dd($user_id);

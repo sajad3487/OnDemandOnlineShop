@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('/purchasedItem/shipped','PurchasedItemController@adminShippedQuotation');
         Route::get('/purchasedItem/received','PurchasedItemController@adminReceivedQuotation');
         Route::get('/purchasedItem/delivered','PurchasedItemController@adminDeliveredQuotation');
-        Route::get('/purchasedItem/{purchasedItem_id}/edit','PurchasedItemController@adminDataentry');
+        Route::get('/purchasedItem/{purchasedItem_id}/edit','PurchasedItemController@adminDataEntry');
         Route::post('/purchasedItem/{purchasedItem_id}/update/{status}','PurchasedItemController@adminPurchasedItemUpdate');
 
         Route::get('/user/{user_id}/view','HomeController@adminView');

@@ -40,24 +40,24 @@
                                         <div class="row">
                                             <div class="input-field col s12 m4">
                                                 <i class="material-icons prefix mr-5">account_circle</i>
-                                                <input id="icon_name" type="text" name="name" class="validate pl-4" value="{{$user->name}}">
+                                                <input id="icon_name" type="text" name="name" disabled class="validate pl-4" value="{{$user->name}}">
                                                 <label for="icon_name " class="pl-4"> نام کاربر</label>
                                             </div>
                                             <div class="input-field col s12 m4">
                                                 <i class="material-icons prefix">email</i>
-                                                <input id="icon_email" type="email" name="email" class="validate  pl-4" value="{{$user->email}}">
+                                                <input id="icon_email" type="email" name="email" disabled class="validate  pl-4" value="{{$user->email}}">
                                                 <label for="icon_email" class="pl-4">ایمیل</label>
                                             </div>
                                             <div class="input-field col s12 m4">
                                                 <i class="material-icons prefix">phone</i>
-                                                <input id="icon_telephone" type="text" name="tel" class="validate pl-4" value="{{$user->tel}}">
+                                                <input id="icon_telephone" type="text" name="tel" class="validate pl-4" value="{{old('tel') ?? $user->tel}}">
                                                 <label for="icon_telephone" class="pl-4">تلفن</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix ">account_circle</i>
-                                                <input id="icon_address" type="text" name="address" class="validate pl-2" value="{{$user->address}}">
+                                                <input id="icon_address" type="text" name="address" class="validate pl-2" value="{{old('address')?? $user->address}}">
                                                 <label for="icon_address " class="pl-2"> آدرس</label>
                                             </div>
                                         </div>

@@ -39,13 +39,13 @@ class PurchasedItemController extends Controller
     }
     public function adminReceivedQuotation (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(5);
-        return view('panellogistics..adminReceivedQuotation',compact('items'));
+        return view('panellogistics.adminReceivedQuotation',compact('items'));
     }
     public function adminDeliveredQuotation (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(6);
         return view('panel.logistics.adminDeliveredQuotation',compact('items'));
     }
-    public function adminDataentry ($purchasedItem_id){
+    public function adminDataEntry ($purchasedItem_id){
         $item =$this->purchasedItemService->getPurchasedItemById($purchasedItem_id);
         return view('panel.logistics.logisticsDataEntry',compact('item'));
     }
