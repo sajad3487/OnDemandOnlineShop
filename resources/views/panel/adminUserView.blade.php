@@ -56,12 +56,71 @@
                                 </form>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card blue-grey darken-2">
+                    <div class="card-content white-text">
+                        <span class="card-title font-weight-400 mb-10">مشاهده پیشفاکتور</span>
+                        <div class="border-non mt-5">
+                            <form action="{{url('/admin/quotation/view')}}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">perm_identity</i>
+                                        <input id="quotation_number" type="number" name="quotation_number">
+                                        <label class="contact-input" for="quotation_number">شماره پبشفاکتور</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="waves-effect waves-light btn red border-round box-shadow">مشاهده</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card blue-grey darken-4">
+                    <div class="card-content white-text">
+                        <span class="card-title font-weight-400 mb-10">مشاهده فاکتور بر اساس تاریخ</span>
+                        <div class="border-non mt-5">
+                            <form action="{{url('#')}}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">perm_identity</i>
+                                        <input id="quotation_date" type="date" name="quotation_date">
+                                    </div>
+                                </div>
+                                <button type="submit" class="waves-effect waves-light btn red border-round box-shadow">مشاهده</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card blue-grey darken-5">
+                    <div class="card-content white-text">
+                        <span class="card-title font-weight-400 mb-10">مشاهده پرداخت بر اساس تاریخ</span>
+                        <div class="border-non mt-5">
+                            <form action="{{url('#')}}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">perm_identity</i>
+                                        <input id="payment_date" type="date" name="payment_date">
+                                    </div>
+                                </div>
+                                <button type="submit" class="waves-effect waves-light btn red border-round box-shadow">مشاهده</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

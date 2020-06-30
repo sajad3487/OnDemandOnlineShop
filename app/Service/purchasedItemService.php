@@ -27,4 +27,29 @@ class purchasedItemService
         unset($data['_token']);
         return $this->purchasedItemRepo->updatePurchasedItem($id,$data);
     }
+    public function getAllPurchasedItem(){
+        return $this->purchasedItemRepo->getPurchasedItem();
+    }
+    public function getWordOfStatus ($status){
+        switch ($status){
+            case '1':
+                return "پرداخت شده";
+                break;
+            case '2':
+                return "خریداری شده";
+                break;
+            case '3':
+                return "دفتر خارجی";
+                break;
+            case '4':
+                return "ارسال به ایران";
+                break;
+            case '5':
+                return "دفتر تهران";
+                break;
+            case '6':
+                return "ارسال مشتری";
+                break;
+        }
+    }
 }

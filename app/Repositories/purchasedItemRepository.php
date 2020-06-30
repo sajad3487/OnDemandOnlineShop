@@ -27,7 +27,11 @@ class purchasedItemRepository
             ->first();
     }
     public function updatePurchasedItem ($id,$data){
-
         return purchasedItem::where('id',$id)->update($data);
+    }
+    public function getPurchasedItem(){
+        return purchasedItem::where('id','>=',1)
+            ->with(['request','quotation'])
+            ->get();
     }
 }

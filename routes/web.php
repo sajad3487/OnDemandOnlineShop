@@ -60,15 +60,17 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::get('quotation','QuotationController@adminQuotation');
         Route::get('quotation/{quotation_id}/view','QuotationController@adminViewQuotation');
         Route::post('quotation/{quotation_id}/update','QuotationController@adminUpdateQuotation');
+        Route::post('quotation/view','QuotationController@adminShowQuotation');
 
-        Route::get('/purchasedItem/paid','PurchasedItemController@adminPaidQuotation');
-        Route::get('/purchasedItem/purchased','PurchasedItemController@adminPurchasedQuotation');
-        Route::get('/purchasedItem/arrived','PurchasedItemController@adminArrivedQuotation');
-        Route::get('/purchasedItem/shipped','PurchasedItemController@adminShippedQuotation');
-        Route::get('/purchasedItem/received','PurchasedItemController@adminReceivedQuotation');
-        Route::get('/purchasedItem/delivered','PurchasedItemController@adminDeliveredQuotation');
+        Route::get('/purchasedItem/paid','PurchasedItemController@adminPaidPurchasedItem');
+        Route::get('/purchasedItem/purchased','PurchasedItemController@adminPurchasedPurchasedItem');
+        Route::get('/purchasedItem/arrived','PurchasedItemController@adminArrivedPurchasedItem');
+        Route::get('/purchasedItem/shipped','PurchasedItemController@adminShippedPurchasedItem');
+        Route::get('/purchasedItem/received','PurchasedItemController@adminReceivedPurchasedItem');
+        Route::get('/purchasedItem/delivered','PurchasedItemController@adminDeliveredPurchasedItem');
         Route::get('/purchasedItem/{purchasedItem_id}/edit','PurchasedItemController@adminDataEntry');
         Route::post('/purchasedItem/{purchasedItem_id}/update/{status}','PurchasedItemController@adminPurchasedItemUpdate');
+        Route::get('/purchasedItem/all','PurchasedItemController@adminAllPurchasedItem');
 
         Route::get('/user/{user_id}/view','HomeController@adminView');
         Route::get('/user/view','HomeController@adminUserViewLanding');

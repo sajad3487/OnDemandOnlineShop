@@ -21,33 +21,37 @@ class PurchasedItemController extends Controller
         $this->purchasedItemService = $purchasedItemService;
     }
 
-    public function adminPaidQuotation (){
+    public function adminPaidPurchasedItem (){
         $purchasedItem = $this->purchasedItemService->getPurchasedItemByStatus(1);
         return view('panel.logistics.adminPaidQuotation',compact('purchasedItem'));
     }
-    public function adminPurchasedQuotation (){
+    public function adminPurchasedPurchasedItem (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(2);
         return view('panel.logistics.adminPurchasedQuotation',compact('items'));
     }
-    public function adminArrivedQuotation(){
+    public function adminArrivedPurchasedItem(){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(3);
         return view('panel.logistics.adminArrivedQuotation',compact('items'));
     }
-    public function adminShippedQuotation(){
+    public function adminShippedPurchasedItem(){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(4);
         return view('panel.logistics.adminShippedQuotation',compact('items'));
     }
-    public function adminReceivedQuotation (){
+    public function adminReceivedPurchasedItem (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(5);
-        return view('panellogistics.adminReceivedQuotation',compact('items'));
+        return view('panel.logistics.adminReceivedQuotation',compact('items'));
     }
-    public function adminDeliveredQuotation (){
+    public function adminDeliveredPurchasedItem (){
         $items = $this->purchasedItemService->getPurchasedItemByStatus(6);
         return view('panel.logistics.adminDeliveredQuotation',compact('items'));
     }
     public function adminDataEntry ($purchasedItem_id){
         $item =$this->purchasedItemService->getPurchasedItemById($purchasedItem_id);
         return view('panel.logistics.logisticsDataEntry',compact('item'));
+    }
+    public function adminAllPurchasedItem (){
+        $items = $this->purchasedItemService->getAllPurchasedItem();
+        return view('panel.adminAllPurchased',compact('items'));
     }
     public function adminPurchasedItemUpdate($purchasedItem_id,$status,purchasedItemRequest $purchasedItemRequest){
         $data = $purchasedItemRequest->all();

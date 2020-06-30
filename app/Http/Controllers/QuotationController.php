@@ -131,5 +131,12 @@ class QuotationController extends Controller
         $this->quotationService->updateQuotation($quotation_id,$quotation);
         return back();
     }
+    public function adminShowQuotation (Request $request){
+        $quotation = $this->quotationService->getQuotationById($request->quotation_number);
+        if ($quotation == null){
+            return back();
+        }
+        return view('panel.adminShowQuotation',compact('quotation'));
+    }
 
 }

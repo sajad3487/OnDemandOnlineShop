@@ -19,7 +19,7 @@ class quotationRepository
     }
     public function getQuotationWithId ($id){
         return quotation::where('id',$id)
-            ->with('request')
+            ->with(['request','user'])
             ->with('request.purchased')
             ->first();
     }

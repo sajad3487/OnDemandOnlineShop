@@ -24,7 +24,16 @@ class UserService
         $this->userRepo->updateUser($id,$data);
     }
     public function getUserByInfo ($data){
-        return $this->userRepo->getUserWithInfo($data);
+        if ($data['name'] != ''){
+            return $this->userRepo->getUserWithName($data['name']);
+        }elseif ($data['email'] != ''){
+            return $this->userRepo->getUserWithEmail($data['email']);
+        }elseif ($data['tel'] != ''){
+            return $this->userRepo->getUserWithTel($data['tel']);
+        }else{
+            return null;
+        }
+//        return $this->userRepo->getUserWithInfo($data);
     }
 
 }
