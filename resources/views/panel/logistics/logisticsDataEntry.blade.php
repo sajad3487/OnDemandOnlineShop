@@ -28,7 +28,7 @@
                                                 <div class="row" id="main-view-tab">
                                                     <div class="col s12">
                                                         <ul class="tabs tab-demo-active z-depth-1 cyan">
-                                                            @if($item->status >=1)
+                                                            @if($item->status >= 1 || $editAll ==1)
                                                                 <li class="tab col m2">
                                                                     <a class="white-text waves-effect waves-light @if($item->status == 1) active @endif"
                                                                        href="#paid">مشخصات کالا</a>
@@ -39,25 +39,25 @@
                                                                        href="#purchased">خرید</a>
                                                                 </li>
                                                             @endif
-                                                            @if($item->status >= 2)
+                                                            @if($item->status >= 2 || $editAll ==1)
                                                                 <li class="tab col m2">
                                                                     <a class="white-text waves-effect waves-light @if($item->status == 2) active @endif"
                                                                        href="#arrived">دفتر خارجی</a>
                                                                 </li>
                                                             @endif
-                                                            @if($item->status >= 3)
+                                                            @if($item->status >= 3 || $editAll ==1)
                                                                 <li class="tab col m2">
                                                                     <a class="white-text waves-effect waves-light @if($item->status == 3) active @endif"
                                                                        href="#shipped">ارسال به ایران</a>
                                                                 </li>
                                                             @endif
-                                                            @if($item->status >= 4)
+                                                            @if($item->status >= 4 || $editAll ==1)
                                                                 <li class="tab col m2">
                                                                     <a class="white-text waves-effect waves-light @if($item->status == 4) active @endif"
                                                                        href="#received">دفتر تهران</a>
                                                                 </li>
                                                             @endif
-                                                            @if($item->status >= 5)
+                                                            @if($item->status >= 5 || $editAll ==1)
 
                                                                 <li class="tab col m2">
                                                                     <a class="white-text waves-effect waves-light @if($item->status == 6 || $item->status== 5) active @endif"
@@ -67,7 +67,7 @@
                                                         </ul>
                                                     </div>
                                                     <div class="col s12 ">
-                                                        @if($item->status >= 1)
+                                                        @if($item->status >= 1 || $editAll ==1)
                                                             <div id="paid" class="col s12 white lighten-4">
 
                                                                 <div class="row">
@@ -98,7 +98,7 @@
 
                                                             </div>
                                                             <div id="purchased"
-                                                                 class="col s12  @if($item->status ==1)cyan @else white @endif lighten-4">
+                                                                 class="col s12  @if($item->status ==1 || $editAll ==1)cyan @else white @endif lighten-4">
                                                                 <div class="row mt-2">
                                                                     <form class="col s12"
                                                                           action="{{url("admin/purchasedItem/$item->id/update/$item->status")}}"
@@ -156,7 +156,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mb-2">
-                                                                            @if($item->status ==1 || isset($editAll))
+                                                                            @if($item->status ==1 || $editAll ==1)
                                                                                 <div
                                                                                     class="col s12 display-flex justify-content-end mt-3 ">
                                                                                     <a type="button"
@@ -172,9 +172,9 @@
                                                                 </div>
                                                             </div>
                                                         @endif
-                                                        @if($item->status >= 2)
+                                                        @if($item->status >= 2 || $editAll ==1)
                                                             <div id="arrived"
-                                                                 class="col s12  @if($item->status ==2)cyan @else white @endif lighten-4">
+                                                                 class="col s12  @if($item->status ==2|| $editAll ==1)cyan @else white @endif lighten-4">
                                                                 <div class="row mt-2">
                                                                     <form class="col s12"
                                                                           action="{{url("admin/purchasedItem/$item->id/update/$item->status")}}"
@@ -203,7 +203,7 @@
                                                                         </div>
 
                                                                         <div class="row mb-2">
-                                                                            @if($item->status ==2 || isset($editAll))
+                                                                            @if($item->status ==2 || $editAll ==1)
                                                                                 <div
                                                                                     class="col s12 display-flex justify-content-end mt-3 ">
                                                                                     <a type="button"
@@ -220,9 +220,9 @@
 
                                                             </div>
                                                         @endif
-                                                        @if($item->status >= 3)
+                                                        @if($item->status >= 3 || $editAll ==1)
                                                             <div id="shipped"
-                                                                 class="col s12  @if($item->status ==3)cyan @else white @endif lighten-4">
+                                                                 class="col s12  @if($item->status ==3|| $editAll ==1)cyan @else white @endif lighten-4">
                                                                 <div class="row mt-2">
                                                                     <form class="col s12"
                                                                           action="{{url("admin/purchasedItem/$item->id/update/$item->status")}}"
@@ -251,7 +251,7 @@
                                                                         </div>
 
                                                                         <div class="row mb-2">
-                                                                            @if($item->status ==3 || isset($editAll))
+                                                                            @if($item->status ==3 || $editAll ==1)
                                                                                 <div
                                                                                     class="col s12 display-flex justify-content-end mt-3 ">
                                                                                     <a type="button"
@@ -268,9 +268,9 @@
 
                                                             </div>
                                                         @endif
-                                                        @if($item->status >= 4)
+                                                        @if($item->status >= 4 || $editAll ==1)
                                                             <div id="received"
-                                                                 class="col s12  @if($item->status ==4)cyan @else white @endif lighten-4">
+                                                                 class="col s12  @if($item->status ==4|| $editAll ==1)cyan @else white @endif lighten-4">
                                                                 <div class="row mt-2">
                                                                     <form class="col s12"
                                                                           action="{{url("admin/purchasedItem/$item->id/update/$item->status")}}"
@@ -290,7 +290,7 @@
                                                                         </div>
 
                                                                         <div class="row mb-2">
-                                                                            @if($item->status ==4 || isset($editAll))
+                                                                            @if($item->status ==4 || $editAll ==1)
                                                                                 <div
                                                                                     class="col s12 display-flex justify-content-end mt-3 ">
                                                                                     <a type="button"
@@ -307,9 +307,9 @@
 
                                                             </div>
                                                         @endif
-                                                        @if($item->status >= 5)
+                                                        @if($item->status >= 5 || $editAll ==1)
                                                             <div id="delivered"
-                                                                 class="col s12  @if($item->status ==5 )cyan @else white @endif lighten-4">
+                                                                 class="col s12  @if($item->status ==5 || $editAll ==1)cyan @else white @endif lighten-4">
                                                                 <div class="row mt-2">
                                                                     <form class="col s12"
                                                                           action="{{url("admin/purchasedItem/$item->id/update/$item->status")}}"
@@ -329,7 +329,7 @@
                                                                         </div>
 
                                                                         <div class="row mb-2">
-                                                                            @if($item->status >=5 || isset($editAll))
+                                                                            @if($item->status >=5  || $editAll ==1)
                                                                                 <div
                                                                                     class="col s12 display-flex justify-content-end mt-3 ">
                                                                                     <a type="button"

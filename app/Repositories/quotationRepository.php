@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\quotation;
+use Carbon\Carbon;
 
 class quotationRepository
 {
@@ -44,9 +45,26 @@ class quotationRepository
     }
     public function changStatusOfQuotation ($id,$status){
         $quotation['status']=$status;
+        $quotation['payment_date']=now();
         return quotation::find($id)
             ->update($quotation);
 
+    }
+    public function getQuotationReportWithDate ($first_date,$second_date,$status){
+        if ($status == 1){
+            return quotation::where('created_at','>=',$first_date)
+                ->where('created_at','<=',$second_date)
+                ->with(['request','user'])
+                ->with('request.purchased')
+                ->get();
+        }elseif ($status == 4){
+            return quotation::where('created_at','>=',$first_date)
+                ->where('created_at','<=',$second_date)
+                ->where('status',4)
+                ->with(['request','user'])
+                ->with('request.purchased')
+                ->get();
+        }
     }
 
 }

@@ -132,7 +132,7 @@
                                                             <th>قیمت کل</th>
                                                             <th>تاریخ</th>
                                                             <th>آخرین بروز رسانی</th>
-                                                            <th>کد تخفیف</th>
+                                                            <th>تاریخ پرداخت</th>
                                                             <th>وضعیت</th>
                                                             <th>مشاهده</th>
                                                         </tr>
@@ -151,7 +151,7 @@
                                                                     <td><small>{{$quotation->created_at}}</small></td>
                                                                     <td><span class="invoice-customer"><small>{{$quotation->updated_at}}</small></span></td>
                                                                     <td>
-                                                                        <small>{{$quotation->discount_code}}</small>
+                                                                        <small>{{$quotation->payment_date ?? 'پرداخت نشده'}}</small>
                                                                     </td>
                                                                     <td>
                                                                         @if($quotation->status == 2)
@@ -165,11 +165,7 @@
                                                                     <td>
                                                                         <div class="invoice-action">
                                                                             <a href="
-                                                    @if($quotation->status == 4)
-                                                                            {{url("/quotation/purchased/$quotation->id/view")}}" class="invoice-action-view mr-4">
-                                                                                @else
-                                                                                    {{url("/quotation/$quotation->id/view")}}" class="invoice-action-view mr-4">
-                                                                                @endif
+                                                                                    {{url("/admin/quotation/view/$quotation->id")}}" class="invoice-action-view mr-4">
                                                                                 <i class="material-icons green-text">remove_red_eye</i>
                                                                             </a>
                                                                         </div>

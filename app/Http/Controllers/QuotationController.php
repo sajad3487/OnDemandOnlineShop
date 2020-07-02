@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\quotationRequest;
+use App\Http\Requests\ReportRequest;
 use App\Http\Requests\userProfileRequest;
 use App\Service\currencyService;
 use App\Service\purchasedItemService;
@@ -126,7 +127,6 @@ class QuotationController extends Controller
         $quotation['discount'] = $this->discountService->calculateDiscountAmount($quotation['price'],$quotationRequest->discount_code);
         $quotation['total_price'] = $this->quotationService->calculateTotalPrice($quotation['price'],$quotation['discount']);
         $quotation['status']=2;
-        $quotation['payment_date']=now();
         unset($quotation['_token']);
         $this->quotationService->updateQuotation($quotation_id,$quotation);
         return back();
@@ -137,6 +137,34 @@ class QuotationController extends Controller
             return back();
         }
         return view('panel.adminShowQuotation',compact('quotation'));
+    }
+    public function adminShowQuotationByGet ($quotation_id){
+        $quotation = $this->quotationService->getQuotationById($quotation_id);
+        if ($quotation == null){
+            return back();
+        }
+        return view('panel.adminShowQuotation',compact('quotation'));
+    }
+    public function adminReport(){
+        return view('panel.adminReport');
+    }
+    public function adminReportUnpaidQuotaiton (ReportRequest $reportRequest){
+        $kind="unpaid";
+        $items = $this->quotationService->getReportByDate($reportRequest->first_date,$reportRequest->second_date,$kind);
+        $count = $items->count();
+        return view('panel.adminQuotationReport',compact('items','count'));
+    }
+    public function adminReportPaidQuotation (ReportRequest $reportRequest){
+        $kind="paid";
+        $items = $this->quotationService->getReportByDate($reportRequest->first_date,$reportRequest->second_date,$kind);
+        $count = $items->count();
+        return view('panel.adminQuotationReport',compact('items','count'));
+    }
+    public function adminReportPayment (ReportRequest $reportRequest){
+        $kind="payment";
+        $items = $this->quotationService->getReportByDate($reportRequest->first_date,$reportRequest->second_date,$kind);
+        $count = $items->count();
+        return view('panel.adminQuotationReport',compact('items','count'));
     }
 
 }

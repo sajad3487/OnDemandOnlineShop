@@ -8,7 +8,7 @@
                     <div class="section">
 
                         <section class="invoice-list-wrapper section">
-                            <h4 class="white-text">پرداخت شده</h4>
+                            <h4 class="white-text">خریداری شده</h4>
                             <div class="responsive-table">
                                 <table class="table invoice-data-table white border-radius-4 pt-1">
                                     <thead>
@@ -20,30 +20,29 @@
                                         <th>
                                             <span>فاکتور#</span>
                                         </th>
-                                        <th>تاریخ پرداخت</th>
-                                        <th>نوع ارز</th>
+                                        <th>تاریخ خرید</th>
+                                        <th>نام خریدار</th>
                                         <th>نام مشتری</th>
-                                        <th>ایمیل مشتری</th>
-                                        <th>تعداد</th>
+                                        <th>کد خرید</th>
+                                        <th>نام کالا</th>
                                         <th>صدور</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                    @isset($purchasedItem)
-                                        @foreach($purchasedItem as $item)
+                                    @isset($items)
+                                        @foreach($items as $item)
                                             <tr>
                                                 <td></td>
                                                 <td> </td>
-                                                <td>{{$item->quotation->id}}</td>
-                                                <td><span class="invoice-amount">{{$item->quotation->payment_date}}</span></td>
-                                                <td><small>{{$item->request->currency_id}}</small></td>
-                                                <td><span class="invoice-customer"><small>{{$item->quotation->user->name}}</small></span></td>
+                                                <td>{{$item->id}}</td>
+                                                <td><span class="invoice-amount">{{$item->purchased_date}}</span></td>
+                                                <td><small>{{$item->buyer}}</small></td>
+                                                <td><span class="invoice-customer"><small>{{$item->user->name}}</small></span></td>
                                                 <td>
-                                                    <span class="bullet red"></span>
-                                                    <small>{{$item->quotation->user->email}}</small>
+                                                    <small>{{$item->purchased_number}}</small>
                                                 </td>
-                                                <td>{{$item->request->quantity}}</td>
+                                                <td>{{$item->name}}</td>
                                                 <td>
                                                     <div class="invoice-action">
                                                         <a href="{{url("/admin/purchasedItem/$item->id/edit/0")}}" class="invoice-action-view mr-4">

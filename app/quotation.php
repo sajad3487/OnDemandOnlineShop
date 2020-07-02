@@ -9,7 +9,6 @@ class quotation extends Model
     public $guarded = [];
 
 
-
     public function request (){
         return $this->hasMany(RequestItem::class);
     }

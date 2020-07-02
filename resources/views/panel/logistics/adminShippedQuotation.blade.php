@@ -45,7 +45,7 @@
                                                 <td>{{$item->sending_date}}</td>
                                                 <td>
                                                     <div class="invoice-action">
-                                                        <a href="{{url("/admin/purchasedItem/$item->id/edit")}}" class="invoice-action-view mr-4">
+                                                        <a href="{{url("/admin/purchasedItem/$item->id/edit/0")}}" class="invoice-action-view mr-4">
                                                             <i class="material-icons green-text">remove_red_eye</i>
                                                         </a>
                                                         <input type="number" value="{{$user_id=$item->quotation->user->id}}" class="display-none">

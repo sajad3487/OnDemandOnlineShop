@@ -49,32 +49,49 @@ Route::group(['middleware' => ['auth','web']], function () {
 
         Route::get('panel','HomeController@adminIndex');
 
-        Route::get('/currencyPrice','CurrencyController@index');
-        Route::post('currencyPrice/store','CurrencyController@store');
-        Route::delete('currencyPrice/{currency_id}/delete','CurrencyController@delete');
 
-        Route::get('/discount','DiscountController@index');
-        Route::post('/discount/store','DiscountController@store');
-        Route::delete('/discount/{discount_id}/delete','DiscountController@delete');
+        Route::group(['prefix'=>'currencyPrice'],function (){
+            Route::get('/','CurrencyController@index');
+            Route::post('/store','CurrencyController@store');
+            Route::delete('/{currency_id}/delete','CurrencyController@delete');
+        });
 
-        Route::get('quotation','QuotationController@adminQuotation');
-        Route::get('quotation/{quotation_id}/view','QuotationController@adminViewQuotation');
-        Route::post('quotation/{quotation_id}/update','QuotationController@adminUpdateQuotation');
-        Route::post('quotation/view','QuotationController@adminShowQuotation');
+        Route::group(['prefix'=>'discount'],function (){
+            Route::get('/','DiscountController@index');
+            Route::post('/store','DiscountController@store');
+            Route::delete('/{discount_id}/delete','DiscountController@delete');
+        });
 
-        Route::get('/purchasedItem/paid','PurchasedItemController@adminPaidPurchasedItem');
-        Route::get('/purchasedItem/purchased','PurchasedItemController@adminPurchasedPurchasedItem');
-        Route::get('/purchasedItem/arrived','PurchasedItemController@adminArrivedPurchasedItem');
-        Route::get('/purchasedItem/shipped','PurchasedItemController@adminShippedPurchasedItem');
-        Route::get('/purchasedItem/received','PurchasedItemController@adminReceivedPurchasedItem');
-        Route::get('/purchasedItem/delivered','PurchasedItemController@adminDeliveredPurchasedItem');
-        Route::get('/purchasedItem/{purchasedItem_id}/edit','PurchasedItemController@adminDataEntry');
-        Route::post('/purchasedItem/{purchasedItem_id}/update/{status}','PurchasedItemController@adminPurchasedItemUpdate');
-        Route::get('/purchasedItem/all','PurchasedItemController@adminAllPurchasedItem');
+        Route::group(['prefix'=>'quotation'],function (){
+            Route::get('/','QuotationController@adminQuotation');
+            Route::get('/{quotation_id}/view','QuotationController@adminViewQuotation');
+            Route::post('/{quotation_id}/update','QuotationController@adminUpdateQuotation');
+            Route::post('/view','QuotationController@adminShowQuotation');
+            Route::get('/view/{quotation_id}','QuotationController@adminShowQuotationByGet');
+            Route::get('/report','QuotationController@adminReport');
+            Route::post('/report/unpaidQuotation','QuotationController@adminReportUnpaidQuotaiton');
+            Route::post('/report/paidQuotation','QuotationController@adminReportPaidQuotation');
+            Route::post('/report/payment','QuotationController@adminReportPayment');
+        });
 
-        Route::get('/user/{user_id}/view','HomeController@adminView');
-        Route::get('/user/view','HomeController@adminUserViewLanding');
-        Route::put('/user/find','HomeController@adminFindUser');
+        Route::group(['prefix'=>'purchasedItem'],function (){
+            Route::get('/paid','PurchasedItemController@adminPaidPurchasedItem');
+            Route::get('/purchased','PurchasedItemController@adminPurchasedPurchasedItem');
+            Route::get('/arrived','PurchasedItemController@adminArrivedPurchasedItem');
+            Route::get('/shipped','PurchasedItemController@adminShippedPurchasedItem');
+            Route::get('/received','PurchasedItemController@adminReceivedPurchasedItem');
+            Route::get('/delivered','PurchasedItemController@adminDeliveredPurchasedItem');
+            Route::get('/{purchasedItem_id}/edit/{editAll}','PurchasedItemController@adminDataEntry');
+            Route::post('/{purchasedItem_id}/update/{status}','PurchasedItemController@adminPurchasedItemUpdate');
+            Route::get('/all','PurchasedItemController@adminAllPurchasedItem');
+        });
+
+        Route::group(['prefix'=>'user'],function (){
+            Route::get('/{user_id}/view','HomeController@adminView');
+            Route::get('/view','HomeController@adminUserViewLanding');
+            Route::put('/find','HomeController@adminFindUser');
+        });
+
 
         Route::put('request/{request_id}/store','RequestItemController@update');
     });

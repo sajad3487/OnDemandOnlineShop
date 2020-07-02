@@ -82,7 +82,7 @@
                                                         @if($quotation->status == 4)
                                                             <!-- Modal Trigger -->
                                                             <div class="row ml-1 p-1">
-                                                                <a class="waves-effect waves-light invoice-action-view ml-4 modal-trigger" href="{{url("admin/purchasedItem/$purchased->id/edit")}}"><i class="material-icons orange-text">edit</i></a>
+                                                                <a class="waves-effect waves-light invoice-action-view ml-4 modal-trigger" href="{{url("admin/purchasedItem/$purchased->id/edit/1")}}"><i class="material-icons orange-text">edit</i></a>
                                                                 <a class="waves-effect waves-light invoice-action-view mr-4 modal-trigger" href="#modal-{{$key}}"><i class="material-icons green-text">remove_red_eye</i></a>
                                                                 <!-- Modal Structure -->
                                                                 <div id="modal-{{$key}}" class="modal ">
