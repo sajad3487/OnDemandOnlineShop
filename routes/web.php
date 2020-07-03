@@ -68,6 +68,7 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::post('/{quotation_id}/update','QuotationController@adminUpdateQuotation');
             Route::post('/view','QuotationController@adminShowQuotation');
             Route::get('/view/{quotation_id}','QuotationController@adminShowQuotationByGet');
+
             Route::get('/report','QuotationController@adminReport');
             Route::post('/report/unpaidQuotation','QuotationController@adminReportUnpaidQuotaiton');
             Route::post('/report/paidQuotation','QuotationController@adminReportPaidQuotation');
