@@ -11,20 +11,22 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('subName');
-            $table->string('link');
-            $table->string('spec');
+            $table->string('title');
+            $table->string('subtitle');
             $table->text('description');
+            $table->string('spec');
+            $table->string('brand');
             $table->integer('price');
             $table->integer('discount');
-            $table->integer('finalPrice');
+            $table->integer('final_price');
+            $table->integer('delivery_time');
+            $table->integer('status');
+            $table->string('category');
+            $table->integer('stock');
             $table->string('tags');
             $table->integer('score');
-            $table->string('size');
-            $table->integer('quantity');
-            $table->integer('deliveryTime');
-            $table->string('byOrder');
+            $table->integer('view');
+
             $table->timestamps();
         });
     }
