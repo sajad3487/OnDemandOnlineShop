@@ -93,6 +93,9 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::put('/find','HomeController@adminFindUser');
         });
 
+        Route::group(['prefix'=>'shop'],function (){
+            Route::get('index','ProductController@index');
+        });
 
         Route::put('request/{request_id}/store','RequestItemController@update');
     });
