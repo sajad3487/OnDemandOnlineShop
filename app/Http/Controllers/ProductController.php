@@ -10,7 +10,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        dd('here is index');
+        return view('panel.shop.indexProduct');
     }
 
     public function create()
