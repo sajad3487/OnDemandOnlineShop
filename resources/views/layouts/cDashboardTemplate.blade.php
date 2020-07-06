@@ -168,9 +168,8 @@
                 </div>
 
 {{--                @include('layouts.intro')--}}
-
-
 {{--                    @include('layouts.fixButton')--}}
+
             </div>
             <div class="content-overlay"></div>
 

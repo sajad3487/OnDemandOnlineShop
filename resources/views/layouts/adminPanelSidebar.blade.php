@@ -50,8 +50,15 @@
 
             <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/purchasedItem/all')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">جامع</span></a>
             </li>
-
-            <li class="navigation-header"><a class="navigation-header-text">مالی </a><i class="navigation-header-icon material-icons">more_horiz</i>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">فروشگاه</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        <li><a href="{{url('/admin/shop/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">کالاها</span></a>
+                        </li>
+                        <li><a href="{{url('/admin/purchasedItem/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">سفارشات</span></a>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             <li class="navigation-header"><a class="navigation-header-text">وبلاگ </a><i class="navigation-header-icon material-icons">more_horiz</i>
