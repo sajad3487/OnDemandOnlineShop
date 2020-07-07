@@ -13,19 +13,19 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle');
-            $table->text('description');
-            $table->string('spec');
-            $table->string('brand');
+            $table->text('description')->nullable();
+            $table->string('spec')->nullable();
+            $table->string('brand')->nullable();
             $table->integer('price');
-            $table->integer('discount');
+            $table->integer('discount')->nullable();
             $table->integer('final_price');
             $table->integer('delivery_time');
             $table->integer('status');
             $table->string('category');
             $table->integer('stock');
-            $table->string('tags');
-            $table->integer('score');
-            $table->integer('view');
+            $table->string('tags')->nullable();
+            $table->integer('score')->nullable();
+            $table->integer('view')->nullable();
 
             $table->timestamps();
         });

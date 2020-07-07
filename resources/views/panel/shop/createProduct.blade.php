@@ -10,6 +10,7 @@
 
     <div id="main">
         <div class="row">
+            @include('fragment.errors')
             <div class="pt-1 pb-0" id="breadcrumbs-wrapper">
                 <!-- Search for small screen-->
                 <div class="container">
@@ -55,17 +56,17 @@
                                                     <div class="row">
                                                         <div class="input-field col s12">
                                                             <label for="title">عنوان کالا : <span class="red-text">*</span></label>
-                                                            <input type="text" id="title" name="title" class="validate" required>
+                                                            <input type="text" id="title" name="title" class="validate" required value="{{old('title')}}">
                                                         </div>
                                                         <div class="input-field col s12">
                                                             <label for="subtitle">زیرعنوان : <span class="red-text">*</span></label>
-                                                            <input type="text" id="subtitle" class="validate" name="subtitle" required>
+                                                            <input type="text" id="subtitle" class="validate" name="subtitle" required value="{{old('subtitle')}}">
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col m6 s12">
                                                             <label for="brand">برند : </label>
-                                                            <input type="text" class="validate" name="brand" id="brand" >
+                                                            <input type="text" class="validate" name="brand" id="brand" value="{{old('brand')}}" >
                                                         </div>
                                                     </div>
                                                     <div class="step-actions">
@@ -96,18 +97,18 @@
                                                 <div class="step-content">
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                                                            <textarea id="description" class="materialize-textarea" name="description" value="{{old('description')}}"></textarea>
                                                             <label for="description">توصیحات :</label>
                                                         </div>
                                                         <div class="input-field col s12">
-                                                            <textarea id="spec" class="materialize-textarea" name="spec"></textarea>
+                                                            <textarea id="spec" class="materialize-textarea" name="spec" value="{{old('spec')}}"></textarea>
                                                             <label for="spec">مشخصات فنی :</label>
                                                         </div>
 
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col m6 s12">
-                                                            <select name="category" required>
+                                                            <select required>
                                                                 <option value="Select" disabled selected>دسته بندی :</option>
                                                                 <option value="Planning">دیجیتال</option>
                                                                 <option value="In Progress">در حال پیش رفت</option>
@@ -115,7 +116,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="input-field col m6 s12">
-                                                            <select name="subCategory">
+                                                            <select name="category" value="{{old('category')}}">
                                                                 <option value="Select" disabled selected>زیر شاخه :</option>
                                                                 <option value="New York">نیویورک</option>
                                                                 <option value="Queens">وزیر</option>
@@ -126,7 +127,7 @@
                                                     <div class="row">
                                                         <div class="input-field col s12">
                                                             <label for="tags">تگ ها (با ویرگول از هم جدا کنید):</label>
-                                                            <input type="text" class="validate" id="tags" name="tags">
+                                                            <input type="text" class="validate" id="tags" name="tags" value="{{old('tags')}}">
                                                         </div>
                                                     </div>
                                                     <div class="step-actions">
@@ -158,31 +159,31 @@
                                                     <div class="row">
                                                         <div class="input-field col m6 s12">
                                                             <label for="price">قیمت : <span class="red-text">*</span></label>
-                                                            <input type="text" class="validate" id="price" name="price" required>
+                                                            <input type="text" class="validate" id="price" name="price" required value="{{old('price')}}">
                                                         </div>
                                                         <div class="input-field col m6 s12">
                                                             <label for="discount">تخفیف : </label>
-                                                            <input type="text" class="validate" id="discount" name="discount">
+                                                            <input type="text" class="validate" id="discount" name="discount" value="{{old('discount')}}">
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col m6 s12">
                                                             <label for="delivery_time">مدت تحویل : <span class="red-text">*</span></label>
-                                                            <input type="text" class="validate" id="delivery_time" name="delivery_time" required>
+                                                            <input type="text" class="validate" id="delivery_time" name="delivery_time" required value="{{old('delivery_time')}}">
                                                         </div>
                                                         <div class="input-field col m6 s12">
-                                                            <select name="status">
-                                                                <option value="Select" disabled selected>وضعیت :</option>
-                                                                <option value="New York">پیش نویس</option>
-                                                                <option value="Queens">فعال</option>
-                                                                <option value="Washington">غیرفعال</option>
+                                                            <select name="status" value="{{old('status')}}">
+                                                                <option value="1" disabled selected>وضعیت :</option>
+                                                                <option value="2">پیش نویس</option>
+                                                                <option value="3">فعال</option>
+                                                                <option value="4">غیرفعال</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col m6 s12">
                                                             <label for="stock">موجودی انبار : <span class="red-text">*</span></label>
-                                                            <input type="text" class="validate" id="stock" name="stock" required>
+                                                            <input type="text" class="validate" id="stock" name="stock" required value="{{old('stock')}}">
                                                         </div>
                                                     </div>
                                                     <div class="step-actions">

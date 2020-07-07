@@ -10,4 +10,7 @@ class productRepository
     public function getProduct(){
         return product::all();
     }
+    public function createProduct($product){
+        return product::create($product);
+    }
 }

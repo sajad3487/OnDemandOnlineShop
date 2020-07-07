@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\productRequest;
 use App\product;
 use App\Service\productService;
 use Illuminate\Http\Request;
@@ -31,9 +32,13 @@ class ProductController extends Controller
         return view('panel.shop.createProduct');
     }
 
-    public function store(Request $request)
+    public function store(productRequest $productRequest)
     {
-        dd($request->all());
+        $data = $productRequest->all();
+        $price = $data['price'];
+        $discount = $data['discount'];
+        $data['final_price']=$this->productService->caculateFinalPrice($price,$discount);
+        return $this->productService->createNewProduct($data);
     }
 
 
