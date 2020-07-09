@@ -38,7 +38,8 @@ class ProductController extends Controller
         $price = $data['price'];
         $discount = $data['discount'];
         $data['final_price']=$this->productService->caculateFinalPrice($price,$discount);
-        return $this->productService->createNewProduct($data);
+        $product = $this->productService->createNewProduct($data);
+        return redirect("/admin/shop/".$product->id."/edit");
     }
 
 
@@ -48,14 +49,18 @@ class ProductController extends Controller
     }
 
 
-    public function edit(product $product)
+    public function edit($product_id)
     {
-        //
+        $product = $this->productService->getProductWithId($product_id);
+        return view('panel.shop.createProduct', compact('product'));
+
     }
 
-    public function update(Request $request, product $product)
+    public function update(productRequest $productRequest,$product_id)
     {
-        //
+        $data = $productRequest->all();
+        $this->productService->updateProductWithId($data,$product_id);
+        return back();
     }
 
     public function destroy(product $product)

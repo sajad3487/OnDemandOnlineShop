@@ -23,4 +23,10 @@ class productService
     public function caculateFinalPrice ($price,$discount){
         return $price-(($price*$discount)/100);
     }
+    public function getProductWithId($product_id){
+        return $this->productRepo->getProductById($product_id);
+    }
+    public function updateProductWithId($data,$product_id){
+        return $this->productRepo->updateProductById($data,$product_id);
+    }
 }

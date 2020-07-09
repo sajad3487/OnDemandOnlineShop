@@ -166,5 +166,4 @@ class QuotationController extends Controller
         $count = $items->count();
         return view('panel.adminQuotationReport',compact('items','count'));
     }
-
 }

@@ -13,4 +13,12 @@ class productRepository
     public function createProduct($product){
         return product::create($product);
     }
+    public function getProductById ($product_id){
+        return product::where('id',$product_id)
+//            ->with('picture')
+            ->first();
+    }
+    public function updateProductById ($data,$product_id){
+        return product::find($product_id)->update($data);
+    }
 }

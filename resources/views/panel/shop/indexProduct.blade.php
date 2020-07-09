@@ -81,22 +81,18 @@
                                                 <small>{{$product->stock}}</small>
                                             </td>
                                             <td>
-                                                @if($product->status == 2)
-                                                    <span class="chip lighten-5 orange orange-text">صادر شده</span>
-                                                @elseif($product->status == 4)
-                                                    <span class="chip lighten-5 green green-text">پرداخت شده</span>
-                                                @elseif($product->status == 1)
-                                                    <span class="chip lighten-5 red red-text">صادر نشده</span>
+                                                @if($product->status == 1)
+                                                    <span class="chip lighten-5 orange orange-text">پیش نویس</span>
+                                                @elseif($product->status == 2)
+                                                    <span class="chip lighten-5 green green-text">فعال</span>
+                                                @elseif($product->status == 3)
+                                                    <span class="chip lighten-5 red red-text">غیرفعال</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <div class="invoice-action">
                                                     <a href="
-                                                        @if($product->status == 4)
-                                                            {{url("/quotation/purchased/$product->id/view")}}" class="invoice-action-view mr-4">
-                                                        @else
-                                                            {{url("/quotation/$product->id/view")}}" class="invoice-action-view mr-4">
-                                                        @endif
+                                                            {{url("/admin/shop/$product->id/edit")}}" class="invoice-action-view mr-4">
                                                         <i class="material-icons green-text">remove_red_eye</i>
                                                     </a>
                                                 </div>

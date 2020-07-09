@@ -95,10 +95,10 @@ Route::group(['middleware' => ['auth','web']], function () {
 
         Route::group(['prefix'=>'shop'],function (){
             Route::get('index','ProductController@index');
-            Route::get('show','ProductController@show');
             Route::get('create','ProductController@create');
             Route::post('store','ProductController@store');
-            Route::post('update','ProductController@update');
+            Route::post('/{product_id}/update','ProductController@update');
+            Route::get('/{product_id}/edit','ProductController@edit');
         });
 
         Route::put('request/{request_id}/store','RequestItemController@update');
