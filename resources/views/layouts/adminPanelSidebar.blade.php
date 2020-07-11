@@ -57,6 +57,8 @@
                         </li>
                         <li><a href="{{url('/admin/purchasedItem/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">سفارشات</span></a>
                         </li>
+                        <li><a href="{{url('/admin/shop/color/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">رنگ ها</span></a>
+                        </li>
                     </ul>
                 </div>
             </li>

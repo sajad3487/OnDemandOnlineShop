@@ -100,6 +100,10 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::post('/addColor','ProductController@addColor');
             Route::post('/{product_id}/update','ProductController@update');
             Route::get('/{product_id}/edit','ProductController@edit');
+
+            Route::get('/color/index','ColorController@index');
+            Route::post('/color/store','ColorController@store');
+            Route::delete('/color/{color_id}/delete','ColorController@destroy');
         });
 
         Route::put('request/{request_id}/store','RequestItemController@update');

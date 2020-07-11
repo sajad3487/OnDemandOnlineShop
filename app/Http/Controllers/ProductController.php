@@ -62,7 +62,6 @@ class ProductController extends Controller
     {
         $product = $this->productService->getProductWithId($product_id);
         $colors = $this->colorService->getAllColor();
-
         return view('panel.shop.createProduct', compact('product','colors'));
 
     }
@@ -80,6 +79,7 @@ class ProductController extends Controller
     }
     public function addColor (productColorRequest $productColorRequest){
         $product = $this->productService->getProductWithId($productColorRequest->product_id);
-        return $this->productService->addColorToProduct($product,$productColorRequest->colorId);
+        $this->productService->addColorToProduct($product,$productColorRequest->colorId);
+        return back();
     }
 }

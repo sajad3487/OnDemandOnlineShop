@@ -22,5 +22,12 @@ class colorService
     public function getAllColor (){
         return $this->colorRepo->getColors();
     }
+    public function deleteColorWithId($id){
+        return $this->colorRepo->deleteColorById($id);
+    }
+    public function createColor ($data){
+        $data['code']=str_replace('#','',$data['code']);
+        return $this->colorRepo->storeColor($data);
+    }
 
 }

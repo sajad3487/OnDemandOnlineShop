@@ -15,17 +15,13 @@ class productRepository
     }
     public function getProductById ($product_id){
         return product::where('id',$product_id)
-//            ->with('picture')
+            ->with('color')
             ->first();
     }
     public function updateProductById ($data,$product_id){
         return product::find($product_id)->update($data);
     }
     public function addColorForProduct($product,$colors){
-
         return $product->color()->sync($colors);
-//        foreach ($colors as $key=>$color){
-//
-//        }
     }
 }

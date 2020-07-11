@@ -3,10 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\color;
+use App\Http\Requests\colorRequest;
+use App\Service\colorService;
+use http\Exception\BadConversionException;
 use Illuminate\Http\Request;
 
 class ColorController extends Controller
 {
+    /**
+     * @var colorService
+     */
+    private $colorService;
+
+    public function __construct(
+        colorService $colorService
+    )
+    {
+        $this->colorService = $colorService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +29,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        $colors =$this->colorService->getAllColor();
+        return view('panel.shop.color',compact('colors'));
     }
 
     /**
@@ -33,9 +49,10 @@ class ColorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(colorRequest $colorRequest)
     {
-        //
+        $this->colorService->createColor($colorRequest->all());
+        return back();
     }
 
     /**
@@ -78,8 +95,9 @@ class ColorController extends Controller
      * @param  \App\color  $color
      * @return \Illuminate\Http\Response
      */
-    public function destroy(color $color)
+    public function destroy($color_id)
     {
-        //
+        $this->colorService->deleteColorWithId($color_id);
+        return back();
     }
 }
