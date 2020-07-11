@@ -21,4 +21,11 @@ class productRepository
     public function updateProductById ($data,$product_id){
         return product::find($product_id)->update($data);
     }
+    public function addColorForProduct($product,$colors){
+
+        return $product->color()->sync($colors);
+//        foreach ($colors as $key=>$color){
+//
+//        }
+    }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\productColorRequest;
 use App\Http\Requests\productRequest;
 use App\product;
+use App\Service\colorService;
 use App\Service\productService;
 use Illuminate\Http\Request;
 
@@ -13,12 +15,18 @@ class ProductController extends Controller
      * @var productService
      */
     private $productService;
+    /**
+     * @var colorService
+     */
+    private $colorService;
 
     public function __construct(
-        productService $productService
+        productService $productService,
+        colorService $colorService
     )
     {
         $this->productService = $productService;
+        $this->colorService = $colorService;
     }
 
     public function index()
@@ -29,7 +37,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('panel.shop.createProduct');
+        $colors = $this->colorService->getAllColor();
+        return view('panel.shop.createProduct',compact('colors'));
     }
 
     public function store(productRequest $productRequest)
@@ -52,7 +61,9 @@ class ProductController extends Controller
     public function edit($product_id)
     {
         $product = $this->productService->getProductWithId($product_id);
-        return view('panel.shop.createProduct', compact('product'));
+        $colors = $this->colorService->getAllColor();
+
+        return view('panel.shop.createProduct', compact('product','colors'));
 
     }
 
@@ -66,5 +77,9 @@ class ProductController extends Controller
     public function destroy(product $product)
     {
         //
+    }
+    public function addColor (productColorRequest $productColorRequest){
+        $product = $this->productService->getProductWithId($productColorRequest->product_id);
+        return $this->productService->addColorToProduct($product,$productColorRequest->colorId);
     }
 }

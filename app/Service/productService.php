@@ -29,4 +29,7 @@ class productService
     public function updateProductWithId($data,$product_id){
         return $this->productRepo->updateProductById($data,$product_id);
     }
+    public function addColorToProduct ($product,$colors){
+        return $this->productRepo->addColorForProduct($product,$colors);
+    }
 }

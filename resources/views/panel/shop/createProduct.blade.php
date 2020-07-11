@@ -212,6 +212,35 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <h5>انتخاب رنگ های موجود</h5>
+
+                                <form action="{{url('/admin/shop/addColor')}}" class="row" method="post">
+                                    @csrf
+                                    <input type="number" name="product_id" value="{{$product->id??''}}" class="display-none">
+                                    <!-- Switch -->
+                                    @isset($colors)
+                                        @foreach($colors as $key=>$color)
+                                            <div class="switch">
+                                                <label>
+                                                    <div style="height: 20px;width: 20px;background-color: {{"#".$color->code}}; display: inline-block;" class="mt-2"></div>
+                                                    <input type="checkbox" name="colorId[]" value="{{$color->id}}">
+                                                    <span class="lever"></span>
+                                                    {{$color->name}}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                            <div class="input-field col s12">
+                                                <button class="btn waves-effect waves-light gradient-45deg-green-teal right iransans" type="submit" @if(!isset($product))disabled @endif>ارسال
+                                                    <i class="material-icons right">send</i>
+                                                </button>
+                                            </div>
+                                    @endisset
+                                </form>
+
+                            </div>
+                        </div>
 
                     </div>
 
