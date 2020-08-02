@@ -24,13 +24,14 @@ class productRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required | between : 5,255',
-            'subtitle'=>'required | between : 5,255',
-            'brand'=>' between : 5,255',
+            'title'=>'required | between : 2,255',
+            'subtitle'=>'required | between : 2,255',
+            'brand'=>' between : 2,255',
             'description'=>'nullable',
             'spec'=>'nullable',
-            'category'=>'required ',
-            'subCategory'=> 'nullable',
+            'category_id'=>'required',
+            'child'=>'nullable',
+            'grandChild'=>'nullable',
             'tags'=>'nullable',
             'price'=>'required|integer',
             'discount'=>'integer | between : 0,100',

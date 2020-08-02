@@ -131,27 +131,21 @@
 
                                                         </div>
                                                         <div class="row">
-                                                            <div class="input-field col m6 s12">
-                                                                <select required>
-                                                                    <option value="Select" disabled selected>دسته بندی
-                                                                        :
-                                                                    </option>
-                                                                    <option value="Planning">دیجیتال</option>
-                                                                    <option value="In Progress">در حال پیش رفت</option>
-                                                                    <option value="Completed">تکمیل شد</option>
+                                                            <p>دسته بندی فعلی : {{$cat['title'] ?? ''}}</p>
+                                                            <div class="input-field col m4 s12">
+                                                                <select required name="category_id" id="categoryId">
+
+                                                                    <option value="Select" disabled selected>انتخاب دسته بندی:</option>
+                                                                    @foreach($categories as $category)
+                                                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
-                                                            <div class="input-field col m6 s12">
-                                                                <select name="category"
-                                                                        value="{{old('category') ?? $product['category'] ?? ''}} ">
-                                                                    <option value="Select" disabled selected>زیر شاخه
-                                                                        :
-                                                                    </option>
-                                                                    <option value="New York">نیویورک</option>
-                                                                    <option value="Queens">وزیر</option>
-                                                                    <option value="Washington">واشنگتن</option>
-                                                                </select>
+                                                            <div class="input-field col m4 s12" id="childCategory">
                                                             </div>
+                                                            <div class="input-field col m4 s12" id="grandChildCategory">
+                                                            </div>
+
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s12">
@@ -277,17 +271,18 @@
                                     <input type="number" name="product_id" value="{{$product->id??''}}"
                                            class="display-none">
                                     <!-- Switch -->
-                                    @isset($colors)
-                                        <div class="switch mt-4">
+                                        <div class="switch">
 
                                             @foreach($colors as $key=>$color)
-                                                <label class="col s3 valign-wrapper">
+                                                <label class="col s6 m3 l2 mt-3 valign-wrapper">
                                                     <input type="checkbox"
-                                                           @foreach($product->color as $selectedColor)
-                                                               @if($selectedColor->id == $color->id)
-                                                                    checked="checked"
-                                                               @endif
-                                                           @endforeach
+                                                           @isset($product)
+                                                               @foreach($product->color as $selectedColor)
+                                                                   @if($selectedColor->id == $color->id)
+                                                                        checked="checked"
+                                                                   @endif
+                                                               @endforeach
+                                                           @endisset
                                                            name="colorId[]" value="{{$color->id}}">
                                                     <span class="lever"></span>
                                                     {{$color->name}}
@@ -301,25 +296,67 @@
                                         <div class="input-field col s12">
                                             <button
                                                 class="btn waves-effect waves-light gradient-45deg-green-teal right iransans"
-                                                type="submit" @if(!isset($product))disabled @endif>ارسال
+                                                type="submit" @if(!isset($product))disabled @endif>ذخیره
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
-                                    @endisset
                                 </form>
 
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <h5>انتخاب سایز های موجود</h5>
 
+                                <form action="{{url('/admin/shop/addSize')}}" class="row" method="post" >
+                                    @csrf
+                                    <input type="number" name="product_id" value="{{$product->id??''}}"
+                                           class="display-none">
+                                    <!-- Switch -->
+                                    <div class="switch ">
+
+                                        @foreach($sizes as $key=>$size)
+                                            <label class="col s6 m2 mt-3 valign-wrapper">
+                                                <input type="checkbox"
+                                                       @isset($product)
+                                                           @foreach($product->size as $selectedSize)
+                                                           @if($selectedSize->id == $size->id)
+                                                           checked="checked"
+                                                           @endif
+                                                           @endforeach
+                                                       @endisset
+                                                       name="sizeId[]" value="{{$size->id}}">
+                                                <span class="lever"></span>
+                                                {{$size->title}}
+                                            </label>
+                                        @endforeach
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <button
+                                            class="btn waves-effect waves-light gradient-45deg-green-teal right iransans"
+                                            type="submit" @if(!isset($product))disabled @endif>ذخیره
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
                 <div class="content-overlay"></div>
             </div>
+
         </div>
     </div>
+
+
+
+
     <script src="{{asset('vendors/materialize-stepper/materialize-stepper.min.js')}}"></script>
 
     <script src="{{asset('js/scripts/form-wizard.min.js')}}"></script>
 
 @endsection
+

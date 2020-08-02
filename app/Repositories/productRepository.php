@@ -16,6 +16,8 @@ class productRepository
     public function getProductById ($product_id){
         return product::where('id',$product_id)
             ->with('color')
+            ->with('size')
+            ->with('category')
             ->first();
     }
     public function updateProductById ($data,$product_id){
@@ -23,5 +25,8 @@ class productRepository
     }
     public function addColorForProduct($product,$colors){
         return $product->color()->sync($colors);
+    }
+    public function addSizeForProduct($product,$size){
+        return $product->size()->sync($size);
     }
 }

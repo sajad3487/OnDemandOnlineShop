@@ -98,12 +98,24 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::get('create','ProductController@create');
             Route::post('store','ProductController@store');
             Route::post('/addColor','ProductController@addColor');
+            Route::post('/addSize','ProductController@addSize');
             Route::post('/{product_id}/update','ProductController@update');
             Route::get('/{product_id}/edit','ProductController@edit');
 
             Route::get('/color/index','ColorController@index');
             Route::post('/color/store','ColorController@store');
             Route::delete('/color/{color_id}/delete','ColorController@destroy');
+
+            Route::get('/size/index','SizeController@index');
+            Route::post('/size/store','SizeController@store');
+            Route::delete('/size/{size_id}/delete','SizeController@destroy');
+
+            Route::group(['prefix'=>'category'],function (){
+               Route::get('/','CategoryController@index');
+                Route::delete('/{category_id}/delete','CategoryController@destroy');
+                Route::post('/','CategoryController@store');
+                Route::post('/subCategory','CategoryController@subCategory');
+            });
         });
 
         Route::put('request/{request_id}/store','RequestItemController@update');

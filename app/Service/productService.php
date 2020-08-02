@@ -32,4 +32,19 @@ class productService
     public function addColorToProduct ($product,$colors){
         return $this->productRepo->addColorForProduct($product,$colors);
     }
+    public function addSizeToProduct ($product,$sizes){
+        return $this->productRepo->addSizeForProduct($product,$sizes);
+    }
+
+    public function preprationCategory ($data){
+        if (isset($data['grandChild'])){
+            $data['category_id']=$data['grandChild'];
+            unset($data['child']);
+            unset($data['grandChild']);
+        }elseif (isset($data['child'])){
+            $data['category_id']=$data['child'];
+            unset($data['child']);
+        }
+        return $data;
+    }
 }

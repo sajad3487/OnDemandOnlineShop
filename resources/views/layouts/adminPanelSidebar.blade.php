@@ -9,11 +9,18 @@
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                 <li ><a class="active" href="{{url('/admin/panel')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">داشبورد</span></a>
                 </li>
-                <li ><a href="{{url('/admin/currencyPrice')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">قیمت ارز</span></a>
-                </li>
-                <li ><a href="{{url('/admin/discount')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">تخفیف ها</span></a>
-                </li>
-                <li><a href="{{url('/admin/quotation/report')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">گزارش گیری</span></a>
+
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">ادمین</span></a>
+                    <div class="collapsible-body">
+                        <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                            <li ><a href="{{url('/admin/currencyPrice')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">قیمت ارز</span></a>
+                            </li>
+                            <li ><a href="{{url('/admin/discount')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">تخفیف ها</span></a>
+                            </li>
+                            <li><a href="{{url('/admin/quotation/report')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">گزارش گیری</span></a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
             </ul>
@@ -43,6 +50,28 @@
                 </div>
             </li>
 
+
+            <li class="navigation-header"><a class="navigation-header-text">فروشگاه </a><i class="navigation-header-icon material-icons">more_horiz</i>
+            </li>
+
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">کالاها</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        <li><a href="{{url('/admin/shop/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">کالاها</span></a>
+                        </li>
+                        <li><a href="{{url('/admin/shop/category/')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">دسته بندی ها</span></a>
+                        </li>
+                        <li><a href="{{url('/admin/shop/color/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">رنگ ها</span></a>
+                        </li>
+                        <li><a href="{{url('/admin/shop/size/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">سایز ها</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li><a href="{{url('/admin/purchasedItem/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">سفارشات</span></a>
+            </li>
+
             <li class="navigation-header"><a class="navigation-header-text">اطلاعات </a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
             <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/user/view')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">اطلاعات کاربران</span></a>
@@ -50,25 +79,7 @@
 
             <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/admin/purchasedItem/all')}}"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="User Profile">جامع</span></a>
             </li>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="Javascript:void(0)"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="Pages">فروشگاه</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="{{url('/admin/shop/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">کالاها</span></a>
-                        </li>
-                        <li><a href="{{url('/admin/purchasedItem/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">سفارشات</span></a>
-                        </li>
-                        <li><a href="{{url('/admin/shop/color/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">رنگ ها</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
 
-            <li class="navigation-header"><a class="navigation-header-text">وبلاگ </a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
-
-
-            <li class="navigation-header"><a class="navigation-header-text">پشتیبانی </a><i class="navigation-header-icon material-icons">more_horiz</i>
-            </li>
 
 
         </ul>

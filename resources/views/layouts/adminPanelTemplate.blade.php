@@ -205,6 +205,65 @@
 <script src="{{asset('js/scripts/advance-ui-modals.min.js')}}"></script>
 
 <script src="{{asset('js/scripts/data-tables.min.js')}}"></script>
-</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#categoryId').change(function () {
+            var categoryId = $('#categoryId').val();
+            var _token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: '/admin/shop/category/subCategory',
+                type: 'POST',
+                data: {categoryId: categoryId , _token : _token}
+            })
+                .done(function (msg) {
+                    if(msg){
+                        var li="<select name='child' id='child' style='display: block'><option value='Select' disabled selected>انتخاب زیرشاخه:</option>";
+                        $.each( msg, function( key, value ) {
+                            li+='<option value="'+key+'">'+value+'</option>';
+                        });
+                        li += "</select>";
+                    }else{
+                        var li = "<select style='display: block'><option>زیر شاخه ندارد</option> </select>";
+                    }
+                    $('#childCategory').html(li);
+                })
+                .fail(function () {
+                    var li = "<select style='display: block'><option>زیر شاخه ندارد</option> </select>";
+                    $('#childCategory').html(li);
+                    $('#grandChildCategory').html(li);
+
+                })
+        });
+        $('#childCategory').change(function () {
+            var categoryId = $('#child').val();
+            var _token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: '/admin/shop/category/subCategory',
+                type: 'POST',
+                data: {categoryId: categoryId , _token : _token}
+            })
+                .done(function (msg) {
+                    var li="<select name='grandChild' id='grandChild' style='display: block'><option value='Select' disabled selected>انتخاب زیرشاخه دوم:</option>";
+                    $.each( msg, function( key, value ) {
+                        li+='<option value="'+key+'">'+value+'</option>';
+                    });
+                    li += "</select>";
+                    // alert(li);
+                    $('#grandChildCategory').html(li);
+                })
+                .fail(function () {
+                    var li = "<select style='display: block'><option>زیر شاخه ندارد</option> </select>";
+                    $('#grandChildCategory').html(li);
+
+                })
+        });
+
+
+
+    });
+
+</script></body>
 
 </html>
