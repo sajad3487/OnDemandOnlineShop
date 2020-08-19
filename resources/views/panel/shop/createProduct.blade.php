@@ -264,6 +264,74 @@
                         </div>
                         <div class="card">
                             <div class="card-content">
+                                <h5>افزودن تصویر‌:</h5>
+
+                                <div class="masonry-gallery-wrapper">
+                                    <div class="popup-gallery">
+                                        <div class="gallery-sizer"></div>
+                                        <div class="row mt-3">
+                                            <div class="col s12 m6 l4 xl2">
+                                                <div>
+                                                    <a href="{{asset('/images/gallery/1.png')}}" target="_blank" title="بستنی">
+                                                        <img src="{{asset('/images/gallery/1.png')}}" class="responsive-img mb-10" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s3 m1 grid-example border-radius-1 ml-1" style="background-color: white;">
+                                                            <span class="flow-text">
+                                                                <form action="" method="post" >
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <h6 class="blue-grey-text"></h6>
+                                                                    <button class="mb-6 btn-floating waves-effect waves-light red lightrn-1" type="submit">
+                                                                        <i class="material-icons">clear</i>
+                                                                    </button>
+                                                                </form>
+                                                            </span>
+                                </div>
+                                <form action="{{url('/admin/shop/addColor')}}" class="row" method="post">
+                                    @csrf
+                                    <input type="number" name="product_id" value="{{$product->id??''}}"
+                                           class="display-none">
+                                    <!-- Switch -->
+                                    <div class="switch">
+
+                                        @foreach($colors as $key=>$color)
+                                            <label class="col s6 m3 l2 mt-3 valign-wrapper">
+                                                <input type="checkbox"
+                                                       @isset($product)
+                                                       @foreach($product->color as $selectedColor)
+                                                       @if($selectedColor->id == $color->id)
+                                                       checked="checked"
+                                                       @endif
+                                                       @endforeach
+                                                       @endisset
+                                                       name="colorId[]" value="{{$color->id}}">
+                                                <span class="lever"></span>
+                                                {{$color->name}}
+                                                <div
+                                                    style="height: 20px;width: 20px;background-color: {{"#".$color->code}}; display: inline-block;"
+                                                    class="ml-3"></div>
+                                            </label>
+                                        @endforeach
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <button
+                                            class="btn waves-effect waves-light gradient-45deg-green-teal right iransans"
+                                            type="submit" @if(!isset($product))disabled @endif>ذخیره
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
                                 <h5>انتخاب رنگ های موجود</h5>
 
                                 <form action="{{url('/admin/shop/addColor')}}" class="row" method="post">
