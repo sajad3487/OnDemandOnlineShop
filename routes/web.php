@@ -116,6 +116,10 @@ Route::group(['middleware' => ['auth','web']], function () {
                 Route::post('/','CategoryController@store');
                 Route::post('/subCategory','CategoryController@subCategory');
             });
+
+            Route::group(['prefix'=>'media'],function(){
+                Route::delete('/{media_id}/remove_media','MediaController@remove_media');
+            });
         });
 
         Route::put('request/{request_id}/store','RequestItemController@update');

@@ -1,0 +1,45 @@
+input[type=checkbox] {
+    display:none;
+}
+
+input[type=checkbox] + label
+{
+    background: #999;
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    border-radius:5%;
+}
+.selected_image input[type=checkbox]:checked + label
+{
+    background:green;
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    z-index:9999999;
+}
+.deleted_image input[type=checkbox]:checked + label
+{
+    background:red;
+    height: 120px;
+    width: 120px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    z-index:9999999;
+}
+img{
+    width:100%;
+    height:100%;
+    border-radius:5%;
+}
+input[type=checkbox]:checked + label > img{
+    opacity:0.5
+}
+
+.submit_image{
+
+
+}
+

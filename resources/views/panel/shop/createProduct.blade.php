@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css"
           href="{{asset('css-rtl/themes/vertical-gradient-menu-template/style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css-rtl/pages/form-wizard.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/pages/choose_media.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/flag-icon/css/flag-icon.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/materialize-stepper/materialize-stepper.min.css')}}">
@@ -264,64 +265,35 @@
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <h5>افزودن تصویر‌:</h5>
+                                <h5>تصاویر فعلی کالا‌:</h5>
+                                <div  class="deleted_image row mt-2 ml-1">
+                                    <form action="{{url("admin/shop/media/0/remove_media")}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type='checkbox' name='thing' value='1' id="thing-2"/>
+                                        <label for="thing-2" class="mr-2 center-align">
+                                            <img src="{{asset('/images/gallery/1.png')}}" alt="">
+                                            <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
+                                        </label>
 
-                                <div class="masonry-gallery-wrapper">
-                                    <div class="popup-gallery">
-                                        <div class="gallery-sizer"></div>
-                                        <div class="row mt-3">
-                                            <div class="col s12 m6 l4 xl2">
-                                                <div>
-                                                    <a href="{{asset('/images/gallery/1.png')}}" target="_blank" title="بستنی">
-                                                        <img src="{{asset('/images/gallery/1.png')}}" class="responsive-img mb-10" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <button class="mb-10 btn-floating btn-large waves-effect waves-light red accent-2" type="submit">
+                                            <i class="material-icons">clear</i>
+                                        </button>
+                                    </form>
                                 </div>
-                                <div class="col s3 m1 grid-example border-radius-1 ml-1" style="background-color: white;">
-                                                            <span class="flow-text">
-                                                                <form action="" method="post" >
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <h6 class="blue-grey-text"></h6>
-                                                                    <button class="mb-6 btn-floating waves-effect waves-light red lightrn-1" type="submit">
-                                                                        <i class="material-icons">clear</i>
-                                                                    </button>
-                                                                </form>
-                                                            </span>
-                                </div>
-                                <form action="{{url('/admin/shop/addColor')}}" class="row" method="post">
-                                    @csrf
-                                    <input type="number" name="product_id" value="{{$product->id??''}}"
-                                           class="display-none">
-                                    <!-- Switch -->
-                                    <div class="switch">
 
-                                        @foreach($colors as $key=>$color)
-                                            <label class="col s6 m3 l2 mt-3 valign-wrapper">
-                                                <input type="checkbox"
-                                                       @isset($product)
-                                                       @foreach($product->color as $selectedColor)
-                                                       @if($selectedColor->id == $color->id)
-                                                       checked="checked"
-                                                       @endif
-                                                       @endforeach
-                                                       @endisset
-                                                       name="colorId[]" value="{{$color->id}}">
-                                                <span class="lever"></span>
-                                                {{$color->name}}
-                                                <div
-                                                    style="height: 20px;width: 20px;background-color: {{"#".$color->code}}; display: inline-block;"
-                                                    class="ml-3"></div>
-                                            </label>
-                                        @endforeach
+                                <h5>گالری تصویر‌:</h5>
+                                <form action="" class="row">
+                                    <div class="collection email-collection padding-1 selected_image" style="height: 500px; overflow: scroll">
+                                        <input type='checkbox' name='thing[]' value='valuable' id="thing-8"/>
+                                        <label for="thing-8" class="mr-1 mb-4 center-align">
+                                            <img src="{{asset('/images/gallery/1.png')}}" alt="">
+                                            <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
+                                        </label>
                                     </div>
-
                                     <div class="input-field col s12">
                                         <button
-                                            class="btn waves-effect waves-light gradient-45deg-green-teal right iransans"
+                                            class="btn waves-effect waves-light light-green right iransans"
                                             type="submit" @if(!isset($product))disabled @endif>ذخیره
                                             <i class="material-icons right">send</i>
                                         </button>
@@ -330,6 +302,7 @@
 
                             </div>
                         </div>
+
                         <div class="card">
                             <div class="card-content">
                                 <h5>انتخاب رنگ های موجود</h5>
@@ -363,7 +336,7 @@
 
                                         <div class="input-field col s12">
                                             <button
-                                                class="btn waves-effect waves-light gradient-45deg-green-teal right iransans"
+                                                class="btn waves-effect waves-light light-green right iransans"
                                                 type="submit" @if(!isset($product))disabled @endif>ذخیره
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -402,7 +375,7 @@
 
                                     <div class="input-field col s12">
                                         <button
-                                            class="btn waves-effect waves-light gradient-45deg-green-teal right iransans"
+                                            class="btn waves-effect waves-light light-green right iransans"
                                             type="submit" @if(!isset($product))disabled @endif>ذخیره
                                             <i class="material-icons right">send</i>
                                         </button>

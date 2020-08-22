@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\mediaRequest;
+use App\Http\Requests\RemoveMediaRequest;
 use App\Service\mediaService;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,10 @@ class MediaController extends Controller
 
     public function store (mediaRequest $mediaRequest){
         dd($mediaRequest->all());
+    }
+
+    public function remove_media (RemoveMediaRequest $removeMediaRequest){
+        dd($removeMediaRequest->all());
     }
 
 }
