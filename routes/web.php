@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::post('/addSize','ProductController@addSize');
             Route::post('/{product_id}/update','ProductController@update');
             Route::get('/{product_id}/edit','ProductController@edit');
+            Route::delete('/{product_id}/delete','ProductController@destroy');
 
             Route::get('/color/index','ColorController@index');
             Route::post('/color/store','ColorController@store');
@@ -112,9 +113,10 @@ Route::group(['middleware' => ['auth','web']], function () {
 
             Route::group(['prefix'=>'category'],function (){
                Route::get('/','CategoryController@index');
-                Route::delete('/{category_id}/delete','CategoryController@destroy');
+                Route::delete('/delete','CategoryController@destroy');
                 Route::post('/','CategoryController@store');
                 Route::post('/subCategory','CategoryController@subCategory');
+                Route::get('/{category_id}/showProduct','CategoryController@showProduct');
             });
 
             Route::group(['prefix'=>'media'],function(){

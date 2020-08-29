@@ -26,7 +26,7 @@ class productRequest extends FormRequest
         return [
             'title'=>'required | between : 2,255',
             'subtitle'=>'required | between : 2,255',
-            'brand'=>' between : 2,255',
+            'brand'=>'nullable| between : 2,255',
             'description'=>'nullable',
             'spec'=>'nullable',
             'category_id'=>'required',
@@ -34,7 +34,7 @@ class productRequest extends FormRequest
             'grandChild'=>'nullable',
             'tags'=>'nullable',
             'price'=>'required|integer',
-            'discount'=>'integer | between : 0,100',
+            'discount'=>'nullable|integer | between : 0,100',
             'delivery_time'=>'required|integer',
             'status'=>'required|integer | between:0,10',
             'stock'=>'integer|required',

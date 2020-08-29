@@ -20,6 +20,10 @@ class mediaService
         $this->mediaRepo = $mediaRepository;
     }
 
+    public function getAllPicture (){
+        return $this->mediaRepo->getPictureForProduct();
+    }
+
 
 
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\productSizeRequest;
 use App\product;
 use App\Service\categoryService;
 use App\Service\colorService;
+use App\Service\mediaService;
 use App\Service\productService;
 use App\Service\sizeService;
 use Illuminate\Http\Request;
@@ -30,17 +31,23 @@ class ProductController extends Controller
      * @var categoryService
      */
     private $categoryService;
+    /**
+     * @var categoryService
+     */
+    private $mediaService;
 
     public function __construct(
         productService $productService,
         colorService $colorService,
         categoryService $categoryService,
+        mediaService $mediaService,
         sizeService $sizeService
     )
     {
         $this->productService = $productService;
         $this->colorService = $colorService;
         $this->categoryService = $categoryService;
+        $this->mediaService = $mediaService;
         $this->sizeService = $sizeService;
     }
 
@@ -55,18 +62,20 @@ class ProductController extends Controller
         $colors = $this->colorService->getAllColor();
         $sizes = $this->sizeService->getAllSize();
         $categories = $this->categoryService->getAllCategories();
-        return view('panel.shop.createProduct',compact('colors','sizes','categories'));
+        $pictures = $this->mediaService->getAllPicture();
+        return view('panel.shop.createProduct', compact('colors', 'sizes', 'categories','pictures'));
     }
 
     public function store(productRequest $productRequest)
     {
         $data = $productRequest->all();
-        $data = $this->productService->preprationCategory($data);
+        $categories = $this->productService->preparationCategory($data);
         $price = $data['price'];
         $discount = $data['discount'];
-        $data['final_price']=$this->productService->caculateFinalPrice($price,$discount);
+        $data['final_price'] = $this->productService->caculateFinalPrice($price, $discount);
         $product = $this->productService->createNewProduct($data);
-        return redirect("/admin/shop/".$product->id."/edit");
+        $this->productService->syncProductCategory($product, $categories);
+        return redirect("/admin/shop/" . $product->id . "/edit");
     }
 
     public function edit($product_id)
@@ -76,29 +85,41 @@ class ProductController extends Controller
         $sizes = $this->sizeService->getAllSize();
         $categories = $this->categoryService->getAllCategories();
         $cat = $product->category->toArray();
-        return view('panel.shop.createProduct', compact('product','colors','sizes','categories','cat'));
+        $pictures = $this->mediaService->getAllPicture();
+        return view('panel.shop.createProduct', compact('product', 'colors', 'sizes', 'categories', 'cat','pictures'));
     }
 
-    public function update(productRequest $productRequest,$product_id)
+    public function update(productRequest $productRequest, $product_id)
     {
         $data = $productRequest->all();
-        $data = $this->productService->preprationCategory($data);
-        $this->productService->updateProductWithId($data,$product_id);
+        $categories = $this->productService->preparationCategory($data);
+        $price = $data['price'];
+        $discount = $data['discount'];
+        $data['final_price'] = $this->productService->caculateFinalPrice($price, $discount);
+        $this->productService->updateProductWithId($data, $product_id);
+        $product = $this->productService->getProductWithId($product_id);
+        $this->productService->syncProductCategory($product, $categories);
         return back();
     }
 
-    public function destroy(product $product)
+    public function destroy($product_id)
     {
-        //
+        $this->productService->deleteProduct($product_id);
+        return back();
     }
-    public function addColor (productColorRequest $productColorRequest){
+
+    public function addColor(productColorRequest $productColorRequest)
+    {
         $product = $this->productService->getProductWithId($productColorRequest->product_id);
-        $this->productService->addColorToProduct($product,$productColorRequest->colorId);
+        $this->productService->addColorToProduct($product, $productColorRequest->colorId);
         return back();
     }
-    public function addSize (productSizeRequest $productSizeRequest){
+
+    public function addSize(productSizeRequest $productSizeRequest)
+    {
         $product = $this->productService->getProductWithId($productSizeRequest->product_id);
-        $this->productService->addSizeToProduct($product,$productSizeRequest->sizeId);
+        $this->productService->addSizeToProduct($product, $productSizeRequest->sizeId);
         return back();
     }
+
 }

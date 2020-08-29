@@ -33,26 +33,30 @@
                                     @foreach($categories as $key =>$category)
                                         <li class="">
 
-                                            <div class="collapsible-header grey darken-2 white-text" tabindex="0">{{$key+1 .' - '.$category->title}}
-                                                <form action="{{url("admin/shop/category/$category->id/delete")}}" method="post" class="pl-6">
+                                            <div class="collapsible-header grey darken-2 white-text" >{{$key+1 .' - '.$category->title}}
+                                                <form action="{{url("admin/shop/category/delete")}}" method="post" class="pl-6" style="width: 50%">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="text" name="type" value="category" class="display-none">
-                                                    <button type="submit" class="btn-flat red-text p-0" ><i class="material-icons mr-1">delete</i></button>
+                                                    <input type="number" name="category_id" value="{{$category->id}}" class="display-none">
+                                                    <a type="submit" href="{{url("admin/shop/category/$category->id/showProduct")}}" class="btn-flat green-text ml-10 p-0" ><i class="material-icons mr-1">format_list_bulleted</i></a>
+                                                    @if($category->id != 1)
+                                                        <button type="submit" class="btn-flat red-text ml-10 p-0" ><i class="material-icons mr-1">delete</i></button>
+                                                    @endif
                                                 </form>
                                             </div>
                                             <div class="collapsible-body p-0" >
-
-
                                                 <ul class="collapsible collapsible-accordion m-0">
                                                     @foreach($category->child as $childKey =>$child)
                                                         <li>
                                                             <div class="collapsible-header grey lighten-2"><div class="ml-3"></div>{{$childKey+1 .' - '.$child->title}}
-                                                                <form action="{{url("admin/shop/category/$child->id/delete")}}" method="post" class="pl-6">
+                                                                <form action="{{url("admin/shop/category/delete")}}" method="post" class="pl-6" style="width: 50%">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <input type="text" name="type" value="child" class="display-none">
-                                                                    <button type="submit" class="btn-flat red-text p-0" ><i class="material-icons mr-1">delete</i></button>
+                                                                    <input type="number" name="category_id" value="{{$child->id}}" class="display-none">
+                                                                    <a type="submit" href="{{url("admin/shop/category/$child->id/showProduct")}}" class="btn-flat green-text ml-10 p-0" ><i class="material-icons mr-1">format_list_bulleted</i></a>
+                                                                    <button type="submit" class="btn-flat red-text  ml-10 p-0" ><i class="material-icons mr-1">delete</i></button>
                                                                 </form>
                                                             </div>
                                                             <div class="collapsible-body p-0">
@@ -60,11 +64,13 @@
                                                                     @foreach($child->grandChild as $grandChildKey =>$grandChild)
                                                                         <li>
                                                                             <div class="collapsible-header grey lighten-5"><div class="ml-6"></div>{{$grandChildKey+1 .' - '.$grandChild->title}}
-                                                                                <form action="{{url("admin/shop/category/$grandChild->id/delete")}}" method="post" class="pl-6">
+                                                                                <form action="{{url("admin/shop/category/delete")}}" method="post" class="pl-6" style="width: 50%">
                                                                                     @csrf
                                                                                     @method('DELETE')
                                                                                     <input type="text" name="type" value="grandChild" class="display-none">
-                                                                                    <button type="submit" class="btn-flat red-text p-0" ><i class="material-icons mr-1">delete</i></button>
+                                                                                    <input type="number" name="category_id" value="{{$grandChild->id}}" class="display-none">
+                                                                                    <a type="submit" href="{{url("admin/shop/category/$grandChild->id/showProduct")}}" class="btn-flat green-text ml-10 p-0" ><i class="material-icons mr-1">format_list_bulleted</i></a>
+                                                                                    <button type="submit" class="btn-flat red-text ml-10 p-0" ><i class="material-icons mr-1">delete</i></button>
                                                                                 </form>
                                                                             </div>
                                                                         </li>
@@ -100,6 +106,7 @@
                                                             </li>
                                                     @endforeach
                                                         <li>
+                                                            @if($category->id != 1)
                                                             <div class="collapsible-header orange-text"><div class="ml-3"></div>+ افزودن زیر شاخه اول</div>
                                                             <div class="collapsible-body pl-0 pr-0 pb-0">
                                                                 <form class="ml-5 mr-5" action="{{url('admin/shop/category')}}" method="post">
@@ -124,6 +131,7 @@
                                                                     </div>
                                                                 </form>
                                                             </div>
+                                                            @endif
                                                         </li>
                                                 </ul>
                                             </div>

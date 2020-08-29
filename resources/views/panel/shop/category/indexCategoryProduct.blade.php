@@ -18,7 +18,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 l6">
-                                    <h5 class="breadcrumbs-title"><span>کالاهای فروشگاه</span></h5>
+                                    <h5 class="breadcrumbs-title"><span>کالاهای دسته {{$category->title}}</span></h5>
                                 </div>
                                 <div class="col s12 m6 l6 right-align-md">
                                     <ol class="breadcrumbs mb-0">
@@ -67,25 +67,25 @@
                                             <td></td>
                                             <td></td>
                                             <td>
-                                                {{$product->id}}
+                                                {{$product['id']}}
                                             </td>
-                                            <td><span class="invoice-amount">{{$product->title}}</span></td>
-                                            <td><span class="invoice-amount">{{$product->brand}}</span></td>
-                                            <td><span class="invoice-amount">{{$product->final_price}}</span></td>
-                                            <td><small>{{$product->discount}}</small></td>
-                                            <td><span class="invoice-customer"><small>{{$product->delivery_time}}</small></span></td>
+                                            <td><span class="invoice-amount">{{$product['title']}}</span></td>
+                                            <td><span class="invoice-amount">{{$product['brand']}}</span></td>
+                                            <td><span class="invoice-amount">{{$product['final_price']}}</span></td>
+                                            <td><small>{{$product['discount']}}</small></td>
+                                            <td><span class="invoice-customer"><small>{{$product['delivery_time']}}</small></span></td>
                                             <td>
-                                                @if($product->stock <= 2)
+                                                @if($product['stock'] <= 2)
                                                 <span class="bullet red"></span>
                                                 @endif
-                                                <small>{{$product->stock}}</small>
+                                                <small>{{$product['stock']}}</small>
                                             </td>
                                             <td>
-                                                @if($product->status == 1)
+                                                @if($product['status'] == 1)
                                                     <span class="chip lighten-5 orange orange-text">پیش نویس</span>
-                                                @elseif($product->status == 2)
+                                                @elseif($product['status'] == 2)
                                                     <span class="chip lighten-5 green green-text">فعال</span>
-                                                @elseif($product->status == 3)
+                                                @elseif($product['status'] == 3)
                                                     <span class="chip lighten-5 red red-text">غیرفعال</span>
                                                 @endif
                                             </td>
@@ -93,11 +93,11 @@
                                                 <div class="invoice-action">
                                                     <div class="btn-group">
 
-                                                        <form action="{{url("/admin/shop/$product->id/delete")}}" method="post">
+                                                        <form action="{{url("/admin/shop/".$product['id']."/delete")}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <a href="
-                                                            {{url("/admin/shop/$product->id/edit")}}" class="btn btn-flat p-0 m-0 mr-4" style="background-color: white">
+                                                            {{url("/admin/shop/".$product['id']."/edit")}}" class="btn btn-flat p-0 m-0 mr-4" style="background-color: white">
                                                                 <i class="material-icons green-text">remove_red_eye</i>
                                                             </a>
                                                             <button class="btn btn-flat p-0 ml-10" style="background-color: white" type="submite">

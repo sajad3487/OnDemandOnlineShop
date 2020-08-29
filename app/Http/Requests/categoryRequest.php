@@ -28,13 +28,14 @@ class categoryRequest extends FormRequest
                 return [
                     'title'=>'required|string|between: 2,100',
                     'status'=>'required|string|in:0,1',
-                    'parent_id'=>'nullable|numeric| exists:categories,id',
+                    'parent_id'=>'nullable|numeric| exists:categories,id|min: 2',
                 ];
                 break;
 
             case 'DELETE':
                 return [
                     'type'=>'string|in:category,child,grandChild',
+                    'category_id'=>'required|numeric| exists:categories,id|min:2',
                 ];
                 break;
         }

@@ -263,6 +263,7 @@
                                 </div>
                             </div>
                         </div>
+{{--                        add media--}}
                         <div class="card">
                             <div class="card-content">
                                 <h5>تصاویر فعلی کالا‌:</h5>
@@ -275,21 +276,26 @@
                                             <img src="{{asset('/images/gallery/1.png')}}" alt="">
                                             <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
                                         </label>
-
-                                        <button class="mb-10 btn-floating btn-large waves-effect waves-light red accent-2" type="submit">
-                                            <i class="material-icons">clear</i>
-                                        </button>
+                                        <div class="input-field col s12">
+                                            <button
+                                                class="btn waves-effect waves-light light-red right iransans"
+                                                type="submit" @if(!isset($product))disabled @endif>حذف
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
 
                                 <h5>گالری تصویر‌:</h5>
                                 <form action="" class="row">
                                     <div class="collection email-collection padding-1 selected_image" style="height: 500px; overflow: scroll">
-                                        <input type='checkbox' name='thing[]' value='valuable' id="thing-8"/>
-                                        <label for="thing-8" class="mr-1 mb-4 center-align">
-                                            <img src="{{asset('/images/gallery/1.png')}}" alt="">
-                                            <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
-                                        </label>
+                                        @foreach($pictures as $key=>$picture)
+                                            <input type='checkbox' name='thing[]' value='valuable' id="thing-{{$key}}"/>
+                                            <label for="thing-{{$key}}" class="mr-1 mb-4 center-align">
+                                                <img src="{{asset($picture->file)}}" alt="">
+                                                <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
+                                            </label>
+                                            @endforeach
                                     </div>
                                     <div class="input-field col s12">
                                         <button
@@ -302,7 +308,7 @@
 
                             </div>
                         </div>
-
+{{--                        add color--}}
                         <div class="card">
                             <div class="card-content">
                                 <h5>انتخاب رنگ های موجود</h5>
@@ -345,6 +351,7 @@
 
                             </div>
                         </div>
+{{--                        add size--}}
                         <div class="card">
                             <div class="card-content">
                                 <h5>انتخاب سایز های موجود</h5>

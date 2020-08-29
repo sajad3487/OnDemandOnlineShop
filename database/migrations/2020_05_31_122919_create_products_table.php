@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->integer('final_price');
             $table->integer('delivery_time');
             $table->integer('status')->default(1);
-            $table->string('category_id');
             $table->integer('stock');
             $table->string('tags')->nullable();
             $table->integer('score')->nullable();

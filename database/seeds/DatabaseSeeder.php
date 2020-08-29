@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         factory(wishList::class,40)->create();
         factory(discount::class,10)->create();
 
-        // $this->call(UserSeeder::class);
+         $this->call(UserSeeder::class);
+         $this->call(CategorySeeder::class);
     }
 }
