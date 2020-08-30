@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddMediaRequest;
 use App\Http\Requests\mediaRequest;
 use App\Http\Requests\RemoveMediaRequest;
 use App\Service\mediaService;
@@ -21,12 +22,11 @@ class MediaController extends Controller
         $this->mediaService = $mediaService;
     }
 
-    public function store (mediaRequest $mediaRequest){
+    public function store(mediaRequest $mediaRequest)
+    {
         dd($mediaRequest->all());
     }
 
-    public function remove_media (RemoveMediaRequest $removeMediaRequest){
-        dd($removeMediaRequest->all());
-    }
+
 
 }

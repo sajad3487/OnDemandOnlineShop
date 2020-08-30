@@ -268,14 +268,23 @@
                             <div class="card-content">
                                 <h5>تصاویر فعلی کالا‌:</h5>
                                 <div  class="deleted_image row mt-2 ml-1">
-                                    <form action="{{url("admin/shop/media/0/remove_media")}}" method="post">
+                                    <form action="
+                                        @if (isset($product))
+                                            {{url("admin/shop/media/$product->id/removeMedia")}}
+                                        @endif
+                                        " method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <input type='checkbox' name='thing' value='1' id="thing-2"/>
-                                        <label for="thing-2" class="mr-2 center-align">
-                                            <img src="{{asset('/images/gallery/1.png')}}" alt="">
-                                            <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
-                                        </label>
+                                        @if(count($product->media) == 0)
+                                            <p class="mb-2 red-text">برای این کالا هیج عکسی انتخاب نشده است</p>
+                                        @endif
+                                        @foreach($product->media as $key=> $media)
+                                            <input type='checkbox' name='picture[]' value='{{$media->id}}' id="addedPic-{{$key}}"/>
+                                            <label for="addedPic-{{$key}}" class="mr-1 mb-4 center-align">
+                                                <img src="{{asset($media->file)}}" alt="">
+                                                <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
+                                            </label>
+                                        @endforeach
                                         <div class="input-field col s12">
                                             <button
                                                 class="btn waves-effect waves-light light-red right iransans"
@@ -287,10 +296,15 @@
                                 </div>
 
                                 <h5>گالری تصویر‌:</h5>
-                                <form action="" class="row">
+                                <form action="
+                                    @if (isset($product))
+                                    {{url("admin/shop/media/$product->id/addMedia")}}
+                                    @endif
+                                    " class="row" method="post">
+                                    @csrf
                                     <div class="collection email-collection padding-1 selected_image" style="height: 500px; overflow: scroll">
                                         @foreach($pictures as $key=>$picture)
-                                            <input type='checkbox' name='thing[]' value='valuable' id="thing-{{$key}}"/>
+                                            <input type='checkbox' name='picture[]' value='{{$picture->id}}' id="thing-{{$key}}"/>
                                             <label for="thing-{{$key}}" class="mr-1 mb-4 center-align">
                                                 <img src="{{asset($picture->file)}}" alt="">
                                                 <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>

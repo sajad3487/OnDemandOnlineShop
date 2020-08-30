@@ -30,6 +30,7 @@ class productRepository extends Repository
             ->with('color')
             ->with('size')
             ->with('category')
+            ->with('media')
             ->first();
     }
 
@@ -51,6 +52,14 @@ class productRepository extends Repository
     public function addCategoryForProduct($product, $category)
     {
         return $product->category()->sync($category);
+    }
+
+    public function attachedMediaToProduct ($pictures, $product){
+        return $product->media()->attach($pictures);
+    }
+
+    public function detachedMediaToProduct ($pictures, $product){
+        return $product->media()->detach($pictures);
     }
 
 }

@@ -17,4 +17,7 @@ class product extends Model
     public function category (){
         return $this->belongsToMany(category::class);
     }
+    public function media (){
+        return $this->belongsToMany(media::class);
+    }
 }

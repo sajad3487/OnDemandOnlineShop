@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RemoveMediaRequest extends FormRequest
+class AddMediaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class RemoveMediaRequest extends FormRequest
     public function rules()
     {
         return [
-            'picture*'=>'required|array|exists:media,id'
+            'picture'=>'required|array|exists:media,id'
         ];
     }
 }

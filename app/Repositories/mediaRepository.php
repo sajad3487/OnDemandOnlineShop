@@ -19,5 +19,10 @@ class mediaRepository extends Repository
             ->get();
     }
 
+    public function getMediaExceptProductMedia ($media){
+        return media::whereIn('id',$media)
+            ->get();
+    }
+
 
 }

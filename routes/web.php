@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::get('/{product_id}/edit','ProductController@edit');
             Route::delete('/{product_id}/delete','ProductController@destroy');
 
+
             Route::get('/color/index','ColorController@index');
             Route::post('/color/store','ColorController@store');
             Route::delete('/color/{color_id}/delete','ColorController@destroy');
@@ -110,6 +111,11 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::get('/size/index','SizeController@index');
             Route::post('/size/store','SizeController@store');
             Route::delete('/size/{size_id}/delete','SizeController@destroy');
+
+            Route::group(['prefix'=>'media'],function(){
+                Route::post('/{media_id}/addMedia','ProductController@add_media_to_product');
+                Route::delete('/{media_id}/removeMedia','ProductController@remove_media');
+            });
 
             Route::group(['prefix'=>'category'],function (){
                Route::get('/','CategoryController@index');
@@ -119,9 +125,7 @@ Route::group(['middleware' => ['auth','web']], function () {
                 Route::get('/{category_id}/showProduct','CategoryController@showProduct');
             });
 
-            Route::group(['prefix'=>'media'],function(){
-                Route::delete('/{media_id}/remove_media','MediaController@remove_media');
-            });
+
         });
 
         Route::put('request/{request_id}/store','RequestItemController@update');

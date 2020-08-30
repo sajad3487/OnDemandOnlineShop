@@ -96,4 +96,17 @@ class productService
     {
         $this->productRepo->delete($product_id);
     }
+
+    public function attachedMediaWithProduct($pictures, $product_id)
+    {
+        $product = $this->productRepo->getById($product_id);
+        $this->productRepo->attachedMediaToProduct($pictures, $product);
+    }
+
+    public function detachedMediaWithProduct($pictures, $product_id)
+    {
+        $product = $this->productRepo->getById($product_id);
+        $this->productRepo->detachedMediaToProduct($pictures, $product);
+    }
+
 }

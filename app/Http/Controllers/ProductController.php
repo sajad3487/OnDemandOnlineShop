@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddMediaRequest;
 use App\Http\Requests\productColorRequest;
 use App\Http\Requests\productRequest;
 use App\Http\Requests\productSizeRequest;
+use App\Http\Requests\RemoveMediaRequest;
 use App\product;
 use App\Service\categoryService;
 use App\Service\colorService;
@@ -85,7 +87,8 @@ class ProductController extends Controller
         $sizes = $this->sizeService->getAllSize();
         $categories = $this->categoryService->getAllCategories();
         $cat = $product->category->toArray();
-        $pictures = $this->mediaService->getAllPicture();
+        $allPictures = $this->mediaService->getAllPicture();
+        $pictures = $this->mediaService->getPicturesExceptProductPic(array_diff($allPictures->pluck('id')->toArray(),$product->media->pluck('id')->toArray()));
         return view('panel.shop.createProduct', compact('product', 'colors', 'sizes', 'categories', 'cat','pictures'));
     }
 
@@ -119,6 +122,20 @@ class ProductController extends Controller
     {
         $product = $this->productService->getProductWithId($productSizeRequest->product_id);
         $this->productService->addSizeToProduct($product, $productSizeRequest->sizeId);
+        return back();
+    }
+
+    public function remove_media(RemoveMediaRequest $removeMediaRequest,$product_id)
+    {
+        $data = $removeMediaRequest->all();
+        $this->productService->detachedMediaWithProduct($data['picture'],$product_id);
+        return back();
+    }
+
+    public function add_media_to_product(AddMediaRequest $request,$product_id)
+    {
+        $data = $request->all();
+        $this->productService->attachedMediaWithProduct($data['picture'],$product_id);
         return back();
     }
 
