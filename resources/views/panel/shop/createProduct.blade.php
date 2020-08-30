@@ -263,21 +263,18 @@
                                 </div>
                             </div>
                         </div>
+                        @if (isset($product))
 {{--                        add media--}}
                         <div class="card">
                             <div class="card-content">
                                 <h5>تصاویر فعلی کالا‌:</h5>
                                 <div  class="deleted_image row mt-2 ml-1">
-                                    <form action="
-                                        @if (isset($product))
-                                            {{url("admin/shop/media/$product->id/removeMedia")}}
-                                        @endif
-                                        " method="post">
+                                    <form action="{{url("admin/shop/media/$product->id/removeMedia")}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        @if(count($product->media) == 0)
-                                            <p class="mb-2 red-text">برای این کالا هیج عکسی انتخاب نشده است</p>
-                                        @endif
+                                        @if( count($product->media) == 0)
+                                        <p class="mb-2 red-text">برای این کالا هیج عکسی انتخاب نشده است</p>
+                                            @endif
                                         @foreach($product->media as $key=> $media)
                                             <input type='checkbox' name='picture[]' value='{{$media->id}}' id="addedPic-{{$key}}"/>
                                             <label for="addedPic-{{$key}}" class="mr-1 mb-4 center-align">
@@ -288,7 +285,7 @@
                                         <div class="input-field col s12">
                                             <button
                                                 class="btn waves-effect waves-light light-red right iransans"
-                                                type="submit" @if(!isset($product))disabled @endif>حذف
+                                                type="submit">حذف
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
@@ -296,10 +293,7 @@
                                 </div>
 
                                 <h5>گالری تصویر‌:</h5>
-                                <form action="
-                                    @if (isset($product))
-                                    {{url("admin/shop/media/$product->id/addMedia")}}
-                                    @endif
+                                <form action="{{url("admin/shop/media/$product->id/addMedia")}}
                                     " class="row" method="post">
                                     @csrf
                                     <div class="collection email-collection padding-1 selected_image" style="height: 500px; overflow: scroll">
@@ -313,8 +307,7 @@
                                     </div>
                                     <div class="input-field col s12">
                                         <button
-                                            class="btn waves-effect waves-light light-green right iransans"
-                                            type="submit" @if(!isset($product))disabled @endif>ذخیره
+                                            class="btn waves-effect waves-light light-green right iransans" type="submit">ذخیره
                                             <i class="material-icons right">send</i>
                                         </button>
                                     </div>
@@ -337,19 +330,15 @@
                                             @foreach($colors as $key=>$color)
                                                 <label class="col s6 m3 l2 mt-3 valign-wrapper">
                                                     <input type="checkbox"
-                                                           @isset($product)
                                                                @foreach($product->color as $selectedColor)
                                                                    @if($selectedColor->id == $color->id)
                                                                         checked="checked"
                                                                    @endif
                                                                @endforeach
-                                                           @endisset
                                                            name="colorId[]" value="{{$color->id}}">
                                                     <span class="lever"></span>
                                                     {{$color->name}}
-                                                    <div
-                                                        style="height: 20px;width: 20px;background-color: {{"#".$color->code}}; display: inline-block;"
-                                                        class="ml-3"></div>
+                                                    <div style="height: 20px;width: 20px;background-color: {{"#".$color->code}}; display: inline-block;" class="ml-3"></div>
                                                 </label>
                                             @endforeach
                                         </div>
@@ -357,7 +346,7 @@
                                         <div class="input-field col s12">
                                             <button
                                                 class="btn waves-effect waves-light light-green right iransans"
-                                                type="submit" @if(!isset($product))disabled @endif>ذخیره
+                                                type="submit" >ذخیره
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
@@ -380,13 +369,11 @@
                                         @foreach($sizes as $key=>$size)
                                             <label class="col s6 m2 mt-3 valign-wrapper">
                                                 <input type="checkbox"
-                                                       @isset($product)
                                                            @foreach($product->size as $selectedSize)
                                                            @if($selectedSize->id == $size->id)
                                                            checked="checked"
                                                            @endif
                                                            @endforeach
-                                                       @endisset
                                                        name="sizeId[]" value="{{$size->id}}">
                                                 <span class="lever"></span>
                                                 {{$size->title}}
@@ -397,13 +384,14 @@
                                     <div class="input-field col s12">
                                         <button
                                             class="btn waves-effect waves-light light-green right iransans"
-                                            type="submit" @if(!isset($product))disabled @endif>ذخیره
+                                            type="submit">ذخیره
                                             <i class="material-icons right">send</i>
                                         </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                            @endif
                     </div>
 
                 </div>
