@@ -65,6 +65,8 @@
                         </li>
                         <li><a href="{{url('/admin/shop/size/index')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">سایز ها</span></a>
                         </li>
+                        <li><a href="{{url('/admin/shop/media')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">تصاویر</span></a>
+                        </li>
                     </ul>
                 </div>
             </li>

@@ -64,7 +64,7 @@ class ProductController extends Controller
         $colors = $this->colorService->getAllColor();
         $sizes = $this->sizeService->getAllSize();
         $categories = $this->categoryService->getAllCategories();
-        $pictures = $this->mediaService->getAllPicture();
+        $pictures = $this->mediaService->getProductPicture();
         return view('panel.shop.createProduct', compact('colors', 'sizes', 'categories','pictures'));
     }
 
@@ -87,7 +87,7 @@ class ProductController extends Controller
         $sizes = $this->sizeService->getAllSize();
         $categories = $this->categoryService->getAllCategories();
         $cat = $product->category->toArray();
-        $allPictures = $this->mediaService->getAllPicture();
+        $allPictures = $this->mediaService->getProductPicture();
         $pictures = $this->mediaService->getPicturesExceptProductPic(array_diff($allPictures->pluck('id')->toArray(),$product->media->pluck('id')->toArray()));
         return view('panel.shop.createProduct', compact('product', 'colors', 'sizes', 'categories', 'cat','pictures'));
     }

@@ -34,6 +34,7 @@ $factory->define(User::class, function (Faker $faker) {
         'created_at' => now(),
         'updated_at' => now(),
     ];
+
 });
 $factory->define(quotation::class, function (Faker $faker) {
     return [

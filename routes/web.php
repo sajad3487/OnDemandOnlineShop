@@ -115,16 +115,18 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::group(['prefix'=>'media'],function(){
                 Route::post('/{media_id}/addMedia','ProductController@add_media_to_product');
                 Route::delete('/{media_id}/removeMedia','ProductController@remove_media');
+                Route::get('/','MediaController@index');
+                Route::get('/create','MediaController@create');
+                Route::delete('/delete','MediaController@destroy');
             });
 
             Route::group(['prefix'=>'category'],function (){
-               Route::get('/','CategoryController@index');
+                Route::get('/','CategoryController@index');
                 Route::delete('/delete','CategoryController@destroy');
                 Route::post('/','CategoryController@store');
                 Route::post('/subCategory','CategoryController@subCategory');
                 Route::get('/{category_id}/showProduct','CategoryController@showProduct');
             });
-
 
         });
 

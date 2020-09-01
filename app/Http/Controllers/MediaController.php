@@ -27,6 +27,23 @@ class MediaController extends Controller
         dd($mediaRequest->all());
     }
 
+    public function index()
+    {
+        $pictures = $this->mediaService->getProductPicture();
+        return view('panel.shop.media.indexMedia',compact('pictures'));
+    }
+
+    public function create()
+    {
+        dd('hi');
+        $pictures = $this->mediaService->getProductPicture();
+        return view('panel.shop.media.indexMedia',compact('pictures'));
+    }
+
+    public function destroy(Request $request){
+        dd($request->all());
+    }
+
 
 
 }

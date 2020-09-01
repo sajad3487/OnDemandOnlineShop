@@ -9,7 +9,7 @@ class MediaProduct extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return voidcomposer dump-autoload
      */
     public function up()
     {
@@ -26,6 +26,7 @@ class MediaProduct extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('media_product');
+
     }
 }
