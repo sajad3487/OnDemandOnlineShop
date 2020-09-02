@@ -117,7 +117,10 @@ Route::group(['middleware' => ['auth','web']], function () {
                 Route::delete('/{media_id}/removeMedia','ProductController@remove_media');
                 Route::get('/','MediaController@index');
                 Route::get('/create','MediaController@create');
-                Route::delete('/delete','MediaController@destroy');
+                Route::post('/','MediaController@store');
+                Route::get('/{media_id}/edit','MediaController@edit');
+                Route::put('/{media_id}/update','MediaController@update');
+                Route::delete('/deletePic','MediaController@destroy');
             });
 
             Route::group(['prefix'=>'category'],function (){

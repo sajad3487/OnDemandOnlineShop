@@ -22,28 +22,54 @@ class MediaController extends Controller
         $this->mediaService = $mediaService;
     }
 
-    public function store(mediaRequest $mediaRequest)
+    public function store(mediaRequest $request)
     {
-        dd($mediaRequest->all());
+        $destination = base_path() . '/public/product/' . date('Y') . '/' . date('m');
+        if (!is_dir($destination)) {
+            mkdir($destination, 0777, true);
+        }
+        $destination = $destination . '/';
+        $filename = rand(1111111, 99999999);
+        $file = $request->file('file');
+        $newFileName = $filename . $request->file->getClientOriginalName();
+        $file->move($destination, $newFileName);
+        $data['file'] = '/product/' . date('Y') . '/' . date('m') . '/' . $newFileName;
+        $data['title'] = $request->title;
+        $data['alternative_text'] = $request->alternative_text;
+        $data['caption'] = $request->caption;
+        $data['type'] = "product";
+        $this->mediaService->create($data);
+        return redirect('/admin/shop/media');
     }
 
     public function index()
     {
         $pictures = $this->mediaService->getProductPicture();
-        return view('panel.shop.media.indexMedia',compact('pictures'));
+        return view('panel.shop.media.indexMedia', compact('pictures'));
     }
 
     public function create()
     {
-        dd('hi');
-        $pictures = $this->mediaService->getProductPicture();
-        return view('panel.shop.media.indexMedia',compact('pictures'));
+        return view('panel.shop.media.createMedia');
     }
 
-    public function destroy(Request $request){
-        dd($request->all());
+    public function destroy(Request $request)
+    {
+        $data = $request->picture;
+        $this->mediaService->deletePictures($data);
+        return back();
     }
 
+    public function edit($media_id)
+    {
+        $picture = $this->mediaService->getMediaById($media_id);
+        return view('panel.shop.media.createMedia', compact('picture'));
+    }
+
+    public function update(mediaRequest $request,$media_id){
+        $this->mediaService->updateMedia($request->all(),$media_id);
+        return redirect('/admin/shop/media');
+    }
 
 
 }

@@ -47,7 +47,7 @@
 {{--                        add media--}}
                         <div class="card">
                             <div class="card-content">
-                                <form action="{{url("admin/shop/media/create")}}" class="row" method="get">
+                                <form action="{{url("admin/shop/media/deletePic")}}" class="row" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn waves-effect waves-light light-green right iransans ml-2" href="{{url('admin/shop/media/create')}}">افزودن تصویر
@@ -62,7 +62,8 @@
                                             <input type='checkbox' name='picture[]' value='{{$picture->id}}' id="thing-{{$key}}"/>
                                             <label for="thing-{{$key}}" class="mr-1 mb-4 center-align">
                                                 <img src="{{asset($picture->file)}}" alt="">
-                                                <a href="#" class="btn btn-light-blue-grey pl-7 pr-7"><i class="material-icons">zoom_in</i></a>
+                                                <a href="{{url($picture->file)}}" class="btn btn-light-blue-grey pl-7 pr-7" target="_blank"><i class="material-icons">zoom_in</i></a>
+                                                <a href="{{url("admin/shop/media/$picture->id/edit")}}" class="btn btn-light-deep-orange pl-7 pr-7"><i class="material-icons">edit</i></a>
                                             </label>
                                         @endforeach
                                     </div>

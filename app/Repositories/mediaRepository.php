@@ -24,5 +24,10 @@ class mediaRepository extends Repository
             ->get();
     }
 
+    public function deletePicturesWithIds ($data){
+        return media::whereIn('id',$data)
+            ->delete();
+    }
+
 
 }
