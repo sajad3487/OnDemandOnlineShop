@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.shop.index');
 });
 
 Route::group(['middleware' => ['auth','web']], function () {
@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::get('/{product_id}/edit','ProductController@edit');
             Route::delete('/{product_id}/delete','ProductController@destroy');
 
+            Route::get('/firstPage','PageController@firstPage');
 
             Route::get('/color/index','ColorController@index');
             Route::post('/color/store','ColorController@store');

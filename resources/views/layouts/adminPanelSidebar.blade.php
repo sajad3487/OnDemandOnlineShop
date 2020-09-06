@@ -67,11 +67,14 @@
                         </li>
                         <li><a href="{{url('/admin/shop/media')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Contact">تصاویر</span></a>
                         </li>
+
                     </ul>
                 </div>
             </li>
 
             <li><a href="{{url('/admin/purchasedItem/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">سفارشات</span></a>
+            </li>
+            <li><a href="{{url('/admin/shop/firstPage')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">مدیریت صفحه اول</span></a>
             </li>
 
             <li class="navigation-header"><a class="navigation-header-text">اطلاعات </a><i class="navigation-header-icon material-icons">more_horiz</i>
