@@ -182,20 +182,22 @@
 <!-- END: SideNav-->
 <div id="main">
     <div class="row">
-
+        @include('fragment.errors')
         <div class="container">
             <div class="section">
 
-                <div class="header-area-five header-bg-five p-0 pb-4" style="background-image: url({{asset('front/img/bg/header-bg-5.jpg')}})">
+                <div class="header-area-five header-bg-five p-0 pb-4" style="background-image: url({{asset($slider->media_path) ?? asset('front/img/bg/header-bg-5.jpg')}})">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-7">
-                                <form action="">
+                                <form action="{{url('/admin/shop/firstPage/updateSlider')}}" method="post" enctype="multipart/form-data">
+                                    <input name="type" value="slider" class="display-none">
+                                    @csrf
                                     <div class="header-inner "><!-- header inner -->
 
                                         <div class="switch mt-3">
                                             <label>
-                                                <input type="checkbox">
+                                                <input name="status" type="checkbox" @if($slider->status == 1)checked @endif>
                                                 <span class="lever"></span>
                                             </label>
                                         </div>
@@ -206,31 +208,30 @@
                                                 <span>
                                                      تصویر پس زمینه<i class="material-icons left">camera_alt</i>
                                                 </span>
-                                                    <input type="file">
+                                                    <input type="file" name="file">
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text">
+                                                <input class="file-path validate" type="text" value="{{$slider->media_path ?? "front/img/bg/header-bg-5.jpg"}}">
                                             </div>
                                         </div>
 
 
-                                        <span class="subtitle ">
-                                        <input class="form-group text-primary"  name="" placeholder="زیر عنوان اول" >
-                                    </span>
-                                        <h1 class="title ">
-                                            <input class="form-group mt-5" name="" style="font-size: 1.5em; height: 150px" placeholder="عنوان اصلی">
-
+                                        <span class="subtitle">
+                                            <input class="form-group text-primary"  name="subtitle" placeholder="زیر عنوان اول" value="{{old('subtitle') ?? $slider->subtitle ?? ''}}">
+                                        </span>
+                                        <h1 class="title">
+                                            <input class="form-group mt-5" name="title" style="font-size: 1.5em; height: 150px" placeholder="عنوان اصلی" value="{{ old('title') ?? $slider->title ?? ''}}">
                                         </h1>
-                                        <p class="wow fadeInDown">
-                                            <input class="form-group" name="" placeholder="زیر عنوان دوم">
+                                        <p class="fadeInDown">
+                                            <input class="form-group" name="second_subtitle" placeholder="زیر عنوان دوم" value="{{old('second_subtitle') ?? $slider->second_subtitle ?? ''}}">
                                         </p>
                                         <div class="btn-wrapper  fadeInDown">
                                             <a href="#" class="boxed-btn">
-                                                <input class="form-group" name="" placeholder="نوشته دکمه">
+                                                <input class="form-group" name="button_text" placeholder="نوشته دکمه" value="{{old('button_text') ?? $slider->button_text ?? ''}}">
                                             </a>
                                         </div>
                                         <div class="mt-4">
-                                            <input type="text" name="" id="" placeholder="لینک دکمه">
+                                            <input type="text" name="button_link" id="" placeholder="لینک دکمه" value="{{old('button_link') ?? $slider->button_link ?? ''}}">
                                         </div>
                                         <button class="btn waves-effect green right iransans" type="submit" name="action">ذخیره
                                             <i class="material-icons right">add_to_photos</i>
@@ -255,9 +256,9 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="promotional-banner-area left"><!-- promotinal banner area  -->
-                                    <form action="">
+                                    <form action="{{url('/admin/shop/firstPage/updatePromotional')}}" method="post" enctype="multipart/form-data">
                                         <div class="img-wrapper">
-                                            <img src="{{asset('front/img/promotional/13.jpg')}}" alt="promotional images">
+                                            <img src="{{ asset('front/img/promotional/13.jpg')}}" alt="promotional images">
                                             <div class="hover">
                                                 <div class="hover-inner">
                                                     <div class="file-field input-field p-0 m-0">
@@ -428,8 +429,6 @@
                 </div>
                 <!-- filter area home four end -->
 
-
-
                 <hr>
                 <div class="switch mt-3 mb-3">
                     <label>
@@ -489,10 +488,7 @@
                 </div>
                 <!-- surprise area end -->
 
-
-
                 <hr>
-
                 <!-- filter area home four start -->
                 <div class="filter-ara-home-five-two">
                     <div class="container">
@@ -583,7 +579,6 @@
                 </div>
                 <!-- filter area home four end -->
 
-
                 <hr>
                 <!-- banner area home 5 start  -->
                 <div class="banner-area-home-5">
@@ -646,9 +641,6 @@
                     </div>
                 </div>
                 <!-- banner area home 5 end  -->
-
-
-
 
             </div>
         </div>

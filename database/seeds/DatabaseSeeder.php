@@ -2,6 +2,7 @@
 
 use App\currency;
 use App\discount;
+use App\page;
 use App\quotation;
 use App\RequestItem;
 use App\wishList;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         factory(currency::class,5)->create();
         factory(wishList::class,40)->create();
         factory(discount::class,10)->create();
+//        factory(page::class,2)->create();
 
          $this->call(UserSeeder::class);
          $this->call(CategorySeeder::class);

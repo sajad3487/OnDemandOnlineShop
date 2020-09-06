@@ -4,6 +4,7 @@
 
 use App\currency;
 use App\discount;
+use App\page;
 use App\quotation;
 use App\RequestItem;
 use App\User;
@@ -88,3 +89,19 @@ $factory->define(discount::class, function (Faker $faker) {
         'updated_at' => now(),
     ];
 });
+//
+//$factory->define(page::class, function (Faker $faker) {
+//    return [
+//        'type' => "slider",
+//        'title' => "با مهویتالی دنیا رو خرید کن",
+//        'subtitle' => "خرید از تمامی دنیا",
+//        'second_subtitle' => "شما میتوانید با مهویتالی از تمامی سایت های دنیا خرید کنید",
+//        'button_text' => "ثبت نام",
+//        'button_link' => "home",
+//        'media_path' => "front/img/bg/header-bg-5.jpg",
+//        'status' => "1",
+//        'created_at' => now(),
+//        'updated_at' => now(),
+//    ];
+//});
+

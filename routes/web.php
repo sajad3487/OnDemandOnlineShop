@@ -103,7 +103,11 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::get('/{product_id}/edit','ProductController@edit');
             Route::delete('/{product_id}/delete','ProductController@destroy');
 
-            Route::get('/firstPage','PageController@firstPage');
+            Route::group(['prefix'=>'firstPage'],function (){
+                Route::get('/','PageController@firstPage');
+                Route::post('/updateSlider','PageController@updateSlider');
+                Route::post('/updatePromotional','PageController@updatePromotional');
+            });
 
             Route::get('/color/index','ColorController@index');
             Route::post('/color/store','ColorController@store');

@@ -59,7 +59,7 @@
                                                 <input type="file" name="file">
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text" value="{{$picture->file ?? ''}}">
+                                                <input class="file-path validate" type="text">
                                             </div>
                                         </div>
                                         <div class="input-field">
