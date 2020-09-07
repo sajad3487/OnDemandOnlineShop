@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
     <!-- responsive -->
     <link rel="stylesheet" href="{{asset('front/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/flaticon.css')}}">
 </head>
 
 <body>
@@ -51,6 +52,14 @@
 <script src="{{asset('front/js/select2.min.js')}}"></script>
 <!-- main -->
 <script src="{{asset('front/js/main.js')}}"></script>
+<script src="{{asset('front/js/imagesloaded.pkgd.min.js')}}"></script>
+<!-- Isotope -->
+<script src="{{asset('front/js/isotope.pkgd.min.js')}}"></script>
+<!-- countdown -->
+<script src="{{asset('front/js/countdown.js')}}"></script>
+<!-- select 2 -->
+
+<script src="{{asset('front/js/owl.carousel2.thumbs.js')}}"></script>
 </body>
 
 

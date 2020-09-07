@@ -24,7 +24,7 @@ class PageInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'type'=>'required|string|in:slider',
+            'type'=>'required|string|in:slider,promotional1,promotional2,filtered_one,surprise,banner_1,banner_2',
             'file'=>'nullable|mimes:jpg,jpeg,png,gif|max:20240',
             'title'=>'nullable|string|between:2,100',
             'subtitle'=>'nullable|string|between:2,100',

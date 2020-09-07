@@ -1,0 +1,224 @@
+@extends('layouts.shop.firstPageTemplate')
+@section('content')
+
+    @include('layouts.shop.shopHeader')
+
+
+    <!-- product details content area  start -->
+    <div class="product-details-content-area pt-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content-area"><!-- left content area -->
+                        <div class="product-details-slider" id="product-details-slider" data-slider-id="1">
+                            @foreach($product->media as $key=>$media)
+                            <div class="single-product-thumb">
+                                <img src="{{asset($media->file)}}" alt="product details image">
+                            </div>
+                            @endforeach
+
+                        </div>
+                        <ul class="owl-thumbs product-deails-thumb center" data-slider-id="1">
+                            @foreach($product->media as $key=>$media)
+                            <li class="owl-thumb-item">
+                                <img src="{{asset($media->file)}}" alt="product details thumb" style="height: 100px; width: 100px">
+                            </li>
+                            @endforeach
+
+                        </ul>
+
+
+                    </div><!-- //.left content area -->
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content-area"><!-- right content area -->
+                        <div class="top-content">
+                            <ul class="review">
+                                <li><i class="@if($product->score <= 1) fas fa-star @else far fa-star @endif "></i></li>
+                                <li><i class="@if($product->score <= 2) fas fa-star @else far fa-star @endif"></i></li>
+                                <li><i class="@if($product->score <= 3) fas fa-star @else far fa-star @endif"></i></li>
+                                <li><i class="@if($product->score <= 4) fas fa-star @else far fa-star @endif"></i></li>
+                                <li><i class="@if($product->score <= 5) fas fa-star @else far fa-star @endif"></i></li>
+                                <li class="reviewes">{{$product->view}} <small>بازدید</small> </li>
+                            </ul>
+                            <span class="orders">جدید</span>
+                        </div>
+                        <div class="bottom-content">
+                            <span class="cat">{{$product->subtitle ?? ''}}</span>
+                            <h3 class="title">{{$product->title ?? ''}}</h3>
+                            <div class="price-area">
+                                <div class="left">
+                                    <span class="sprice">{{$product->price ?? ''}}  تومان</span>
+                                    <span class="dprice"><del>{{$product->price ?? ''}} تومان</del></span>
+                                </div>
+{{--                                <div class="right">--}}
+{{--                                    <a href="#" class="size">جدول سایزبندی</a>--}}
+{{--                                </div>--}}
+                            </div>
+                            <ul class="product-spec">
+                                <li>برند:  <span class="right">{{$product->brand ?? ''}} </span></li>
+                                <li>کد محصول: <span class="right">SH{{$product->id ?? ''}}</span></li>
+                                @if($product->stock > 0)
+                                <li>موجود:  <span class="right base-color"> موجود است </span></li>
+                                @else
+                                    <li>موجود:  <span class="right"> موجود نیست </span></li>
+
+                                @endif
+                            </ul>
+{{--                            <div class="pdescription">--}}
+{{--                                <h4 class="title">بررسی اجمالی</h4>--}}
+{{--                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است...</p>--}}
+
+{{--                            </div>--}}
+                            <div class="paction">
+                                <div class="qty">
+                                    <ul>
+                                        <li><span class="qtminus"><i class="fas fa-minus"></i></span></li>
+                                        <li><span class="qttotal">1</span></li>
+                                        <li><span class="qtplus"><i class="fas fa-plus"></i></span></li>
+                                    </ul>
+                                </div>
+{{--                                <ul class="activities">--}}
+{{--                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>--}}
+{{--                                    <li><a href="#"><i class="fas fa-hourglass"></i></a></li>--}}
+{{--                                    <li><a href="#"><i class="fas fa-share-square"></i></a></li>--}}
+{{--                                </ul>--}}
+                                <div class="btn-wrapper">
+                                    <a href="#" class="boxed-btn">افزودن به سبد</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- //. right content area -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-area ">
+                        <div class="product-details-tab-nav pt-5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="item-review-tab" data-toggle="tab" href="#item_review" role="tab" aria-controls="item_review" aria-selected="true">مشخصات فنی</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="descr-tab" data-toggle="tab" href="#descr" role="tab" aria-controls="descr" aria-selected="false">توضیحات</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" >
+                            <div class="tab-pane fade show active" id="item_review" role="tabpanel" aria-labelledby="item-review-tab">
+                                <div class="descr-tab-content">
+                                    <h4 class="title">مشخصات فنی</h4>
+                                    <p>
+                                        {{$product->spec ?? ''}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="descr" role="tabpanel" aria-labelledby="descr-tab">
+                                <div class="descr-tab-content">
+                                    <h4 class="title">توضیحات محصول</h4>
+                                    <p>
+                                        {{$product->description ?? ''}}
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product details content area end -->
+    <!-- recently added start -->
+    <div class="recently-added-area product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="recently-added-nav-menu"><!-- recently added nav menu -->
+                        <ul>
+                            <li>به تازگی اضافه شده</li>
+                        </ul>
+                    </div><!-- //.recently added nav menu -->
+                </div>
+                <div class="col-lg-12">
+                    <div class="recently-added-carousel" id="recently-added-carousel"><!-- recently added carousel -->
+                        <div class="single-new-collection-item">
+                            <div class="thumb">
+                                <img src="{{asset('front/img/new-collections/09.jpg')}}" alt="product image">
+                                <div class="hover">
+                                    <a href="#" class="addtocart">افزودن به سبد</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <a href="#" class="category">لوازم جانبی</a>
+                                <h4 class="title">میلو هوروبرد</h4>
+                                <div class="price"><span class="sprice">10.00 تومان</span> <del class="dprice">47.00 تومان</del></div>
+                            </div>
+                        </div>
+                        <div class="single-new-collection-item">
+                            <div class="thumb">
+                                <img src="{{asset('front/img/new-collections/10.jpg')}}" alt="product image">
+                                <div class="hover">
+                                    <a href="#" class="addtocart">افزودن به سبد</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <a href="#" class="category">دوچرخه</a>
+                                <h4 class="title">دوچرخه موتوری</h4>
+                                <div class="price"><span class="sprice">30.00 تومان</span> <del class="dprice">45.00 تومان</del></div>
+                            </div>
+                        </div>
+                        <div class="single-new-collection-item">
+                            <div class="thumb">
+                                <img src="{{asset('front/img/new-collections/11.jpg')}}" alt="product image">
+                                <div class="hover">
+                                    <a href="#" class="addtocart">افزودن به سبد</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <a href="#" class="category">دوچرخه</a>
+                                <h4 class="title">دوچرخه معمولی</h4>
+                                <div class="price"><span class="sprice">70.00 تومان</span> <del class="dprice">120.00 تومان</del></div>
+                            </div>
+                        </div>
+                        <div class="single-new-collection-item">
+                            <div class="thumb">
+                                <img src="{{asset('front/img/new-collections/12.jpg')}}" alt="product image">
+                                <div class="hover">
+                                    <a href="#" class="addtocart">افزودن به سبد</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <a href="#" class="category">کلاه</a>
+                                <h4 class="title">کلاه زرد</h4>
+                                <div class="price"><span class="sprice">89.00 تومان</span> <del class="dprice">156.00 تومان</del></div>
+                            </div>
+                        </div>
+                        <div class="single-new-collection-item">
+                            <div class="thumb">
+                                <img src="{{asset('front/img/new-collections/03.jpg')}}" alt="product image">
+                                <div class="hover">
+                                    <a href="#" class="addtocart">افزودن به سبد</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <a href="#" class="category">دوچرخه</a>
+                                <h4 class="title">دوچرخه معمولی</h4>
+                                <div class="price"><span class="sprice">70.00 تومان</span> <del class="dprice">90.00 تومان</del></div>
+                            </div>
+                        </div>
+                    </div><!-- //. recently added carousel -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- recently added end -->
+    <div class="body-overlay" id="body-overlay"></div>
+
+    @include('layouts.shop.shopLeftSidebar')
+    @include('layouts.shop.shopBasket')
+    @include('layouts.shop.shopFooter')
+    @include('layouts.shop.shopBackToTop')
+    @include('layouts.shop.shopPreloader')
+
+@endsection

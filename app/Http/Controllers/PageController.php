@@ -23,15 +23,30 @@ class PageController extends Controller
     public function firstPage()
     {
         $slider = $this->pageService->getPage("slider");
-        $promotional = $this->pageService->getPage("promotional");
+        $promotional1 = $this->pageService->getPage("promotional1");
+        $promotional2 = $this->pageService->getPage("promotional2");
         $filtered_one = $this->pageService->getPage("filtered_one");
         $surprise = $this->pageService->getPage("surprise");
         $filtered_two = $this->pageService->getPage("filtered_two");
-        $banner = $this->pageService->getPage("banner");
-        return view('panel.shop.adminFirstPage', compact('slider','promotional','filtered_one','surprise','filtered_two','banner'));
+        $banner_1 = $this->pageService->getPage("banner_1");
+        $banner_2 = $this->pageService->getPage("banner_2");
+        return view('dashboard.shop.index', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2'));
     }
 
-    public function updateSlider(PageInfoRequest $request)
+    public function adminFirstPage()
+    {
+        $slider = $this->pageService->getPage("slider");
+        $promotional1 = $this->pageService->getPage("promotional1");
+        $promotional2 = $this->pageService->getPage("promotional2");
+        $filtered_one = $this->pageService->getPage("filtered_one");
+        $surprise = $this->pageService->getPage("surprise");
+        $filtered_two = $this->pageService->getPage("filtered_two");
+        $banner_1 = $this->pageService->getPage("banner_1");
+        $banner_2 = $this->pageService->getPage("banner_2");
+        return view('panel.shop.adminFirstPage', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2'));
+    }
+
+    public function updateFirstPage(PageInfoRequest $request)
     {
         $data = $request->all();
         if (isset($request->file)) {
@@ -61,4 +76,6 @@ class PageController extends Controller
         $file->move($destination, $newFileName);
         return '/firstPage/' . '/' . $newFileName;
     }
+
+
 }

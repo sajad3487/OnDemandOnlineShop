@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', function () {
-    return view('dashboard.shop.index');
-});
+Route::get('/', 'PageController@firstPage');
 
 Route::group(['middleware' => ['auth','web']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -104,9 +102,8 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::delete('/{product_id}/delete','ProductController@destroy');
 
             Route::group(['prefix'=>'firstPage'],function (){
-                Route::get('/','PageController@firstPage');
-                Route::post('/updateSlider','PageController@updateSlider');
-                Route::post('/updatePromotional','PageController@updatePromotional');
+                Route::get('/','PageController@adminFirstPage');
+                Route::post('/updateFirstPage','PageController@updateFirstPage');
             });
 
             Route::get('/color/index','ColorController@index');
@@ -138,7 +135,12 @@ Route::group(['middleware' => ['auth','web']], function () {
 
         });
 
+
+
         Route::put('request/{request_id}/store','RequestItemController@update');
+    });
+    Route::group(['prefix'=>'shop'],function(){
+        Route::get('product/{product_id}','ProductController@showProduct');
     });
     Route::get('test',function (){
        return view('dashboard.editProfile');

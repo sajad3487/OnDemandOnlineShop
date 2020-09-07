@@ -139,4 +139,9 @@ class ProductController extends Controller
         return back();
     }
 
+    public function showProduct ($product_id){
+        $product = $this->productService->getProductWithId($product_id);
+        return view('dashboard.shop.shopProduct',compact('product'));
+    }
+
 }

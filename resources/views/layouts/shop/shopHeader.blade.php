@@ -2,7 +2,7 @@
 <nav class="navbar navbar-area navbar-expand-lg navbar-light bg-wite home-5">
     <div class="container nav-container">
         <div class="logo-wrapper navbar-brand ">
-            <a href="index.html" class="logo main-logo">
+            <a href="{{url('/')}}" class="logo main-logo">
                 <img src="{{asset('front/img/flower-logo.png')}}" alt="logo">
             </a>
         </div>
@@ -10,18 +10,9 @@
             <!-- navbar collapse start -->
             <ul class="navbar-nav">
                 <!-- navbar- nav -->
-                <li class="nav-item active dropdown">
-                    <a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="dropdown">خانه
-                        <span class="sr-only">(جاری)</span>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/')}}">خانه
                     </a>
-                    <div class="dropdown-menu">
-                        <a href="index.html" class="dropdown-item">صفحه اصلی 01</a>
-                        <a href="index-2.html" class="dropdown-item">صفحه اصلی 02</a>
-                        <a href="index-3.html" class="dropdown-item">صفحه اصلی 03</a>
-                        <a href="index-4.html" class="dropdown-item">صفحه اصلی 04</a>
-                        <a href="index-5.html" class="dropdown-item">صفحه اصلی 05</a>
-                        <a href="index-6.html" class="dropdown-item">صفحه اصلی 06</a>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">درباره</a>
@@ -90,17 +81,17 @@
                     <a class="nav-link" href="contact.html">تماس</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">ورود</a>
+                    <a class="nav-link" href="{{url('/home')}}">ورود</a>
                 </li>
             </ul>
             <!-- /.navbar-nav -->
             <div class="right-btn-wrapper">
                 <ul>
                     <li class="search" id="search"><i class="fas fa-search"></i> </li>
-                    <li class="cart" id="cart"><i class="fas fa-shopping-basket"></i>
-                        <span class="badge">12</span>
-                    </li>
-                    <li class="right-menu" id="side-menu"><i class="fas fa-bars"></i> </li>
+{{--                    <li class="cart" id="cart"><i class="fas fa-shopping-basket"></i>--}}
+{{--                        <span class="badge">12</span>--}}
+{{--                    </li>--}}
+{{--                    <li class="right-menu" id="side-menu"><i class="fas fa-bars"></i> </li>--}}
                 </ul>
             </div>
         </div>

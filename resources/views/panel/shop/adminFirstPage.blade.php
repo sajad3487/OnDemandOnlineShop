@@ -190,7 +190,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-7">
-                                <form action="{{url('/admin/shop/firstPage/updateSlider')}}" method="post" enctype="multipart/form-data">
+                                <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
                                     <input name="type" value="slider" class="display-none">
                                     @csrf
                                     <div class="header-inner "><!-- header inner -->
@@ -203,7 +203,6 @@
                                         </div>
 
                                         <div class="file-field input-field p-0">
-
                                             <div class="btn" style="line-height: 2rem">
                                                 <span>
                                                      تصویر پس زمینه<i class="material-icons left">camera_alt</i>
@@ -220,7 +219,7 @@
                                             <input class="form-group text-primary"  name="subtitle" placeholder="زیر عنوان اول" value="{{old('subtitle') ?? $slider->subtitle ?? ''}}">
                                         </span>
                                         <h1 class="title">
-                                            <input class="form-group mt-5" name="title" style="font-size: 1.5em; height: 150px" placeholder="عنوان اصلی" value="{{ old('title') ?? $slider->title ?? ''}}">
+                                            <input class="form-group mt-5" name="title" style="font-size: 0.8em; height: 150px" placeholder="عنوان اصلی" value="{{ old('title') ?? $slider->title ?? ''}}">
                                         </h1>
                                         <p class="fadeInDown">
                                             <input class="form-group" name="second_subtitle" placeholder="زیر عنوان دوم" value="{{old('second_subtitle') ?? $slider->second_subtitle ?? ''}}">
@@ -247,39 +246,43 @@
                 <!-- promotional area seven start -->
                 <div class="promotinal-area-seven p-0">
                     <div class="container">
-                        <div class="switch mt-3">
-                            <label>
-                                <input type="checkbox">
-                                <span class="lever"></span>
-                            </label>
-                        </div>
+
                         <div class="row">
                             <div class="col-lg-6">
+                                <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input name="type" value="promotional1" class="display-none">
+                                    <div class="switch mt-3">
+                                        <label>
+                                            <input name="status" type="checkbox" @if($promotional1->status == 1)checked @endif>
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
                                 <div class="promotional-banner-area left"><!-- promotinal banner area  -->
-                                    <form action="{{url('/admin/shop/firstPage/updatePromotional')}}" method="post" enctype="multipart/form-data">
                                         <div class="img-wrapper">
                                             <img src="{{ asset('front/img/promotional/13.jpg')}}" alt="promotional images">
                                             <div class="hover">
                                                 <div class="hover-inner">
-                                                    <div class="file-field input-field p-0 m-0">
-
+                                                    <div class="file-field input-field p-0">
                                                         <div class="btn" style="line-height: 2rem">
                                                             <span>
                                                                  تصویر پس زمینه<i class="material-icons left">camera_alt</i>
                                                             </span>
-                                                            <input type="file">
+                                                            <input type="file" name="file">
+                                                        </div>
+                                                        <div class="file-path-wrapper">
+                                                            <input class="file-path validate" type="text" value="{{$promotional1->media_path ?? "front/img/bg/header-bg-5.jpg"}}">
                                                         </div>
                                                     </div>
                                                     <h2 class="title ">
-                                                        <input class="form-group" name="" style="font-size: 0.4em; height: 40px" placeholder="عنوان اصلی">
+                                                        <input class="form-group" name="title" value="{{$promotional1->title}}" style="font-size: 0.4em; height: 40px" placeholder="عنوان اصلی">
                                                     </h2>
                                                     <div class="btn-wrapper fadeIn">
 
                                                         <a href="#" class="boxed-btn">
-                                                            <input class="form-group" name="" placeholder="نوشته دکمه">
-
+                                                            <input class="form-group" value="{{$promotional1->button_text}}" name="button_text" placeholder="نوشته دکمه">
                                                         </a>
-                                                        <input type="text" name="" id="" placeholder="لینک دکمه">
+                                                        <input type="text" name="button_link" value="{{$promotional1->button_link}}" id="" placeholder="لینک دکمه">
 
                                                     </div>
                                                 </div>
@@ -288,36 +291,45 @@
                                         <button class="btn waves-effect green right iransans mt-2" type="submit" name="action">ذخیره
                                             <i class="material-icons right">add_to_photos</i>
                                         </button>
-                                    </form>
                                 </div><!-- //.promotinal banner area  -->
-                            </div>
+                                </form>
 
+                            </div>
                             <div class="col-lg-6">
-                                <div class="promotional-banner-area left"><!-- promotinal banner area  -->
-                                    <form action="">
+                                <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input name="type" value="promotional2" class="display-none">
+                                    <div class="switch mt-3">
+                                        <label>
+                                            <input name="status" type="checkbox" @if($promotional2->status == 1)checked @endif>
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
+                                    <div class="promotional-banner-area left"><!-- promotinal banner area  -->
                                         <div class="img-wrapper">
-                                            <img src="{{asset('front/img/promotional/13.jpg')}}" alt="promotional images">
+                                            <img src="{{ asset('front/img/promotional/13.jpg')}}" alt="promotional images">
                                             <div class="hover">
                                                 <div class="hover-inner">
-                                                    <div class="file-field input-field p-0 m-0">
-
+                                                    <div class="file-field input-field p-0">
                                                         <div class="btn" style="line-height: 2rem">
                                                             <span>
                                                                  تصویر پس زمینه<i class="material-icons left">camera_alt</i>
                                                             </span>
-                                                            <input type="file">
+                                                            <input type="file" name="file">
+                                                        </div>
+                                                        <div class="file-path-wrapper">
+                                                            <input class="file-path validate" type="text" value="{{$promotional2->media_path ?? "front/img/bg/header-bg-5.jpg"}}">
                                                         </div>
                                                     </div>
                                                     <h2 class="title ">
-                                                        <input class="form-group" name="" style="font-size: 0.4em; height: 40px" placeholder="عنوان اصلی">
+                                                        <input class="form-group" name="title" value="{{$promotional2->title}}" style="font-size: 0.4em; height: 40px" placeholder="عنوان اصلی">
                                                     </h2>
                                                     <div class="btn-wrapper fadeIn">
 
                                                         <a href="#" class="boxed-btn">
-                                                            <input class="form-group" name="" placeholder="نوشته دکمه">
-
+                                                            <input class="form-group" value="{{$promotional2->button_text}}" name="button_text" placeholder="نوشته دکمه">
                                                         </a>
-                                                        <input type="text" name="" id="" placeholder="لینک دکمه">
+                                                        <input type="text" name="button_link" value="{{$promotional2->button_link}}" id="" placeholder="لینک دکمه">
 
                                                     </div>
                                                 </div>
@@ -326,8 +338,9 @@
                                         <button class="btn waves-effect green right iransans mt-2" type="submit" name="action">ذخیره
                                             <i class="material-icons right">add_to_photos</i>
                                         </button>
-                                    </form>
-                                </div><!-- //.promotinal banner area  -->
+                                    </div><!-- //.promotinal banner area  -->
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -338,10 +351,12 @@
                 <!-- filter area home four start -->
                 <div class="filter-ara-home-five p-0">
                     <div class="container">
-                        <form action="">
+                        <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
+                            <input name="type" value="filtered_one" class="display-none">
+                            @csrf
                             <div class="switch mt-3">
                                 <label>
-                                    <input type="checkbox">
+                                    <input name="status" type="checkbox" @if($filtered_one->status == 1)checked @endif>
                                     <span class="lever"></span>
                                 </label>
                             </div>
@@ -430,48 +445,51 @@
                 <!-- filter area home four end -->
 
                 <hr>
-                <div class="switch mt-3 mb-3">
-                    <label>
-                        <input type="checkbox">
-                        <span class="lever"></span>
-                    </label>
-                </div>
+                <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
+                    <input name="type" value="surprise" class="display-none">
+                    @csrf
+                    <div class="switch mt-3 mb-3">
+                        <label>
+                            <input name="status" type="checkbox" @if($surprise->status == 1)checked @endif>
+                            <span class="lever"></span>
+                        </label>
+                    </div>
                 <!-- surprise area start -->
                 <div class="surprise-area light-bg">
                     <div class="container">
-                        <form action="">
 
                         <div class="row">
                             <div class="col-lg-12">
 
                                 <div class="surprise-inner"><!-- surprise inner -->
                                     <div class="video-thumb">
-                                        <img src="{{asset('front/img/surprise-image.jpg')}}" alt="surprise image">
+                                        <img src="{{asset($surprise->media_path) ?? asset('front/img/surprise-image.jpg')}}" alt="surprise image">
                                         <div class="hover">
-                                            <div class="file-field input-field p-0 m-0">
+                                            <div class="file-field input-field p-0">
                                                 <div class="btn" style="line-height: 2rem">
-                                                            <span>
-                                                                 تصویر پس زمینه<i class="material-icons left">camera_alt</i>
-                                                            </span>
-                                                    <input type="file">
+                                                <span>
+                                                     تصویر پس زمینه<i class="material-icons left">camera_alt</i>
+                                                </span>
+                                                    <input type="file" name="file">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text" value="{{$surprise->media_path ?? "front/img/bg/header-bg-5.jpg"}}">
                                                 </div>
                                             </div>
 
-                                            <a href="https://www.youtube.com/watch?v=ivbq60GlBWs" class="video-play-btn mfp-iframe"><i class="fas fa-play"></i></a>
+                                            <a href="{{$surprise->button_link ?? 'https://www.youtube.com/watch?v=ivbq60GlBWs'}}" class="video-play-btn mfp-iframe"><i class="fas fa-play"></i></a>
 
                                         </div>
 
                                     </div>
                                     <div class="mt-3">
 
-                                        <input type="text" name="" id="" class="col col-sm-6" placeholder="لینک دکمه" style="line-height: 20px">
+                                        <input type="text" name="button_link" value="{{$surprise->button_link}}" id="" class="col col-sm-6" placeholder="لینک دکمه" style="line-height: 20px">
                                     </div>
 
                                     <div class="content-area">
-                                        <div class="heart"><i class="fas fa-heart"></i></div>
                                         <h3 class="title">
-                                            <input type="text" name="" id="" class="" placeholder="نوشته بنر" style="line-height: 60px; font-size: 0.6em">
-
+                                            <input type="text" name="title" value="{{$surprise->title}}" id="" class="" placeholder="نوشته بنر" style="line-height: 60px; font-size: 0.6em">
                                         </h3>
                                     </div>
                                 </div><!-- //.surprise inner -->
@@ -479,23 +497,22 @@
                                     <i class="material-icons right">add_to_photos</i>
                                 </button>
                             </div>
-
                         </div>
-
-                        </form>
-
                     </div>
                 </div>
+                </form>
                 <!-- surprise area end -->
 
                 <hr>
                 <!-- filter area home four start -->
                 <div class="filter-ara-home-five-two">
                     <div class="container">
-                        <form action="">
+                        <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
+                            <input name="type" value="filtered_two" class="display-none">
+                            @csrf
                             <div class="switch mt-3">
                                 <label>
-                                    <input type="checkbox">
+                                    <input name="status" type="checkbox" @if($filtered_two->status == 1)checked @endif>
                                     <span class="lever"></span>
                                 </label>
                             </div>
@@ -583,61 +600,61 @@
                 <!-- banner area home 5 start  -->
                 <div class="banner-area-home-5">
                     <div class="container">
-                        <form action="">
-                            <div class="switch mt-3">
-                                <label>
-                                    <input type="checkbox">
-                                    <span class="lever"></span>
-                                </label>
-                            </div>
-                            <button class="btn waves-effect green right iransans" type="submit" name="action">ذخیره
-                                <i class="material-icons right">add_to_photos</i>
-                            </button>
-                        </form>
                         <div class="row">
                             <div class="col-lg-6">
+                                <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
+                                    <input name="type" value="banner_1" class="display-none">
+                                    @csrf
+                                    <div class="switch mt-3">
+                                        <label>
+                                            <input name="status" type="checkbox" @if($banner_1->status == 1)checked @endif>
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
                                 <div class="banner-image"><!-- banner image -->
-                                    <img src="{{asset('front/img/banner-add/02-big.jpg')}}" alt="banner image">
+                                    <img src="{{asset($banner_1->media_path) ?? asset('front/img/banner-add/02-big.jpg')}}" alt="banner image">
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="banner-image"><!-- //.banner image -->
-                                    <img src="{{asset('front/img/banner-add/02-bg.jpg')}}" alt="banner image">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-lg-6">
-                                <div class="file-field input-field p-0 m-0">
+                                <div class="file-field input-field p-0 m-0 mt-2">
 
                                     <div class="btn" style="line-height: 2rem">
-                                                            <span>
-                                                                 تصویر بنر<i class="material-icons left">camera_alt</i>
-                                                            </span>
-                                        <input type="file">
+                                        <span>
+                                             تصویر بنر<i class="material-icons left">camera_alt</i>
+                                        </span>
                                     </div>
                                     <button class="btn waves-effect green right iransans" type="submit" name="action">ذخیره
                                         <i class="material-icons right">add_to_photos</i>
                                     </button>
                                 </div>
-
+                                </form>
                             </div>
                             <div class="col-lg-6">
-                                <div class="file-field input-field p-0 m-0">
-
-                                    <div class="btn" style="line-height: 2rem">
-                                                            <span>
-                                                                 تصویر بنر<i class="material-icons left">camera_alt</i>
-                                                            </span>
-                                        <input type="file">
+                                <form action="{{url('/admin/shop/firstPage/updateFirstPage')}}" method="post" enctype="multipart/form-data">
+                                    <input name="type" value="banner_2" class="display-none">
+                                    @csrf
+                                    <div class="switch mt-3">
+                                        <label>
+                                            <input name="status" type="checkbox" @if($banner_2->status == 1)checked @endif>
+                                            <span class="lever"></span>
+                                        </label>
                                     </div>
-                                    <button class="btn waves-effect green right iransans" type="submit" name="action">ذخیره
-                                        <i class="material-icons right">add_to_photos</i>
-                                    </button>
-                                </div>
+                                    <div class="banner-image"><!-- banner image -->
+                                        <img src="{{asset($banner_2->media_path) ?? asset('front/img/banner-add/02-bg.jpg')}}" alt="banner image">
+                                    </div>
+                                    <div class="file-field input-field p-0 m-0 mt-2">
 
+                                        <div class="btn" style="line-height: 2rem">
+                                            <span>
+                                                 تصویر بنر<i class="material-icons left">camera_alt</i>
+                                            </span>
+                                        </div>
+                                        <button class="btn waves-effect green right iransans" type="submit" name="action">ذخیره
+                                            <i class="material-icons right">add_to_photos</i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- banner area home 5 end  -->

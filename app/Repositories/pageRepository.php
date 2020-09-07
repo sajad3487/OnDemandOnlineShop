@@ -18,8 +18,11 @@ class pageRepository extends Repository
         return page::when(isset($filter) && $filter =="slider", function ($q) use ($filter) {
                 $q->where('type', $filter);
             })
-            ->when(isset($filter) && $filter =="promotional", function ($q) use ($filter) {
+            ->when(isset($filter) && $filter =="promotional1", function ($q) use ($filter) {
             $q->where('type', $filter);
+            })
+            ->when(isset($filter) && $filter =="promotional2", function ($q) use ($filter) {
+                $q->where('type', $filter);
             })
             ->when(isset($filter) && $filter =="filtered_one", function ($q) use ($filter) {
                 $q->where('type', $filter);
@@ -30,7 +33,10 @@ class pageRepository extends Repository
             ->when(isset($filter) && $filter =="filtered_two", function ($q) use ($filter) {
                 $q->where('type', $filter);
             })
-            ->when(isset($filter) && $filter =="banner", function ($q) use ($filter) {
+            ->when(isset($filter) && $filter =="banner_1", function ($q) use ($filter) {
+                $q->where('type', $filter);
+            })
+            ->when(isset($filter) && $filter =="banner_2", function ($q) use ($filter) {
                 $q->where('type', $filter);
             })
             ->first();
