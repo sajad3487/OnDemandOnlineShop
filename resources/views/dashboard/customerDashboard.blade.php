@@ -2,196 +2,139 @@
 @section('content')
 
 
-        <!-- Current balance & total transactions cards-->
-        <div class="row vertical-modern-dashboard">
-            <div class="col s12 m4 l4">
-                <!-- Current Balance -->
-                <div class="card animate fadeLeft">
-                    <div class="card-content">
-                        <h6 class="mb-0 mt-0 display-flex justify-content-between">موجودی فعلی <i class="material-icons float-right">more_vert</i>
-                        </h6>
-                        <p class="medium-small"> چرخه صورتحساب</p>
-                        <div class="current-balance-container">
-                            <div id="current-balance-donut-chart" class="current-balance-shadow"></div>
-                        </div>
-                        <h5 class="center-align">501500 تومان</h5>
-                        <p class="medium-small center-align">تراز چرخه صورتحساب استفاده می شود</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m8 l8 animate fadeRight">
-                <!-- Total Transaction -->
-                <div class="card">
-                    <div class="card-content">
-                        <h4 class="card-title mb-0">تراکنش کل <i class="material-icons float-right">more_vert</i></h4>
-                        <p class="medium-small">معامله این ماه</p>
-                        <div class="total-transaction-container">
-                            <div id="total-transaction-line-chart" class="total-transaction-shadow"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ Current balance & total transactions cards-->
-
-        <!-- User statistics & appointment cards-->
-        <div class="row">
-            <div class="col s12 l5">
-                <!-- User Statistics -->
-                <div class="card user-statistics-card animate fadeLeft">
-                    <div class="card-content">
-                        <h4 class="card-title mb-0">آمار کاربر <i class="material-icons float-right">more_vert</i></h4>
-                        <div class="row">
-                            <div class="col s12 m6">
-                                <ul class="collection border-none mb-0">
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle pink accent-2">trending_up</i>
-                                        <p class="medium-small">امسال</p>
-                                        <h5 class="mt-0 mb-0">60%</h5>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col s12 m6">
-                                <ul class="collection border-none mb-0">
-                                    <li class="collection-item avatar">
-                                        <i class="material-icons circle purple accent-4">trending_down</i>
-                                        <p class="medium-small">سال پیش</p>
-                                        <h5 class="mt-0 mb-0">40%</h5>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="user-statistics-container">
-                            <div id="user-statistics-bar-chart" class="user-statistics-shadow ct-golden-section"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 l4">
-                <!-- Recent Buyers -->
-                <div class="card recent-buyers-card animate fadeUp">
-                    <div class="card-content">
-                        <h4 class="card-title mb-0">خریداران اخیر <i class="material-icons float-right">more_vert</i></h4>
-                        <p class="medium-small pt-2">امروز</p>
-                        <ul class="collection mb-0">
-                            <li class="collection-item avatar">
-                                <img src="{{asset('images/avatar/avatar-7.png')}}" alt="" class="circle" />
-                                <p class="font-weight-600">جان</p>
-                                <p class="medium-small">18, آبان 1398</p>
-                                <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="{{asset('images/avatar/avatar-3.png')}}" alt="" class="circle" />
-                                <p class="font-weight-600">آدام</p>
-                                <p class="medium-small">20, آبان 1398</p>
-                                <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                            </li>
-                            <li class="collection-item avatar">
-                                <img src="{{asset('images/avatar/avatar-5.png')}}" alt="" class="circle" />
-                                <p class="font-weight-600">جنیفر</p>
-                                <p class="medium-small">25, آبان 1398</p>
-                                <a href="#!" class="secondary-content"><i class="material-icons">star_border</i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 l3">
-                <div class="card animate fadeRight">
-                    <div class="card-content">
-                        <h4 class="card-title mb-0">نسبت تبدیل</h4>
-                        <div class="conversion-ration-container mt-8">
-                            <div id="conversion-ration-bar-chart" class="conversion-ration-shadow"></div>
-                        </div>
-                        <p class="medium-small center-align"> نسبت تبدیل ماه</p>
-                        <h5 class="center-align mb-0 mt-0">62%</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ Current balance & appointment cards-->
-
-        <div class="row">
-            <div class="col s12 m6 l4">
+    <div class="row">
+        <div class="col s12 m6 l4">
+            <a href="{{url('quotation/create')}}">
                 <div class="card padding-4 animate fadeLeft">
                     <div class="row">
                         <div class="col s5 m5">
-                            <h5 class="mb-0">1885</h5>
-                            <p class="no-margin">جدید</p>
-                            <p class="mb-0 pt-8">1,12,900</p>
+                            <p class="mb-0">استعلام جدید</p>
                         </div>
                         <div class="col s7 m7 right-align">
-                            <i class="material-icons background-round mt-5 mb-5 gradient-45deg-purple-amber gradient-shadow white-text">perm_identity</i>
-                            <p class="mb-0">کل مشتریان</p>
+                            <i class="material-icons background-round mt-5 mb-5 gradient-45deg-purple-amber gradient-shadow white-text">add_shopping_cart</i>
+                            <p class="mb-0"></p>
                         </div>
                     </div>
                 </div>
-                <div id="chartjs" class="card pt-0 pb-0 animate fadeLeft">
-                    <div class="dashboard-revenue-wrapper padding-2 ml-2">
-                        <span class="new badge gradient-45deg-deep-orange-orange gradient-shadow mt-2 mr-2 price-rtl"> +900 <span>تومان</span> </span>
-                        <p class="mt-2 mb-0 font-weight-600">درآمد امروز</p>
-                        <p class="no-margin grey-text lighten-3 price-rtl"> 40,512 <span>تومان</span> متوسط </p>
-                        <h5 class="price-rtl"> 22,300 <span>تومان</span> </h5>
-                    </div>
-                    <div class="sample-chart-wrapper card-gradient-chart">
-                        <canvas id="custom-line-chart-sample-three" class="center"></canvas>
+            </a>
+            <a href="{{url('wishList/index')}}">
+                <div class="card padding-4 animate fadeLeft">
+                    <div class="row">
+                        <div class="col s5 m5">
+                            <p class="mb-0">لیست علاقه مندی ها</p>
+                        </div>
+                        <div class="col s7 m7 right-align">
+                            <i class="material-icons background-round mt-5 mb-5 gradient-45deg-purple-amber gradient-shadow white-text">favorite_border</i>
+                            <p class="mb-0"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col s12 m6 l8">
-                <div class="card subscriber-list-card animate fadeRight">
-                    <div class="card-content pb-1">
-                        <h4 class="card-title mb-0">لیست مشترکین <i class="material-icons float-right">more_vert</i></h4>
+            </a>
+            <a href="{{url('shop/product')}}">
+                <div class="card padding-4 animate fadeLeft">
+                    <div class="row">
+                        <div class="col s5 m5">
+                            <p class="mb-0">فروشگاه</p>
+                        </div>
+                        <div class="col s7 m7 right-align">
+                            <i class="material-icons background-round mt-5 mb-5 gradient-45deg-purple-amber gradient-shadow white-text">shopping_cart</i>
+                            <p class="mb-0"></p>
+                        </div>
                     </div>
-                    <table class="subscription-table responsive-table highlight">
-                        <thead>
-                        <tr>
-                            <th>نام</th>
-                            <th>شرکت</th>
-                            <th>تاریخ شروع</th>
-                            <th>موقعیت</th>
-                            <th>میزان</th>
-                            <th>فعالیت</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>مایکل</td>
-                            <td>ABC Fintech LTD.</td>
-                            <td>آبان 1,1398</td>
-                            <td><span class="badge pink lighten-5 pink-text text-accent-2">بسته</span></td>
-                            <td>تومان 1000.00</td>
-                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
-                        </tr>
-                        <tr>
-                            <td>آلوین</td>
-                            <td>ACME Pvt LTD.</td>
-                            <td>آبان 10,1398</td>
-                            <td><span class="badge green lighten-5 green-text text-accent-4">باز</span></td>
-                            <td>تومان 3000.00</td>
-                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
-                        </tr>
-                        <tr>
-                            <td>اریک</td>
-                            <td>Collboy Tech LTD.</td>
-                            <td>آبان 12,1398</td>
-                            <td><span class="badge green lighten-5 green-text text-accent-4">باز</span></td>
-                            <td>تومان 2000.00</td>
-                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
-                        </tr>
-                        <tr>
-                            <td>لیدیا</td>
-                            <td>My Fintech LTD.</td>
-                            <td>آبان 14,1398</td>
-                            <td><span class="badge pink lighten-5 pink-text text-accent-2">بسته</span></td>
-                            <td>تومان 1100.00</td>
-                            <td class="center-align"><a href="#"><i class="material-icons pink-text">clear</i></a></td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
+            </a>
+
+        </div>
+        <div class="col s12 m6 l8">
+            <div class="card subscriber-list-card animate fadeRight">
+                <div class="card-content pb-1">
+                    <h4 class="card-title mb-0">لیست قیمت ارزها </h4>
+                </div>
+                <table class="subscription-table responsive-table highlight">
+                    <thead>
+                    <tr>
+                        <th>ارز</th>
+                        <th>تاریخ بروزرسانی</th>
+                        <th>قیمت</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>دلار</td>
+                        <td>{{$currency->created_at ?? ''}}</td>
+                        <td> {{$currency->usd ?? ''}} تومان </td>
+                    </tr>
+                    <tr>
+                        <td>یورو</td>
+                        <td>{{$currency->created_at ?? ''}}</td>
+                        <td> {{$currency->euro ?? ''}} تومان </td>
+                    </tr>
+                    <tr>
+                        <td>پوند</td>
+                        <td>{{$currency->created_at ?? ''}}</td>
+                        <td> {{$currency->pound ?? ''}} تومان </td>
+                    </tr>
+                    <tr>
+                        <td>دلار کانادا</td>
+                        <td>{{$currency->created_at ?? ''}}</td>
+                        <td> {{$currency->canada_dollar ?? ''}} تومان </td>
+                    </tr>
+                    <tr>
+                        <td>درهم امارات</td>
+                        <td>{{$currency->created_at ?? ''}}</td>
+                        <td> {{$currency->uae ?? ''}} تومان </td>
+                    </tr>
+                    <tr>
+                        <td>لیر</td>
+                        <td>{{$currency->created_at ?? ''}}</td>
+                        <td> {{$currency->tl ?? ''}} تومان </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
+    <div class="justify-content-center mt-5 mb-2">
+        <h6 class="center">جدیدترین کالاها</h6>
+    </div>
+    <div class="row">
+        @foreach($previousProducts as $previousKey=>$previousProduct)
+            @if(fmod($previousKey+1,4) == 0)<div class="row">@endif
+
+            <div class="col s12 m3">
+                <div class="card animate fadeRight">
+                    <div class="card-content center">
+                        <img src="{{asset($previousProduct->media->first()->file) ?? ''}}" alt="" class="responsive-img" />
+                        <p><b>{{$previousProduct->title ?? ''}}</b></p>
+                    </div>
+                    <div class="card-action border-non center">
+                        <a href="{{url("shop/product/$previousProduct->id")}}" class="waves-effect waves-light btn gradient-45deg-light-blue-cyan box-shadow">{{$previousProduct->final_price ?? ''}} تومان</a>
+                    </div>
+                </div>
+            </div>
+                @if(fmod($previousKey+1,4) == 0)</div>@endif
+        @endforeach
+    </div>
+
+    <div class="justify-content-center mt-5 mb-2">
+        <h6 class="center">پربازدیدترین کالاها</h6>
+    </div>
+    <div class="row">
+        @foreach($popularProducts as $popularProduct)
+            <div class="col s12 m3">
+                <div class="card animate fadeRight">
+                    <div class="card-content center">
+                        <img src="{{asset($popularProduct->media->first()->file) ?? ''}}" alt="" class="responsive-img" />
+                        <p><b>{{$popularProduct->title ?? ''}}</b></p>
+                    </div>
+                    <div class="card-action border-non center">
+                        <a href="{{url("shop/product/$popularProduct->id")}}" class="waves-effect waves-light btn gradient-45deg-light-blue-cyan box-shadow">{{$popularProduct->final_price ?? ''}} تومان</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
 
 
 @endsection

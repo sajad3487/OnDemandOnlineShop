@@ -273,8 +273,8 @@
                                         @csrf
                                         @method('DELETE')
                                         @if( count($product->media) == 0)
-                                        <p class="mb-2 red-text">برای این کالا هیج عکسی انتخاب نشده است</p>
-                                            @endif
+                                        <p class="mb-2 red-text">برای این کالا هیچ عکسی انتخاب نشده است</p>
+                                        @else
                                         @foreach($product->media as $key=> $media)
                                             <input type='checkbox' name='picture[]' value='{{$media->id}}' id="addedPic-{{$key}}"/>
                                             <label for="addedPic-{{$key}}" class="mr-1 mb-4 center-align">
@@ -289,6 +289,7 @@
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
+                                        @endif
                                     </form>
                                 </div>
 

@@ -66,6 +66,7 @@ class categoryRepository extends Repository
     public function getProductOfCategories ($category_id){
         return category::whereIn('id',$category_id)
             ->with('product')
+            ->with('product.media')
             ->first();
     }
 

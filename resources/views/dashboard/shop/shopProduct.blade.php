@@ -9,6 +9,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
+                    @if($product->media->count() == 1)
+                        @foreach($product->media as $key=>$media)
+                        <div class="single-product-thumb">
+                            <img src="{{asset($media->file)}}" alt="product details image">
+                        </div>
+                        @endforeach
+
+                    @else
                     <div class="left-content-area"><!-- left content area -->
                         <div class="product-details-slider" id="product-details-slider" data-slider-id="1">
                             @foreach($product->media as $key=>$media)
@@ -29,26 +37,27 @@
 
 
                     </div><!-- //.left content area -->
+                        @endif
                 </div>
                 <div class="col-lg-6">
                     <div class="right-content-area"><!-- right content area -->
                         <div class="top-content">
                             <ul class="review">
-                                <li><i class="@if($product->score <= 1) fas fa-star @else far fa-star @endif "></i></li>
-                                <li><i class="@if($product->score <= 2) fas fa-star @else far fa-star @endif"></i></li>
-                                <li><i class="@if($product->score <= 3) fas fa-star @else far fa-star @endif"></i></li>
-                                <li><i class="@if($product->score <= 4) fas fa-star @else far fa-star @endif"></i></li>
-                                <li><i class="@if($product->score <= 5) fas fa-star @else far fa-star @endif"></i></li>
-                                <li class="reviewes">{{$product->view}} <small>بازدید</small> </li>
+                                <li><i class="@if($product->score <= 1 && $product->score != null) fas fa-star @else far fa-star @endif "></i></li>
+                                <li><i class="@if($product->score <= 2 && $product->score != null) fas fa-star @else far fa-star @endif"></i></li>
+                                <li><i class="@if($product->score <= 3 && $product->score != null) fas fa-star @else far fa-star @endif"></i></li>
+                                <li><i class="@if($product->score <= 4 && $product->score != null) fas fa-star @else far fa-star @endif"></i></li>
+                                <li><i class="@if($product->score <= 5 && $product->score != null) fas fa-star @else far fa-star @endif"></i></li>
+                                <li class="reviewes">{{$product->view ?? 0}} <small>بازدید</small> </li>
                             </ul>
-                            <span class="orders">جدید</span>
+{{--                            <span class="orders">جدید</span>--}}
                         </div>
                         <div class="bottom-content">
                             <span class="cat">{{$product->subtitle ?? ''}}</span>
                             <h3 class="title">{{$product->title ?? ''}}</h3>
                             <div class="price-area">
                                 <div class="left">
-                                    <span class="sprice">{{$product->price ?? ''}}  تومان</span>
+                                    <span class="sprice">{{$product->final_price ?? ''}} تومان</span>
                                     <span class="dprice"><del>{{$product->price ?? ''}} تومان</del></span>
                                 </div>
 {{--                                <div class="right">--}}
@@ -59,16 +68,14 @@
                                 <li>برند:  <span class="right">{{$product->brand ?? ''}} </span></li>
                                 <li>کد محصول: <span class="right">SH{{$product->id ?? ''}}</span></li>
                                 @if($product->stock > 0)
-                                <li>موجود:  <span class="right base-color"> موجود است </span></li>
+                                    <li>موجود:  <span class="right base-color"> موجود است </span></li>
                                 @else
                                     <li>موجود:  <span class="right"> موجود نیست </span></li>
-
                                 @endif
                             </ul>
 {{--                            <div class="pdescription">--}}
-{{--                                <h4 class="title">بررسی اجمالی</h4>--}}
-{{--                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است...</p>--}}
-
+{{--                                <h4 class="title">توضیحات :</h4>--}}
+{{--                                <p>{{$product->description ?? ''}}</p>--}}
 {{--                            </div>--}}
                             <div class="paction">
                                 <div class="qty">

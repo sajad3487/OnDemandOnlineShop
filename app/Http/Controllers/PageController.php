@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PageInfoRequest;
+use App\Service\categoryService;
 use App\Service\pageService;
+use App\Service\productService;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -12,16 +14,30 @@ class PageController extends Controller
      * @var pageService
      */
     private $pageService;
+    /**
+     * @var categoryService
+     */
+    private $categoryService;
+    /**
+     * @var productService
+     */
+    private $productService;
 
     public function __construct(
-        pageService $pageService
+        pageService $pageService,
+        categoryService $categoryService,
+        productService $productService
     )
     {
         $this->pageService = $pageService;
+        $this->categoryService = $categoryService;
+        $this->productService = $productService;
     }
 
     public function firstPage()
     {
+        $latestProduct = $this->productService->getLatestProduct(8);
+        $popularProduct = $this->productService->getPopularProduct (8);
         $slider = $this->pageService->getPage("slider");
         $promotional1 = $this->pageService->getPage("promotional1");
         $promotional2 = $this->pageService->getPage("promotional2");
@@ -30,7 +46,8 @@ class PageController extends Controller
         $filtered_two = $this->pageService->getPage("filtered_two");
         $banner_1 = $this->pageService->getPage("banner_1");
         $banner_2 = $this->pageService->getPage("banner_2");
-        return view('dashboard.shop.index', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2'));
+        $categories = $this->categoryService->getAllCategories();
+        return view('dashboard.shop.index', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2','categories','latestProduct','popularProduct'));
     }
 
     public function adminFirstPage()
@@ -43,7 +60,8 @@ class PageController extends Controller
         $filtered_two = $this->pageService->getPage("filtered_two");
         $banner_1 = $this->pageService->getPage("banner_1");
         $banner_2 = $this->pageService->getPage("banner_2");
-        return view('panel.shop.adminFirstPage', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2'));
+        $categories = $this->categoryService->getAllCategories();
+        return view('panel.shop.adminFirstPage', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2','categories'));
     }
 
     public function updateFirstPage(PageInfoRequest $request)

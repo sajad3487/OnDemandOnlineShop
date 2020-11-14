@@ -34,7 +34,7 @@
                                         <li class="">
 
                                             <div class="collapsible-header grey darken-2 white-text" >{{$key+1 .' - '.$category->title}}
-                                                <form action="{{url("admin/shop/category/delete")}}" method="post" class="pl-6" style="width: 50%">
+                                                <form action="{{url("admin/shop/category/$category->id/delete")}}" method="post" class="pl-6" style="width: 50%">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="text" name="type" value="category" class="display-none">
@@ -50,7 +50,7 @@
                                                     @foreach($category->child as $childKey =>$child)
                                                         <li>
                                                             <div class="collapsible-header grey lighten-2"><div class="ml-3"></div>{{$childKey+1 .' - '.$child->title}}
-                                                                <form action="{{url("admin/shop/category/delete")}}" method="post" class="pl-6" style="width: 50%">
+                                                                <form action="{{url("admin/shop/category/$child->id/delete")}}" method="post" class="pl-6" style="width: 50%">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <input type="text" name="type" value="child" class="display-none">
@@ -64,7 +64,7 @@
                                                                     @foreach($child->grandChild as $grandChildKey =>$grandChild)
                                                                         <li>
                                                                             <div class="collapsible-header grey lighten-5"><div class="ml-6"></div>{{$grandChildKey+1 .' - '.$grandChild->title}}
-                                                                                <form action="{{url("admin/shop/category/delete")}}" method="post" class="pl-6" style="width: 50%">
+                                                                                <form action="{{url("admin/shop/category/$grandChild->id/delete")}}" method="post" class="pl-6" style="width: 50%">
                                                                                     @csrf
                                                                                     @method('DELETE')
                                                                                     <input type="text" name="type" value="grandChild" class="display-none">

@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('stock');
             $table->string('tags')->nullable();
             $table->integer('score')->nullable();
-            $table->integer('view')->nullable();
+            $table->integer('view')->default(1);
 
             $table->timestamps();
         });

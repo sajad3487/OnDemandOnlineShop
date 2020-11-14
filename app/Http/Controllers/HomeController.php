@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\userProfileRequest;
+use App\Service\currencyService;
+use App\Service\productService;
 use App\Service\QuotationService;
 use App\Service\RequestService;
 use App\Service\UserService;
@@ -23,6 +25,14 @@ class HomeController extends Controller
      * @var UserService
      */
     private $userService;
+    /**
+     * @var currencyService
+     */
+    private $currencyService;
+    /**
+     * @var productService
+     */
+    private $productService;
 
     /**
      * Create a new controller instance.
@@ -33,12 +43,16 @@ class HomeController extends Controller
     public function __construct(
         QuotationService $quotationService,
         UserService $userService,
-        RequestService $requestService
+        RequestService $requestService,
+        currencyService $currencyService,
+        productService $productService
     ){
         $this->middleware('auth');
         $this->quotationService =$quotationService;
         $this->requestService =$requestService;
         $this->userService =$userService;
+        $this->currencyService = $currencyService;
+        $this->productService = $productService;
     }
 
     /**
@@ -53,7 +67,10 @@ class HomeController extends Controller
         }
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this->requestService->requestItemInCart();
-        return view('dashboard.customerDashboard',compact('cartRequest','itemsInCart'));
+        $currency = $this->currencyService->getLastCurrencyPrice();
+        $popularProducts = $this->productService->getPopularProduct(4);
+        $previousProducts = $this->productService->getLatestProduct(8);
+        return view('dashboard.customerDashboard',compact('cartRequest','itemsInCart','currency','popularProducts','previousProducts'));
     }
     public function view (){
         $user = auth()->user();

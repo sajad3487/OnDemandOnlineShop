@@ -127,7 +127,7 @@ Route::group(['middleware' => ['auth','web']], function () {
 
             Route::group(['prefix'=>'category'],function (){
                 Route::get('/','CategoryController@index');
-                Route::delete('/delete','CategoryController@destroy');
+                Route::delete('/{category_id}/delete','CategoryController@destroy');
                 Route::post('/','CategoryController@store');
                 Route::post('/subCategory','CategoryController@subCategory');
                 Route::get('/{category_id}/showProduct','CategoryController@showProduct');
@@ -139,10 +139,16 @@ Route::group(['middleware' => ['auth','web']], function () {
 
         Route::put('request/{request_id}/store','RequestItemController@update');
     });
-    Route::group(['prefix'=>'shop'],function(){
-        Route::get('product/{product_id}','ProductController@showProduct');
-    });
+
+
     Route::get('test',function (){
        return view('dashboard.editProfile');
     });
+});
+
+
+Route::group(['prefix'=>'shop'],function(){
+    Route::get('product/{product_id}','ProductController@showProduct');
+    Route::get('product/','ProductController@allProducts');
+    Route::get('category/{category_id}','ProductController@categoryProducts');
 });

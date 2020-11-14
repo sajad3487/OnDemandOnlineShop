@@ -140,8 +140,23 @@ class ProductController extends Controller
     }
 
     public function showProduct ($product_id){
+        $categories = $this->categoryService->getAllCategories();
         $product = $this->productService->getProductWithId($product_id);
-        return view('dashboard.shop.shopProduct',compact('product'));
+        $this->productService->addViewForProduct($product_id);
+        return view('dashboard.shop.shopProduct',compact('product','categories'));
+    }
+
+    public function allProducts (){
+        $categories = $this->categoryService->getAllCategories();
+        $products = $this->productService->getAllProduct();
+        return view('dashboard.shop.Products',compact('categories','products'));
+    }
+
+    public function categoryProducts ($category_id){
+        $categories = $this->categoryService->getAllCategories();
+        $products = $this->categoryService->getAllProductOfCategory($category_id);
+        $category_name = $this->categoryService->getCategoryById($category_id)->title;
+        return view('dashboard.shop.Products',compact('products','categories','category_name'));
     }
 
 }

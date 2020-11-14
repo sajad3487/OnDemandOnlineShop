@@ -3,50 +3,51 @@
 
 
     <!-- Current balance & total transactions cards-->
-    <div class="row vertical-modern-dashboard col l4 s12">
+    @if($itemsInCart > 0)
+        <div class="row vertical-modern-dashboard col l4 s12">
 
-        <div class="col s12 animate fadeRight">
-            <div id="centered-table" class="card card card-default scrollspy">
-                <div class="card-content">
-                    <h4 class="card-title">مشخصات فردی</h4>
-                    <p class="mb-2">جهت ارسال کالای شما نیاز به مشخصات شما داریم</p>
-                    <div class="row">
+            <div class="col s12 animate fadeRight">
+                <div id="centered-table" class="card card card-default scrollspy">
+                    <div class="card-content">
+                        <h4 class="card-title">مشخصات فردی</h4>
+                        <p class="mb-2">جهت ارسال کالای شما نیاز به مشخصات شما داریم</p>
+                        <div class="row">
 
 
-                        <div class="col s12">
-                            <form class="formValidate" method="post" action="{{url('quotation/store')}}" id="inquery">
-                                @csrf
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field">
-                                            <label for="tel">شماره تماس</label>
-                                            <input type="text" id="tel" name="tel" value="{{$user['tel'] ?? ''}}"
-                                                   data-error=".errorTxt1">
-                                            <small class="errorTxt1"></small>
+                            <div class="col s12">
+                                <form class="formValidate" method="post" action="{{url('quotation/store')}}" id="inquery">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field">
+                                                <label for="tel">شماره تماس</label>
+                                                <input type="text" id="tel" name="tel" value="{{$user['tel'] ?? ''}}"
+                                                       data-error=".errorTxt1">
+                                                <small class="errorTxt1"></small>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col s12">
-                                        <div class="input-field">
-                                            <label for="address">آدرس :</label>
-                                            <input id="address" name="address" type="text" class="iransans"
-                                                   value="{{$user['address'] ?? ''}}" data-error=".errorTxt2">
-                                            <small class="errorTxt2"></small>
+                                        <div class="col s12">
+                                            <div class="input-field">
+                                                <label for="address">آدرس :</label>
+                                                <input id="address" name="address" type="text" class="iransans"
+                                                       value="{{$user['address'] ?? ''}}" data-error=".errorTxt2">
+                                                <small class="errorTxt2"></small>
+                                            </div>
                                         </div>
+
                                     </div>
+                                </form>
 
-                                </div>
-                            </form>
-
+                            </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
             </div>
+
         </div>
 
-    </div>
-    @if($itemsInCart > 0)
         <div class="row vertical-modern-dashboard col l8 s12">
 
             <div class="col s12 animate fadeRight">
@@ -115,7 +116,7 @@
             </div>
         </div>
     @else
-        <div class="row vertical-modern-dashboard col l8 s12">
+        <div class="row vertical-modern-dashboard col s12">
 
             <div class="col s12 animate fadeRight">
                 <!-- Total Transaction -->
@@ -139,28 +140,6 @@
         </div>
 
     @endif
-
-    <div id="view-carousel">
-        <div class="col s12">
-            <div class="carousel">
-                <a class="carousel-item" href="#one!">
-                    <img src="{{asset('/images/gallery/1.png')}}" alt="">
-                </a>
-                <a class="carousel-item" href="#two!">
-                    <img src="{{asset('/images/gallery/2.png')}}" alt="">
-                </a>
-                <a class="carousel-item" href="#three!">
-                    <img src="{{asset('/images/gallery/3.png')}}" alt="">
-                </a>
-                <a class="carousel-item" href="#four!">
-                    <img src="{{asset('/images/gallery/4.png')}}" alt="">
-                </a>
-                <a class="carousel-item" href="#five!">
-                    <img src="{{asset('/images/gallery/5.png')}}" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
 
 
 

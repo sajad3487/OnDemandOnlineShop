@@ -109,4 +109,16 @@ class productService
         $this->productRepo->detachedMediaToProduct($pictures, $product);
     }
 
+    public function getLatestProduct ($number){
+        return $this->productRepo->getProductByElement('id',$number);
+    }
+
+    public function getPopularProduct ($number){
+        return $this->productRepo->getProductByElement('view',$number);
+    }
+
+    public function addViewForProduct ($product_id){
+        return $this->productRepo->addViewToProduct ($product_id);
+    }
+
 }

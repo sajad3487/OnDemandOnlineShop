@@ -3,7 +3,7 @@
     <div class="container nav-container">
         <div class="logo-wrapper navbar-brand ">
             <a href="{{url('/')}}" class="logo main-logo">
-                <img src="{{asset('front/img/flower-logo.png')}}" alt="logo">
+                <img src="{{asset('front/img/flower-logo.png')}}" style="max-height: 100px" alt="logo">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="mirex">
@@ -15,73 +15,46 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">درباره</a>
+                    <a class="nav-link" href="{{url('/blog/about')}}">درباره ما</a>
                 </li>
                 <li class="nav-item dropdown mega-menu"><!-- mega menu start -->
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">صفحات</a>
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">محصولات</a>
                     <div class="mega-menu-wrapper">
                         <div class="container mega-menu-container">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-12">
-                                    <div class="mega-menu-columns">
-                                        <h6 class="title">صفحات داخلی</h6>
-                                        <ul class="menga-menu-page-links">
-                                            <li><a href="category.html">دسته بندی</a></li>
-                                            <li><a href="cart.html">سبد خرید</a></li>
-                                            <li><a href="product-details.html">جزئیات محصول</a></li>
-                                            <li><a href="signup.html">ثبت نام</a></li>
-                                            <li><a href="sellers-products.html">محصولات پرفروش</a></li>
-                                            <li><a href="seller-dashboard.html">صفحه داشبورد</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12">
-                                    <div class="mega-menu-columns">
-                                        <h6 class="title">دیگر صفحات</h6>
-                                        <ul class="menga-menu-page-links">
-                                            <li><a href="product_upload.html">آپلود محصول</a></li>
-                                            <li><a href="offers.html">تخفیفات</a></li>
-                                            <li><a href="invoice.html">صورتحساب</a></li>
-                                            <li><a href="vendor-list.html">لیست فروشندگان</a></li>
-                                            <li><a href="partners.html">همکاران</a></li>
-                                            <li><a href="404.html">404 صفحه</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12">
-                                    <div class="mega-menu-columns">
-                                        <h6 class="title">دیگر صفحات</h6>
-                                        <ul class="menga-menu-page-links">
-                                            <li><a href="search.html">جستجو</a></li>
-                                            <li><a href="become-affiliats.html">مشارکت کنندگان</a></li>
-                                            <li><a href="faq.html">گفت و گو</a></li>
-                                            <li><a href="track-orders.html">پیگیری سفارش</a></li>
-                                            <li><a href="privacy_policy.html">سیاست حفظ حریم خصوصی</a></li>
-                                            <li><a href="contact.html">تماس</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12">
-                                    <a href="product-details.html">
-                                        <img src="{{asset('front/img/mega-menu.jpg')}}" alt="product image">
-                                    </a>
-                                </div>
+                                @foreach($categories as $category)
+                                    @if($category->id != 1)
+                                        <div class="col-lg-3 col-sm-12">
+                                            <div class="mega-menu-columns">
+                                                <h6 class="title">{{$category->title}}</h6>
+                                                <ul class="menga-menu-page-links">
+                                                    @foreach($category->child as $child)
+                                                        <li><a href="{{url("shop/category/$child->id")}}">{{$child->title}}<i class="material-icons" style="font-size: 12px">chevron_left</i></a></li>
+                                                        @foreach($child->grandChild as $grandChild)
+                                                            <li><a href="{{url("shop/category/$grandChild->id")}}"> --- {{$grandChild->title}}</a></li>
+                                                        @endforeach
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @endforeach
+
                             </div>
                         </div>
                     </div>
                 </li><!-- mega menu start -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">بلاگ</a>
-                    <div class="dropdown-menu">
-                        <a href="blog.html" class="dropdown-item">بلاگ</a>
-                        <a href="blog-details.html" class="dropdown-item">جزئیات بلاگ</a>
-                    </div>
+                    <a class="nav-link " href="{{url('/blog')}}">بلاگ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">تماس</a>
+                    <a class="nav-link" href="{{url('/blog/rules')}}">قوانین و مقررات</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/home')}}">ورود</a>
+                    <a class="nav-link" href="{{url('/blog/contact')}}"> تماس با ما</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/home')}}">ناحیه کاربری</a>
                 </li>
             </ul>
             <!-- /.navbar-nav -->

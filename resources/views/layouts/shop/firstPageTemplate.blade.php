@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> بیگ انیا | قالب فروشگاهی چند منظوره HTML </title>
+    <title>مهویتالی </title>
     <!-- favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- bootstrap -->
@@ -26,6 +26,10 @@
     <!-- responsive -->
     <link rel="stylesheet" href="{{asset('front/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/flaticon.css')}}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 </head>
 
 <body>

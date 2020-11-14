@@ -62,4 +62,18 @@ class productRepository extends Repository
         return $product->media()->detach($pictures);
     }
 
+    public function getProductByElement ($field,$number){
+        return product::where('status',2)
+            ->orderBy($field,'desc')
+            ->take($number)
+            ->with('media')
+            ->with('category')
+            ->get();
+    }
+
+    public function addViewToProduct ($id){
+        return product::where('id',$id)
+            ->increment('view',1);
+    }
+
 }

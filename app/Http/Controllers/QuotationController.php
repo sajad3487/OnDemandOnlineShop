@@ -6,6 +6,7 @@ use App\Http\Requests\quotationRequest;
 use App\Http\Requests\ReportRequest;
 use App\Http\Requests\userProfileRequest;
 use App\Service\currencyService;
+use App\Service\productService;
 use App\Service\purchasedItemService;
 use App\Service\RequestService;
 use App\Service\UserService;
@@ -37,6 +38,10 @@ class QuotationController extends Controller
      * @var purchasedItemService
      */
     private $purchasedItemService;
+    /**
+     * @var productService
+     */
+    private $productService;
 
     public function __construct(
         QuotationService $quotationService,
@@ -44,7 +49,8 @@ class QuotationController extends Controller
         RequestService $requestService,
         CurrencyService $currencyService,
         discountService $discountService,
-        purchasedItemService $purchasedItemService
+        purchasedItemService $purchasedItemService,
+        productService $productService
     ){
         $this->quotationService =$quotationService;
         $this->userService =$userService;
@@ -52,6 +58,7 @@ class QuotationController extends Controller
         $this->currencyService =$currencyService;
         $this->discountService =$discountService;
         $this->purchasedItemService =$purchasedItemService;
+        $this->productService = $productService;
     }
 
     public function create (){
