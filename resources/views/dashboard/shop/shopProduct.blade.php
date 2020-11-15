@@ -78,21 +78,22 @@
 {{--                                <p>{{$product->description ?? ''}}</p>--}}
 {{--                            </div>--}}
                             <div class="paction">
-                                <div class="qty">
-                                    <ul>
-                                        <li><span class="qtminus"><i class="fas fa-minus"></i></span></li>
-                                        <li><span class="qttotal">1</span></li>
-                                        <li><span class="qtplus"><i class="fas fa-plus"></i></span></li>
-                                    </ul>
-                                </div>
-{{--                                <ul class="activities">--}}
-{{--                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>--}}
-{{--                                    <li><a href="#"><i class="fas fa-hourglass"></i></a></li>--}}
-{{--                                    <li><a href="#"><i class="fas fa-share-square"></i></a></li>--}}
-{{--                                </ul>--}}
-                                <div class="btn-wrapper">
-                                    <a href="#" class="boxed-btn">افزودن به سبد</a>
-                                </div>
+                                <form action="{{url("shop/cart/add")}}" method="post">
+                                    @csrf
+                                    <div class="qty">
+                                        تعداد :
+                                        <input type="number" name="quantity" class="input-field col-lg-4 mr-4" style="-moz-appearance: textfield;" value="1">
+                                        <input type="number" class="d-none" name="product_id" value="{{$product->id}}">
+                                    </div>
+                                    {{--                                <ul class="activities">--}}
+                                    {{--                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>--}}
+                                    {{--                                    <li><a href="#"><i class="fas fa-hourglass"></i></a></li>--}}
+                                    {{--                                    <li><a href="#"><i class="fas fa-share-square"></i></a></li>--}}
+                                    {{--                                </ul>--}}
+                                    <div class="btn-wrapper">
+                                        <button type="submit" class="boxed-btn">افزودن به سبد</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div><!-- //. right content area -->

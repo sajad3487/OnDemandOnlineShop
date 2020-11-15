@@ -62,21 +62,23 @@
                     @endif
                 <div id="readyProduct"  class="col s12 pb-0">
                     <div class="collection border-none mb-0">
+                        @foreach($shoppingCarts as $shoppingCart)
                         <ul class="collection right-sidebar-chat p-0 mb-0">
-                            <a href="{{url('/home')}}">
+                            <a href="{{url("shop/product/$shoppingCart->id")}}">
                                 <li class="collection-item right-sidebar-chat-item sidenav-trigger display-flex avatar pl-5 pt-6 pb-0" >
-                                    <span class="avatar-status avatar-online avatar-50"><img src="{{asset('images/avatar/avatar-7.png')}}" alt="avatar" />
+                                    <span class="avatar-status avatar-online avatar-50"><img src="{{asset($shoppingCart->product->media->first()->file)}}" alt="avatar" />
                                     </span>
                                     <div class="user-content ml-5 mt-1">
-                                        <h6 class="line-height-0">نام کالای آاده</h6>
-                                        <p class="medium-small blue-grey-text text-lighten-3 pt-3">توضیخ زیر هدر</p>
+                                        <h6 class="line-height-0">{{$shoppingCart->product->title}}</h6>
+                                        <p class="medium-small blue-grey-text text-lighten-3 pt-3"> تعداد : {{$shoppingCart->quantity}} </p>
                                     </div>
                                 </li>
                             </a>
                         </ul>
+                        @endforeach
                     </div>
                     <div class="col s12 center mb-3">
-                        <p><a class="mb-6 btn waves-effect waves-light green darken-1">ثبت سفارش</a></p>
+                        <p><a href="{{url('/shop/cart/index')}}" class="mb-6 btn waves-effect waves-light green darken-1">ثبت سفارش</a></p>
                     </div>
                 </div>
             </div>

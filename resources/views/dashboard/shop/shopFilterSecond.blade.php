@@ -14,7 +14,7 @@
                                             <div class="thumb border" >
                                                 <img class="" src="{{asset($product->media[0]->file ?? '')}}" alt="{{$product->media[0]->alternative_text ?? 'مهویتالی'}}">
                                                 <div class="hover">
-                                                    <a href="#" class="addtocart">افزودن به سبد</a>
+                                                    <a href="{{url("shop/product/$product->id")}}" class="btn btn-primary">مشاهده کالا</a>
                                                 </div>
                                             </div>
                                             <div class="content">

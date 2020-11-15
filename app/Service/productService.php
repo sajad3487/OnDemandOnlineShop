@@ -99,7 +99,11 @@ class productService
 
     public function attachedMediaWithProduct($pictures, $product_id)
     {
-        $product = $this->productRepo->getById($product_id);
+        $product = $this->productRepo->getProductById($product_id);
+        if ($product->media->count() == 0){
+            $data['status'] = 2;
+            $this->productRepo->update($data,$product_id);
+        }
         $this->productRepo->attachedMediaToProduct($pictures, $product);
     }
 
@@ -107,6 +111,11 @@ class productService
     {
         $product = $this->productRepo->getById($product_id);
         $this->productRepo->detachedMediaToProduct($pictures, $product);
+        $updated_product = $this->productRepo->getProductById($product_id);
+        if ($updated_product->media->count() == 0){
+            $data['status'] = 1;
+            $this->productRepo->update($data,$product_id);
+        }
     }
 
     public function getLatestProduct ($number){

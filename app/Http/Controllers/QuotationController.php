@@ -9,8 +9,10 @@ use App\Service\currencyService;
 use App\Service\productService;
 use App\Service\purchasedItemService;
 use App\Service\RequestService;
+use App\Service\shoppingCartService;
 use App\Service\UserService;
 use App\Service\discountService;
+use App\shoppingCart;
 use App\User;
 use Illuminate\Http\Request;
 use App\Service\QuotationService;
@@ -42,6 +44,10 @@ class QuotationController extends Controller
      * @var productService
      */
     private $productService;
+    /**
+     * @var shoppingCart
+     */
+    private $shoppingCartService;
 
     public function __construct(
         QuotationService $quotationService,
@@ -50,7 +56,8 @@ class QuotationController extends Controller
         CurrencyService $currencyService,
         discountService $discountService,
         purchasedItemService $purchasedItemService,
-        productService $productService
+        productService $productService,
+        shoppingCartService $shoppingCartService
     ){
         $this->quotationService =$quotationService;
         $this->userService =$userService;
@@ -59,6 +66,7 @@ class QuotationController extends Controller
         $this->discountService =$discountService;
         $this->purchasedItemService =$purchasedItemService;
         $this->productService = $productService;
+        $this->shoppingCartService = $shoppingCartService;
     }
 
     public function create (){
@@ -66,7 +74,8 @@ class QuotationController extends Controller
         $itemsInCart = $this->quotationService->ItemOfCart();
         $user = $this->userService->getUserWithId($user_id);
         $cartRequest = $this ->requestService->requestItemInCart();
-    return view('dashboard.createQuotation',compact("cartRequest","user","itemsInCart"));
+        $shoppingCarts = $this->shoppingCartService->shoppingCartItems(auth()->id());
+        return view('dashboard.createQuotation',compact("cartRequest","user","itemsInCart",'shoppingCarts'));
     }
     public function store (userProfileRequest $userProfileRequest){
         $user_id =auth()->id();
@@ -86,13 +95,15 @@ class QuotationController extends Controller
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this ->requestService->requestItemInCart();
         $quotations = $this->quotationService->unpaidQuotationByUserId($user_id);
-        return view('dashboard.quotations',compact('cartRequest','itemsInCart','quotations'));
+        $shoppingCarts = $this->shoppingCartService->shoppingCartItems(auth()->id());
+        return view('dashboard.quotations',compact('cartRequest','itemsInCart','quotations','shoppingCarts'));
     }
     public function view ($quotation_id){
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this ->requestService->requestItemInCart();
         $quotation = $this->quotationService->getQuotationById($quotation_id);
-        return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation'));
+        $shoppingCarts = $this->shoppingCartService->shoppingCartItems(auth()->id());
+        return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation','shoppingCarts'));
     }
     public function pay($quotation_id){
         if ($this->quotationService->payQuotationByGate($quotation_id) == 1){
@@ -109,13 +120,15 @@ class QuotationController extends Controller
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this ->requestService->requestItemInCart();
         $quotations = $this->quotationService->purchasedQuotationByUserId($user_id);
-        return view('dashboard.quotations',compact('cartRequest','itemsInCart','quotations'));
+        $shoppingCarts = $this->shoppingCartService->shoppingCartItems(auth()->id());
+        return view('dashboard.quotations',compact('cartRequest','itemsInCart','quotations','shoppingCarts'));
     }
     public function purchasedView ($quotation_id){
         $itemsInCart = $this->quotationService->ItemOfCart();
         $cartRequest = $this ->requestService->requestItemInCart();
         $quotation = $this->quotationService->getQuotationById($quotation_id);
-        return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation'));
+        $shoppingCarts = $this->shoppingCartService->shoppingCartItems(auth()->id());
+        return view('dashboard.viewQuotation',compact('cartRequest','itemsInCart','quotation','shoppingCarts'));
     }
     public function adminQuotation (){
         $unpriceQuotation = $this->quotationService->getQuotationByStatus(1);

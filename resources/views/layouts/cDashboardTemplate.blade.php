@@ -11,8 +11,8 @@
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
     <title>مهویتالی</title>
-    <link rel="apple-touch-icon" href="{{asset('images/favicon/apple-touch-icon-152x152.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon/favicon-32x32.png')}}">
+    <link rel="apple-touch-icon" href="{{asset('front/img/flower-logo.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('front/img/flower-logo.png')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/vendors.min.css')}}">

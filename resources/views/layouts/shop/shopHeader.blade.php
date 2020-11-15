@@ -61,9 +61,13 @@
             <div class="right-btn-wrapper">
                 <ul>
                     <li class="search" id="search"><i class="fas fa-search"></i> </li>
-{{--                    <li class="cart" id="cart"><i class="fas fa-shopping-basket"></i>--}}
-{{--                        <span class="badge">12</span>--}}
-{{--                    </li>--}}
+                    <li class="cart" >
+                        <a href="{{url('/shop/cart/index')}}">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="badge">{{$cart_number}}</span>
+                        </a>
+
+                    </li>
 {{--                    <li class="right-menu" id="side-menu"><i class="fas fa-bars"></i> </li>--}}
                 </ul>
             </div>

@@ -7,6 +7,7 @@ use App\Service\currencyService;
 use App\Service\productService;
 use App\Service\QuotationService;
 use App\Service\RequestService;
+use App\Service\shoppingCartService;
 use App\Service\UserService;
 use App\User;
 use Illuminate\Http\Request;
@@ -33,6 +34,10 @@ class HomeController extends Controller
      * @var productService
      */
     private $productService;
+    /**
+     * @var shoppingCartService
+     */
+    private $shoppingCartService;
 
     /**
      * Create a new controller instance.
@@ -45,7 +50,8 @@ class HomeController extends Controller
         UserService $userService,
         RequestService $requestService,
         currencyService $currencyService,
-        productService $productService
+        productService $productService,
+        shoppingCartService $shoppingCartService
     ){
         $this->middleware('auth');
         $this->quotationService =$quotationService;
@@ -53,6 +59,7 @@ class HomeController extends Controller
         $this->userService =$userService;
         $this->currencyService = $currencyService;
         $this->productService = $productService;
+        $this->shoppingCartService = $shoppingCartService;
     }
 
     /**
@@ -70,11 +77,16 @@ class HomeController extends Controller
         $currency = $this->currencyService->getLastCurrencyPrice();
         $popularProducts = $this->productService->getPopularProduct(4);
         $previousProducts = $this->productService->getLatestProduct(8);
-        return view('dashboard.customerDashboard',compact('cartRequest','itemsInCart','currency','popularProducts','previousProducts'));
+        $shoppingCarts = $this->shoppingCartService->shoppingCartItems(auth()->id());
+        return view('dashboard.customerDashboard',compact('cartRequest','itemsInCart','currency','popularProducts','previousProducts','shoppingCarts'));
     }
     public function view (){
-        $user = auth()->user();
-        return view('dashboard.editProfile',compact('user'));
+        $user_id = auth()->id();
+        $itemsInCart = $this->quotationService->ItemOfCart();
+        $user = $this->userService->getUserWithId($user_id);
+        $cartRequest = $this ->requestService->requestItemInCart();
+        $shoppingCarts = $this->shoppingCartService->shoppingCartItems(auth()->id());
+        return view('dashboard.editProfile',compact("cartRequest","user","itemsInCart",'shoppingCarts'));
     }
     public function edit (userProfileRequest $userRequest){
         $user = auth()->user();

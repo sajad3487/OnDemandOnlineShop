@@ -66,7 +66,7 @@
                                     src="{{asset(auth()->user()->pic)}}" alt="avatar"><i></i></span></a></li>
                     <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#"
                            data-target="slide-out-right"><i class="material-icons">shopping_cart<small
-                                    class="notification-badge">{{$itemsInCart ?? 0}}</small></i></a></li>
+                                    class="notification-badge">{{$itemsInCart+$shoppingCarts->count() ?? 0}}</small></i></a></li>
                 </ul>
 
                 <ul class="dropdown-content" id="profile-dropdown">

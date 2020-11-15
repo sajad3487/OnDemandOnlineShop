@@ -18,7 +18,7 @@
                                             <div class="" id="heading-{{$key}}">
                                                 <h5 class="mb-0">
                                                     <button class="btn btn-link p-0 collapsed" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapse-{{$key}}">
-                                                        <h6>{{$category->title}} </h6>
+                                                        <h6>{{$category->title ?? ''}} </h6>
                                                     </button>
                                                 </h5>
                                             </div>
@@ -26,9 +26,9 @@
                                                 <div class="mr-4">
                                                     @foreach($category->child as $child)
                                                         <ul>
-                                                            <li class="my-2 "> <a href="{{url("shop/category/$child->id")}}" class="text-primary">{{$child->title}} </a></li>
+                                                            <li class="my-2 "> <a href="{{url("shop/category/$child->id")}}" class="text-primary">{{$child->title ?? ''}} </a></li>
                                                             @foreach($child->grandChild as $grandChild)
-                                                                <li class="my-1"> -- <a href="{{url("shop/category/$grandChild->id")}}" >{{$grandChild->title}} </a></li>
+                                                                <li class="my-1"> -- <a href="{{url("shop/category/$grandChild->id") ?? ''}}" >{{$grandChild->title ?? ''}} </a></li>
                                                             @endforeach
                                                         </ul>
                                                     @endforeach
@@ -62,7 +62,7 @@
                                         <div class="thumb border">
                                             <img src="{{asset($product['media'][0]['file'])}}" alt="new collcetion image">
                                             <div class="hover">
-                                                <a href="{{url('/')}}" class="btn btn-primary">افزودن به سبد</a>
+                                                <a href="{{url("shop/product/".$product['id'])}}" class="btn btn-primary">مشاهده کالا</a>
                                             </div>
                                         </div>
                                         <div class="content">

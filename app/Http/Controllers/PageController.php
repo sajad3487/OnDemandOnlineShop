@@ -6,6 +6,7 @@ use App\Http\Requests\PageInfoRequest;
 use App\Service\categoryService;
 use App\Service\pageService;
 use App\Service\productService;
+use App\Service\shoppingCartService;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -22,16 +23,22 @@ class PageController extends Controller
      * @var productService
      */
     private $productService;
+    /**
+     * @var shoppingCartService
+     */
+    private $shoppingCartService;
 
     public function __construct(
         pageService $pageService,
         categoryService $categoryService,
-        productService $productService
+        productService $productService,
+        shoppingCartService $shoppingCartService
     )
     {
         $this->pageService = $pageService;
         $this->categoryService = $categoryService;
         $this->productService = $productService;
+        $this->shoppingCartService = $shoppingCartService;
     }
 
     public function firstPage()
@@ -47,7 +54,8 @@ class PageController extends Controller
         $banner_1 = $this->pageService->getPage("banner_1");
         $banner_2 = $this->pageService->getPage("banner_2");
         $categories = $this->categoryService->getAllCategories();
-        return view('dashboard.shop.index', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2','categories','latestProduct','popularProduct'));
+        $cart_number =$this->shoppingCartService->cartNumber();
+        return view('dashboard.shop.index', compact('slider', 'promotional1', 'promotional2', 'filtered_one', 'surprise', 'filtered_two', 'banner_1', 'banner_2','categories','latestProduct','popularProduct','cart_number'));
     }
 
     public function adminFirstPage()

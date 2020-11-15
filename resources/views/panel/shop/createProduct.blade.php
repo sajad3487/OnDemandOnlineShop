@@ -218,6 +218,8 @@
                                                                             @if(isset($product) && $product['status'] == 1) selected @endif>
                                                                         پیش نویس
                                                                     </option>
+
+                                                                    @if(isset($product) && $product->media->count() > 0)
                                                                     <option value="2"
                                                                             @if(isset($product) && $product['status'] == 2) selected @endif>
                                                                         فعال
@@ -226,6 +228,7 @@
                                                                             @if(isset($product) && $product['status'] == 3) selected @endif>
                                                                         غیرفعال
                                                                     </option>
+                                                                        @endif
                                                                 </select>
                                                             </div>
                                                         </div>

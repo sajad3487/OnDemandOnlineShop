@@ -12,6 +12,7 @@ use App\Service\categoryService;
 use App\Service\colorService;
 use App\Service\mediaService;
 use App\Service\productService;
+use App\Service\shoppingCartService;
 use App\Service\sizeService;
 use Illuminate\Http\Request;
 
@@ -37,13 +38,18 @@ class ProductController extends Controller
      * @var categoryService
      */
     private $mediaService;
+    /**
+     * @var shoppingCartService
+     */
+    private $shoppingCartService;
 
     public function __construct(
         productService $productService,
         colorService $colorService,
         categoryService $categoryService,
         mediaService $mediaService,
-        sizeService $sizeService
+        sizeService $sizeService,
+        shoppingCartService $shoppingCartService
     )
     {
         $this->productService = $productService;
@@ -51,6 +57,7 @@ class ProductController extends Controller
         $this->categoryService = $categoryService;
         $this->mediaService = $mediaService;
         $this->sizeService = $sizeService;
+        $this->shoppingCartService = $shoppingCartService;
     }
 
     public function index()
@@ -143,20 +150,23 @@ class ProductController extends Controller
         $categories = $this->categoryService->getAllCategories();
         $product = $this->productService->getProductWithId($product_id);
         $this->productService->addViewForProduct($product_id);
-        return view('dashboard.shop.shopProduct',compact('product','categories'));
+        $cart_number =$this->shoppingCartService->cartNumber();
+        return view('dashboard.shop.shopProduct',compact('product','categories','cart_number'));
     }
 
     public function allProducts (){
         $categories = $this->categoryService->getAllCategories();
         $products = $this->productService->getAllProduct();
-        return view('dashboard.shop.Products',compact('categories','products'));
+        $cart_number =$this->shoppingCartService->cartNumber();
+        return view('dashboard.shop.Products',compact('categories','products','cart_number'));
     }
 
     public function categoryProducts ($category_id){
         $categories = $this->categoryService->getAllCategories();
         $products = $this->categoryService->getAllProductOfCategory($category_id);
         $category_name = $this->categoryService->getCategoryById($category_id)->title;
-        return view('dashboard.shop.Products',compact('products','categories','category_name'));
+        $cart_number =$this->shoppingCartService->cartNumber();
+        return view('dashboard.shop.Products',compact('products','categories','category_name','cart_number'));
     }
 
 }

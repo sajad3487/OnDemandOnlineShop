@@ -17,32 +17,6 @@ Auth::routes();
 Route::get('/', 'PageController@firstPage');
 
 Route::group(['middleware' => ['auth','web']], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/viewProfile', 'HomeController@view');
-    Route::post('/editProfile', 'HomeController@edit');
-
-    Route::group(['prefix'=>'request'],function (){
-       Route::post('store','RequestItemController@store');
-       Route::delete('/{request_id}/delete','RequestItemController@delete');
-    });
-
-    Route::group(['prefix'=>'quotation'],function (){
-        Route::get('create','QuotationController@create');
-        Route::post('store','QuotationController@store');
-        Route::get('emptyCart','QuotationController@emptyCart');
-        Route::get('index','QuotationController@index');
-        Route::get('/{quotation_id}/view','QuotationController@view');
-        Route::get('/{quotation_id}/pay','QuotationController@pay');
-        Route::get('purchased','QuotationController@purchased');
-        Route::get('/purchased/{quotation_id}/view','QuotationController@purchasedView');
-    });
-    Route::group(['prefix'=>'wishList'],function (){
-        Route::get('create','WishListController@create');
-        Route::get('index','WishListController@index');
-        Route::post('store','WishListController@store');
-        Route::delete('/{wish_id}/delete','WishListController@delete');
-    });
-
     Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
 
         Route::get('panel','HomeController@adminIndex');
@@ -141,8 +115,45 @@ Route::group(['middleware' => ['auth','web']], function () {
     });
 
 
-    Route::get('test',function (){
-       return view('dashboard.editProfile');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/viewProfile', 'HomeController@view');
+    Route::post('/editProfile', 'HomeController@edit');
+
+    Route::group(['prefix'=>'request'],function (){
+       Route::post('store','RequestItemController@store');
+       Route::delete('/{request_id}/delete','RequestItemController@delete');
+    });
+
+    Route::group(['prefix'=>'quotation'],function (){
+        Route::get('create','QuotationController@create');
+        Route::post('store','QuotationController@store');
+        Route::get('emptyCart','QuotationController@emptyCart');
+        Route::get('index','QuotationController@index');
+        Route::get('/{quotation_id}/view','QuotationController@view');
+        Route::get('/{quotation_id}/pay','QuotationController@pay');
+        Route::get('purchased','QuotationController@purchased');
+        Route::get('/purchased/{quotation_id}/view','QuotationController@purchasedView');
+    });
+
+    Route::group(['prefix'=>'wishList'],function (){
+        Route::get('create','WishListController@create');
+        Route::get('index','WishListController@index');
+        Route::post('store','WishListController@store');
+        Route::delete('/{wish_id}/delete','WishListController@delete');
+    });
+
+    Route::group(['prefix'=>'shop'],function(){
+
+        Route::group(['prefix'=>'cart'],function(){
+            Route::post('add','ShoppingCartController@addToCart');
+            Route::get('index','ShoppingCartController@index');
+            Route::get('emptyCart','ShoppingCartController@emptyCart');
+        });
+
+        Route::group(['prefix'=>'shoppingOrder'],function(){
+            Route::post('store','ShoppingOrderController@payCart');
+        });
+
     });
 });
 
