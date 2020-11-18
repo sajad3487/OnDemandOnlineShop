@@ -34,7 +34,7 @@
                         <!-- logo and title -->
                         <div class="row mt-3 invoice-logo-title">
                             <div class="col m6 s12 display-flex invoice-logo mt-1 push-m6">
-                                <img src="{{asset('images/gallery/ticktock-logo.png')}}" alt="logo" height="36" width="164" />
+                                <img src="{{asset('front/img/flower-logo.png')}}" alt="logo" height="100" width="164" />
                             </div>
                             <div class="col m6 s12 pull-m6">
                                 <h4 class="indigo-text">فاکتور</h4>

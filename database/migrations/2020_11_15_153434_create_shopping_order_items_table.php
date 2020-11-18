@@ -15,6 +15,14 @@ class CreateShoppingOrderItemsTable extends Migration
     {
         Schema::create('shopping_order_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('product_id');
+            $table->integer('order_id');
+            $table->string('description')->nullable();
+            $table->integer('color_id')->nullable();
+            $table->integer('size_id')->nullable();
+            $table->integer('quantity')->default(1);
+            $table->integer('price');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

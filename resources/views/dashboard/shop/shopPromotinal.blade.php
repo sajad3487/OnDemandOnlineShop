@@ -1,4 +1,6 @@
-@if($promotional1->status == 1 || $promotional2->status == 1)
+
+@if(isset($promotional1->status) || isset($promotional2->status))
+    @if($promotional1->status == 1 || $promotional2->status == 1)
 <!-- promotional area seven start -->
 <div class="promotinal-area-seven">
     <div class="container">
@@ -40,4 +42,5 @@
     </div>
 </div>
 <!-- promotional area seven end -->
+@endif
 @endif

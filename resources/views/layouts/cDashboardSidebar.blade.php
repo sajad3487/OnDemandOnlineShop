@@ -15,13 +15,17 @@
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="{{url('quotation/purchased')}}"><i class="material-icons">local_shipping</i><span class="menu-title" data-i18n="Chat">پیگیری سفارشات</span></a>
         </li>
+
+        <li class="bold"><a class="waves-effect waves-cyan " href="{{url('shop/order/')}}"><i class="material-icons">shopping_cart</i><span class="menu-title" data-i18n="Chat">سفارشات فوری</span></a>
+        </li>
+
         <li class="bold"><a class="waves-effect waves-cyan " href="{{url('wishList/index')}}"><i class="material-icons">favorite_border</i><span class="menu-title" data-i18n="wishList">لیست علاقه مندی ها</span></a>
         </li>
 
         <li class="bold"><a class="waves-effect waves-cyan " href="{{url('/viewProfile')}}"><i class="material-icons">fingerprint</i><span class="menu-title" data-i18n="User Profile">مشخصات کاربر</span></a>
         </li>
 
-        <li class="bold"><a class="waves-effect waves-cyan " href="https://pixinvent.ticksy.com/" target="_blank"><i class="material-icons">help_outline</i><span class="menu-title" data-i18n="Support">پشتیبانی</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#" target="_blank"><i class="material-icons">help_outline</i><span class="menu-title" data-i18n="Support">پشتیبانی</span></a>
         </li>
 
 {{--        COLLAPSIBLE ITEM--}}

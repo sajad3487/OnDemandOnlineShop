@@ -15,6 +15,13 @@ class CreateShoppingOrdersTable extends Migration
     {
         Schema::create('shopping_orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('description')->nullable();
+            $table->string('discount_code')->nullable();
+            $table->integer('discount')->nullable();
+            $table->integer('net_price');
+            $table->integer('total_price');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

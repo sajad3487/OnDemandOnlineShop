@@ -63,5 +63,10 @@ class ShoppingCartController extends Controller
         return back();
     }
 
+    public function destroy ($shopping_cart_id){
+        $this->shoppingCartService->deleteCartItem($shopping_cart_id);
+        return back();
+    }
+
 
 }

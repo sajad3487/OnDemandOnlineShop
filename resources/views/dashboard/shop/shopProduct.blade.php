@@ -91,7 +91,7 @@
                                     {{--                                    <li><a href="#"><i class="fas fa-share-square"></i></a></li>--}}
                                     {{--                                </ul>--}}
                                     <div class="btn-wrapper">
-                                        <button type="submit" class="boxed-btn">افزودن به سبد</button>
+                                        <button type="submit" class="btn boxed-btn">افزودن به سبد</button>
                                     </div>
                                 </form>
                             </div>
@@ -150,71 +150,21 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="recently-added-carousel" id="recently-added-carousel"><!-- recently added carousel -->
+                        @foreach($products as $last_product)
                         <div class="single-new-collection-item">
                             <div class="thumb">
-                                <img src="{{asset('front/img/new-collections/09.jpg')}}" alt="product image">
+                                <img src="{{asset($last_product->media->first()->file)}}" alt="product image">
                                 <div class="hover">
-                                    <a href="#" class="addtocart">افزودن به سبد</a>
+                                    <a href="{{url("shop/product/$last_product->id") ?? ''}}" class="btn btn-primary">مشاهده کالا</a>
                                 </div>
                             </div>
                             <div class="content">
-                                <a href="#" class="category">لوازم جانبی</a>
-                                <h4 class="title">میلو هوروبرد</h4>
-                                <div class="price"><span class="sprice">10.00 تومان</span> <del class="dprice">47.00 تومان</del></div>
+                                <a href="{{url("shop/product/$last_product->id") ?? ''}}" class="category">{{$last_product->category->first()->title ?? ''}}</a>
+                                <h4 class="title">{{$last_product->title ?? ''}}</h4>
+                                <div class="price"><span class="sprice">{{$last_product->final_price ?? ''}} تومان</span> <del class="dprice">{{$last_product->price ?? ''}} تومان</del></div>
                             </div>
                         </div>
-                        <div class="single-new-collection-item">
-                            <div class="thumb">
-                                <img src="{{asset('front/img/new-collections/10.jpg')}}" alt="product image">
-                                <div class="hover">
-                                    <a href="#" class="addtocart">افزودن به سبد</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <a href="#" class="category">دوچرخه</a>
-                                <h4 class="title">دوچرخه موتوری</h4>
-                                <div class="price"><span class="sprice">30.00 تومان</span> <del class="dprice">45.00 تومان</del></div>
-                            </div>
-                        </div>
-                        <div class="single-new-collection-item">
-                            <div class="thumb">
-                                <img src="{{asset('front/img/new-collections/11.jpg')}}" alt="product image">
-                                <div class="hover">
-                                    <a href="#" class="addtocart">افزودن به سبد</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <a href="#" class="category">دوچرخه</a>
-                                <h4 class="title">دوچرخه معمولی</h4>
-                                <div class="price"><span class="sprice">70.00 تومان</span> <del class="dprice">120.00 تومان</del></div>
-                            </div>
-                        </div>
-                        <div class="single-new-collection-item">
-                            <div class="thumb">
-                                <img src="{{asset('front/img/new-collections/12.jpg')}}" alt="product image">
-                                <div class="hover">
-                                    <a href="#" class="addtocart">افزودن به سبد</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <a href="#" class="category">کلاه</a>
-                                <h4 class="title">کلاه زرد</h4>
-                                <div class="price"><span class="sprice">89.00 تومان</span> <del class="dprice">156.00 تومان</del></div>
-                            </div>
-                        </div>
-                        <div class="single-new-collection-item">
-                            <div class="thumb">
-                                <img src="{{asset('front/img/new-collections/03.jpg')}}" alt="product image">
-                                <div class="hover">
-                                    <a href="#" class="addtocart">افزودن به سبد</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <a href="#" class="category">دوچرخه</a>
-                                <h4 class="title">دوچرخه معمولی</h4>
-                                <div class="price"><span class="sprice">70.00 تومان</span> <del class="dprice">90.00 تومان</del></div>
-                            </div>
-                        </div>
+                            @endforeach
                     </div><!-- //. recently added carousel -->
                 </div>
             </div>

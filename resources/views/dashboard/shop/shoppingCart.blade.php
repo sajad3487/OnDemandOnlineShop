@@ -82,7 +82,7 @@
                                             <td>{{$shoppingCart->product->title}}</td>
                                             <td>{{$shoppingCart->quantity}}</td>
                                             <td>
-                                                <form action="{{url("request/$shoppingCart->id/delete")}}"
+                                                <form action="{{url("shop/cart/$shoppingCart->id/delete")}}"
                                                       method="post">
                                                     @method('DELETE')
                                                     @csrf

@@ -151,7 +151,7 @@ class ProductController extends Controller
         $product = $this->productService->getProductWithId($product_id);
         $this->productService->addViewForProduct($product_id);
         $cart_number =$this->shoppingCartService->cartNumber();
-        return view('dashboard.shop.shopProduct',compact('product','categories','cart_number'));
+        $products = $this->productService->getLatestProduct(10);return view('dashboard.shop.shopProduct',compact('product','categories','cart_number','products'));
     }
 
     public function allProducts (){

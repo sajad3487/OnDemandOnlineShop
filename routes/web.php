@@ -148,10 +148,16 @@ Route::group(['middleware' => ['auth','web']], function () {
             Route::post('add','ShoppingCartController@addToCart');
             Route::get('index','ShoppingCartController@index');
             Route::get('emptyCart','ShoppingCartController@emptyCart');
+            Route::delete('{shopping_cart_id}/delete','ShoppingCartController@destroy');
         });
 
         Route::group(['prefix'=>'shoppingOrder'],function(){
             Route::post('store','ShoppingOrderController@payCart');
+        });
+
+        Route::group(['prefix'=>'order'],function(){
+            Route::get('/','ShoppingOrderController@index');
+            Route::get('/{shop_order_id}/view','ShoppingOrderController@show');
         });
 
     });

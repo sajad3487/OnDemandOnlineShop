@@ -21,4 +21,8 @@ class shoppingOrderItemService
         $this->shoppingOrderItemRepo = $shoppingOrderItemRepository;
     }
 
+    public function createItem ($data){
+        return $this->shoppingOrderItemRepo->create($data);
+    }
+
 }

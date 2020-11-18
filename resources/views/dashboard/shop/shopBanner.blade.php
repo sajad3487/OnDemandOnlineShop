@@ -1,5 +1,7 @@
+
+@if(isset($banner_1->status) || isset($banner_2->status))
 <!-- banner area home 5 start  -->
-@if($banner_1->status == 1 || $banner_2->status == 1)
+    @if($banner_1->status == 1 || $banner_2->status == 1)
 <div class="banner-area-home-5">
     <div class="container">
         <div class="row">
@@ -22,3 +24,4 @@
 </div>
 @endif
 <!-- banner area home 5 end  -->
+@endif

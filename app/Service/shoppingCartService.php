@@ -37,4 +37,8 @@ class shoppingCartService
         return $this->shoppingCartRepo->emptyUserCart ($user_id);
     }
 
+    public function deleteCartItem ($item){
+        return $this->shoppingCartRepo->delete($item);
+    }
+
 }
