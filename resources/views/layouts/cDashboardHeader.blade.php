@@ -6,14 +6,14 @@
 
                 <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">add_shopping_cart</i>
                     <input class="header-search-input z-depth-2 iransans col-sm-10" type="text" name="Search"
-                           placeholder="استعلام لینک جدید" data-search="template-list">
+                           placeholder="استعلام لینک جدید" data-search="template-list" id="headerLink">
                     <ul class="search-list collection display-none"></ul>
                 </div>
                 <a class="btn-floating mb-1  ml-1 btn-small waves-effect waves-light mt-1 hide-on-med-and-down modal-trigger"
-                   href="#modal1">
+                   href="#modal1" onclick="sendLink()">
                     <i class="material-icons">add</i>
                 </a>
-                <div id="modal1" class="modal modal-fixed-footer ">
+                <div id="modal1" class="modal ">
                     <form action="{{url('/request/store')}}" method="post">
                         @csrf
                         <div class="modal-content ">
@@ -22,7 +22,7 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input type="text" id="link" name="link" value="{{old('link')}}">
-                                    <label class="contact-input" for="link">لینک</label>
+                                    <label class="contact-input" id="linkLabel" for="link">لینک</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -104,6 +104,11 @@
         </nav>
     </div>
     @include('layouts.cart')
-
+    <script>
+        function sendLink(){
+            document.getElementById('link').value =document.getElementById('headerLink').value;
+            document.getElementById('linkLabel').class ="active";
+        }
+    </script>
 </header>
 

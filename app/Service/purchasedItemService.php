@@ -14,24 +14,36 @@ class purchasedItemService
     {
         $this->purchasedItemRepo = $purchasedItemRepository;
     }
-    public function storePurchasedItem ($data){
+
+    public function storePurchasedItem($data)
+    {
         $this->purchasedItemRepo->storeRequestItems($data);
     }
-    public function getPurchasedItemByStatus($status){
+
+    public function getPurchasedItemByStatus($status)
+    {
         return $this->purchasedItemRepo->getPurchasedItemWithStatus($status);
     }
-    public function getPurchasedItemById($id){
+
+    public function getPurchasedItemById($id)
+    {
         return $this->purchasedItemRepo->getPurchasedItemWithId($id);
     }
-    public function updatePurchasedItemData ($id,$data){
+
+    public function updatePurchasedItemData($id, $data)
+    {
         unset($data['_token']);
-        return $this->purchasedItemRepo->updatePurchasedItem($id,$data);
+        return $this->purchasedItemRepo->updatePurchasedItem($id, $data);
     }
-    public function getAllPurchasedItem(){
+
+    public function getAllPurchasedItem()
+    {
         return $this->purchasedItemRepo->getPurchasedItem();
     }
-    public function getWordOfStatus ($status){
-        switch ($status){
+
+    public function getWordOfStatus($status)
+    {
+        switch ($status) {
             case '1':
                 return "پرداخت شده";
                 break;
@@ -51,5 +63,10 @@ class purchasedItemService
                 return "ارسال مشتری";
                 break;
         }
+    }
+
+    public function countPaidPurchasedItem()
+    {
+        return $this->purchasedItemRepo->numberOfPaidItems();
     }
 }

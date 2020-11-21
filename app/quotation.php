@@ -13,7 +13,7 @@ class quotation extends Model
         return $this->hasMany(RequestItem::class);
     }
     public function user (){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
     public function purchased (){
         return $this->hasMany(purchasedItem::class);

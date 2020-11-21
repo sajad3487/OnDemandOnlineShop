@@ -16,7 +16,7 @@ class productRepository extends Repository
 
     public function getProduct()
     {
-        return product::all();
+        return product::where('status',2)->get();
     }
 
     public function createProduct($product)

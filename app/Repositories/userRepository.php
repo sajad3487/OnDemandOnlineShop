@@ -34,4 +34,8 @@ class userRepository
             ->with(array('quotation','quotation.request','quotation.purchased'))
             ->first();
     }
+
+    public function getCountOfCustomer (){
+        return User::where('roles',1)->count();
+    }
 }

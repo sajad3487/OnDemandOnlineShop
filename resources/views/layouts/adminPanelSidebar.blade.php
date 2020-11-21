@@ -1,8 +1,8 @@
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-dark sidenav-active-rounded">
         <div class="brand-sidebar">
             <h1 class="logo-wrapper">
-                <a class="brand-logo darken-1" href="index-2.html"><img class="hide-on-med-and-down " src="{{asset('images/logo/materialize-logo.png')}}" alt="materialize logo" /><img class="show-on-medium-and-down hide-on-med-and-up" src="../../../app-assets/images/logo/materialize-logo-color.png"
-                                                                                                                                                                                        alt="materialize logo" /><span class="logo-text hide-on-med-and-down">متریالایز</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
+                <a class="brand-logo darken-1" href="{{url('/admin/panel')}}"><img class="hide-on-med-and-down " src="{{asset('front/img/flower-logo.png')}}" alt="materialize logo" /><img class="show-on-medium-and-down hide-on-med-and-up" src="{{asset('front/img/flower-logo.png')}}"
+                                                                                                                                                                                        alt="materialize logo" /><span class="logo-text hide-on-med-and-down">مهویتالی</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
         </div>
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="accordion">
 
@@ -72,7 +72,7 @@
                 </div>
             </li>
 
-            <li><a href="{{url('/admin/purchasedItem/arrived')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">سفارشات</span></a>
+            <li><a href="{{url('/admin/shop/order')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">سفارشات</span></a>
             </li>
             <li><a href="{{url('/admin/shop/firstPage')}}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Blog">مدیریت صفحه اول</span></a>
             </li>

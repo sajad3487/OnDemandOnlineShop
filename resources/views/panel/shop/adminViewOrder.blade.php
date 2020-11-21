@@ -1,6 +1,15 @@
-@extends('layouts.cDashboardTemplate')
+@extends('layouts.adminPanelTemplate')
 @section('content')
-    <section class="invoice-view-wrapper section">
+
+
+    <div id="main">
+        <div class="row">
+            <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section">
+
+                        <section class="invoice-view-wrapper section">
         <div class="row">
             <!-- invoice view page -->
             <div class="col xl9 m8 s12">
@@ -70,10 +79,11 @@
                                     <td>{{$item->quantity ?? ''}}</td>
                                     <td>{{$item->price ?? ''}} ریال </td>
                                     <td>
-                                        @if($product->status == 1)
-                                            <span class="chip lighten-5 orange orange-text">فعال</span>
-                                        @elseif($product->status == 2)
-                                            <span class="chip lighten-5 green green-text">غیرفعال</span>
+                                        @if($item->status == 1)
+                                            <span class="chip lighten-5 green green-text">فعال</span>
+                                        @elseif($item->status == 2)
+                                            <span class="chip lighten-5 red red-text">غیرفعال</span>
+
                                         @endif
                                     </td>
                                     <td class="indigo-text right-align">{{$item->price ?? ''}} ریال </td>
@@ -88,7 +98,6 @@
                         <div class="invoice-subtotal">
                             <div class="row">
                                 <div class="col m5 s12">
-                                    <p>از خریدتان متشکریم</p>
                                 </div>
                                 <div class="col xl4 m7 s12 offset-xl3">
                                     <ul>
@@ -137,12 +146,40 @@
                                 <span>چاپ</span>
                             </a>
                         </div>
+                        <div class="invoice-action-btn mt-10">
+                            <form action="{{url("admin/shop/order/$order->id/update")}}" method="post">
+                                @csrf
+                            <label>تغییر وضعیت سفارش :</label>
+                            <select class="browser-default" name="status">
+                                <option value="" disabled selected>وضعیت سفارش را انتخاب نمایید</option>
+                                <option @if($order->status == 1) selected @endif value="1">پرداخت شده</option>
+                                <option @if($order->status == 2) selected @endif value="2">درحال آماده سازی</option>
+                                <option @if($order->status == 3) selected @endif value="3">ارسال شده</option>
+                            </select>
+
+                            <button type="submit" class="btn indigo green display-flex align-items-center justify-content-center mt-10">
+                                <span class="text-success">ذخیره</span>
+                            </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{asset('vendors/data-tables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('vendors/data-tables/js/dataTables.select.min.js')}}"></script>
+    <script src="{{asset('js/scripts/data-tables.min.js')}}"></script>
+    <script src="{{asset('js/vendors.min.js')}}"></script>
 
 
 @endsection

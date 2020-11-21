@@ -107,6 +107,12 @@ Route::group(['middleware' => ['auth','web']], function () {
                 Route::get('/{category_id}/showProduct','CategoryController@showProduct');
             });
 
+            Route::group(['prefix'=>'order'],function (){
+                Route::get('/','ShoppingOrderController@adminIndexOrder');
+                Route::get('/{order_id}/edit','ShoppingOrderController@adminEditOrder');
+                Route::post('/{order_id}/update','ShoppingOrderController@adminUpdateOrder');
+            });
+
         });
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminOrderStatusRequest;
 use App\Http\Requests\PayCartRequest;
 use App\Service\QuotationService;
 use App\Service\RequestService;
@@ -55,55 +56,77 @@ class ShoppingOrderController extends Controller
         $this->requestService = $requestService;
     }
 
-    public function index(){
+    public function index()
+    {
         $user_id = auth()->id();
         $itemsInCart = $this->quotationService->ItemOfCart();
-        $cartRequest = $this ->requestService->requestItemInCart();
+        $cartRequest = $this->requestService->requestItemInCart();
         $shoppingCarts = $this->shoppingCartService->shoppingCartItems($user_id);
-        $orders = $this->shoppingOrderService->getUserOrder ($user_id);
-        return view('dashboard.shop.orders',compact('itemsInCart','cartRequest','orders','shoppingCarts'));
+        $orders = $this->shoppingOrderService->getUserOrder($user_id);
+        return view('dashboard.shop.orders', compact('itemsInCart', 'cartRequest', 'orders', 'shoppingCarts'));
     }
 
-    public function show ($shop_order_id){
+    public function show($shop_order_id)
+    {
         $user_id = auth()->id();
         $itemsInCart = $this->quotationService->ItemOfCart();
-        $cartRequest = $this ->requestService->requestItemInCart();
+        $cartRequest = $this->requestService->requestItemInCart();
         $shoppingCarts = $this->shoppingCartService->shoppingCartItems($user_id);
-        $order = $this->shoppingOrderService->getShoppingOrder ($shop_order_id);
-        return view('dashboard.shop.viewOrder',compact('itemsInCart','cartRequest','order','shoppingCarts'));
+        $order = $this->shoppingOrderService->getShoppingOrder($shop_order_id);
+        return view('dashboard.shop.viewOrder', compact('itemsInCart', 'cartRequest', 'order', 'shoppingCarts'));
     }
 
-    public function payCart (Request $request){
+    public function payCart(Request $request)
+    {
         $data = $request->all();
         $user_id = auth()->id();
-        $this->userService->updateUserInfo($user_id,$data);
+        $this->userService->updateUserInfo($user_id, $data);
         $cart_product = $this->shoppingCartService->shoppingCartItems($user_id);
 
-        $order_data['user_id']=$user_id;
+        $order_data['user_id'] = $user_id;
         $order_data['net_price'] = 0;
 
-        foreach ($cart_product as $item){
+        foreach ($cart_product as $item) {
             $order_data['net_price'] += $item->product->final_price;
         }
 
         $order_data['total_price'] = $order_data['net_price'];
         $order = $this->shoppingOrderService->createOrder($order_data);
 
-        foreach ($cart_product as $cart_item){
+        foreach ($cart_product as $cart_item) {
             $data_item['product_id'] = $cart_item->product->id;
-            $data_item['order_id']=$order->id;
-            $data_item['quantity']=$cart_item->quantity;
-            $data_item['price']=$cart_item->product->final_price;
+            $data_item['order_id'] = $order->id;
+            $data_item['quantity'] = $cart_item->quantity;
+            $data_item['price'] = $cart_item->product->final_price;
             $this->shoppingOrderItemService->createItem($data_item);
         }
         $this->shoppingCartService->emptyCartOfUser(auth()->id());
 
         // Payment
-        if(true){
+        if (true) {
             $update_data ['status'] = 2;
-            $this->shoppingOrderService->updateShoppingOrder ($update_data,$order->id);
+            $this->shoppingOrderService->updateShoppingOrder($update_data, $order->id);
         }
         return redirect('/home');
+    }
+
+    public function adminIndexOrder()
+    {
+        $orders = $this->shoppingOrderService->getAllOrders();
+        return view('panel.shop.adminOrderIndex', compact('orders'));
+    }
+
+    public function adminEditOrder($order_id)
+    {
+        $order = $this->shoppingOrderService->getShoppingOrder($order_id);
+        return view('panel.shop.adminViewOrder', compact('order'));
+    }
+
+    public function adminUpdateOrder(AdminOrderStatusRequest $request,$order_id)
+    {
+        $data = $request->all();
+        $this->shoppingOrderService->updateShoppingOrder($data,$order_id);
+        return back();
     }
 
 

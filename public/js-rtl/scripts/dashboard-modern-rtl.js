@@ -3,9 +3,9 @@
 
 (function (window, document, $) {
   // //Sample toast
-  setTimeout(function () {
-    M.toast({ html: "سلام! من یک تست هستم." })
-  }, 2000)
+  // setTimeout(function () {
+  //   M.toast({ html: "سلام! من یک تست هستم." })
+  // }, 2000)
 
   // Donut chart
   // -----------

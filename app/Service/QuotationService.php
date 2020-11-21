@@ -108,4 +108,8 @@ class QuotationService
             return "payment";
         }
     }
+
+    public function countQuoation (){
+        return $this->quotationRepo->countQuotationActive ();
+    }
 }

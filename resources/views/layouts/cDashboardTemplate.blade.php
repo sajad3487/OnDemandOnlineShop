@@ -207,13 +207,13 @@
 <script src="{{asset('js-rtl/custom/custom-script-rtl.min.js')}}"></script>
 <script src="{{asset('js/scripts/customizer.min.js')}}"></script>
 <script src="{{asset('js/scripts/advance-ui-carousel.min.js')}}"></script>
-<!-- END THEME  JS-->
-<!-- BEGIN PAGE LEVEL JS-->
+{{--<!-- END THEME  JS-->--}}
+{{--<!-- BEGIN PAGE LEVEL JS-->--}}
 <script src="{{asset('js-rtl/scripts/dashboard-modern-rtl.js')}}"></script>
-<script src="{{asset('js/scripts/intro.min.js')}}"></script>
+{{--<script src="{{asset('js/scripts/intro.min.js')}}"></script>--}}
 <script src="{{asset('js/scripts/ui-alerts.min.js')}}"></script>
 <script src="{{asset('js/scripts/advance-ui-modals.min.js')}}"></script>
-<!-- END PAGE LEVEL JS-->
+{{--<!-- END PAGE LEVEL JS-->--}}
 <script src="{{asset('vendors/data-tables/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('vendors/data-tables/js/datatables.checkboxes.min.js')}}"></script>

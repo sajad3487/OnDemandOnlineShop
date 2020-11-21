@@ -36,4 +36,12 @@ class shoppingOrderService
         return $this->shoppigOrderRepo->getShoppingOrderById ($order_id);
     }
 
+    public function countActiveOrder (){
+        return $this->shoppigOrderRepo->getNumberOfActiveOrder ();
+    }
+
+    public function getAllOrders (){
+        return $this->shoppigOrderRepo->getAllOrder();
+    }
+
 }

@@ -36,4 +36,8 @@ class UserService
 //        return $this->userRepo->getUserWithInfo($data);
     }
 
+    public function countCustomer (){
+        return $this->userRepo->getCountOfCustomer ();
+    }
+
 }
