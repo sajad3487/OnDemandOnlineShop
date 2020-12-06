@@ -128,7 +128,7 @@
                                                         <tr>
                                                             <td>لیر</td>
                                                             <td> {{$currency->tl ?? ''}} تومان  </td>
-                                                            <td>{{$currency->created_at}}</td>
+                                                            <td>{{$currency->created_at ?? ''}}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
