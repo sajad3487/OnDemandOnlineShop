@@ -103,32 +103,32 @@
                                                         <tr>
                                                             <td>دلار</td>
                                                             <td>    {{$currency->usd ?? ''}} تومان </td>
-                                                            <td>{{$currency->created_at}}</td>
+                                                            <td>{{$currency->created_at ?? ''}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>یورو</td>
                                                             <td>{{$currency->euro ?? ''}}  تومان  </td>
-                                                            <td>{{$currency->created_at}}</td>
+                                                            <td>{{$currency->created_at ?? ''}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>پوند</td>
                                                             <td>{{$currency->pound ?? ''}}  تومان  </td>
-                                                            <td>{{$currency->created_at}}</td>
+                                                            <td>{{$currency->created_at ?? ''}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>دلار کانادا</td>
                                                             <td>{{$currency->canada_dollar ?? ''}}  تومان  </td>
-                                                            <td>{{$currency->created_at}}</td>
+                                                            <td>{{$currency->created_at ?? ''}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>درهم</td>
                                                             <td> {{$currency->uae ?? ''}} تومان  </td>
-                                                            <td>{{$currency->created_at}}</td>
+                                                            <td>{{$currency->created_at ?? ''}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>لیر</td>
                                                             <td> {{$currency->tl ?? ''}} تومان  </td>
-                                                            <td>{{$currency->created_at ?? ''}}</td>
+                                                            <td>{{$currency->created_at ?? '' ?? ''}}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>

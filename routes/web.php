@@ -164,9 +164,11 @@ Route::group(['middleware' => ['auth','web']], function () {
         Route::group(['prefix'=>'order'],function(){
             Route::get('/','ShoppingOrderController@index');
             Route::get('/{shop_order_id}/view','ShoppingOrderController@show');
+            Route::get('/return_url','ShoppingOrderController@return_url');
         });
 
     });
+    Route::get('shop/order/returnPayment','ShoppingOrderController@returnPayment');
 });
 
 

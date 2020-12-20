@@ -24,7 +24,7 @@ class PayCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'tel'=>'required|string|between:7,10',
+            'tel'=>'required|string|between:7,15',
             'address'=>'required|string|between:2,250',
         ];
     }

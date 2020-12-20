@@ -70,9 +70,9 @@
                                     <td>{{$item->quantity ?? ''}}</td>
                                     <td>{{$item->price ?? ''}} ریال </td>
                                     <td>
-                                        @if($product->status == 1)
+                                        @if($item->status == 1)
                                             <span class="chip lighten-5 orange orange-text">فعال</span>
-                                        @elseif($product->status == 2)
+                                        @elseif($item->status == 2)
                                             <span class="chip lighten-5 green green-text">غیرفعال</span>
                                         @endif
                                     </td>

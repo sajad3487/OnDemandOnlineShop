@@ -102,9 +102,9 @@
                                 <a href="{{url('shop/cart/emptyCart')}}"
                                    class="btn btn-light-pink waves-effect waves-light mb-1 mr-2 iransans">خالی کردن
                                     سبد</a>
-                                <button type="submit" class="btn indigo waves-effect waves-light mb-1 iransans"
+                                <button type="submit" class="btn green waves-effect waves-light mb-1 iransans"
                                         form="inquery">
-                                    ثبت استعلام
+                                    پرداخت
                                 </button>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                             <!-- Maintenance -->
                             <div id="maintenance" class="col s12 center-align white">
                                 <h5 class="error-code green-text mb-6">سبد کالای شما خالی است</h5>
-                                <h6 class="mb-6 mt-2 grey-text">کالای خود را از <a href="{{url('/')}}">فروشگاه</a> انخاب نمایید</h6>
+                                <h6 class="mb-6 mt-2 grey-text">کالای خود را از <a href="{{url('/')}}">فروشگاه</a> انتخاب نمایید</h6>
                                 {{--                                    <a class="btn waves-effect waves-light" href="dashboard-ecommerce.html">بازگشت به خانه</a>--}}
                                 <i class="material-icons "><span>touch_app</span></i>
                             </div>
